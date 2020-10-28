@@ -16,4 +16,3 @@ class DataHandler:
                 data.append(list(map(int,line.split())))
         return data
 
-    

@@ -14,7 +14,7 @@ def random_int_list(start, stop, length):
         random_list.append(random.randint(start, stop))
     return random_list
 class Order:
-    def __init__(self,products, start_time, finish_time=-1):
+    def __init__(self, start_time, products = [], finish_time=-1):
         self.products = products
         self.start_time = start_time
         self.finish_time = finish_time
