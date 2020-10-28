@@ -25,3 +25,4 @@ class worker:
         return self.__max_num
     def get_id(self):
         return self.__id
+    round(3)
