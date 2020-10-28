@@ -10,7 +10,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QDialog
-
+from PyQt5.QtGui import QPixmap
+import os
 
 class Profile_UI(QDialog):
     def setupUi(self, Dialog):
@@ -95,3 +96,12 @@ class Profile_UI(QDialog):
         self.comboBox_set_rules.setItemText(0, _translate("Dialog", "Dijkstra"))
         self.pushButton.setText(_translate("Dialog", "PushButton"))
         self.pushButton_2.setText(_translate("Dialog", "PushButton"))
+
+    # auto-generated code above
+    # -------------------------------------------------
+
+    # simple demo images
+    def init(self):
+        img_name = "UI/images/head_img.png"
+        img = QPixmap(img_name).scaled(self.label_image.width(), self.label_image.height())
+        self.label_image.setPixmap(img)

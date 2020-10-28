@@ -10,6 +10,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtGui import QPixmap
+import os
 
 class Main_UI(QMainWindow):
     def setupUi(self, MainWindow):
@@ -79,3 +81,14 @@ class Main_UI(QMainWindow):
         self.pushButton_add_order.setText(_translate("MainWindow", "Add order"))
         self.pushButton_logout.setText(_translate("MainWindow", "Logout"))
         self.label_title.setText(_translate("MainWindow", "Warehouse System Application"))
+    # auto-generated code above
+    # -------------------------------------------------
+
+    # simple demo images
+    def init(self):
+        img_name = "UI/images/graph_demo.png"
+        img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
+        self.label_graph.setPixmap(img)
+        img_name = "UI/images/head_img.png"
+        img = QPixmap(img_name).scaled(self.label_image.width(), self.label_image.height())
+        self.label_image.setPixmap(img)

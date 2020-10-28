@@ -20,6 +20,9 @@ if __name__ == "__main__":
     login_window.setupUi(login_window)
     profile_window.setupUi(profile_window)
     main_window.setupUi(main_window)
+    # demo images
+    profile_window.init()
+    main_window.init()
 
     if True:#login_window.exec_()==QDialog.Accepted:
         # TODO: validate username password
