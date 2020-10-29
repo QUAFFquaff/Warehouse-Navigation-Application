@@ -83,7 +83,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Displayed Image here</string>
+     <string/>
     </property>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget">

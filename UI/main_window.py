@@ -12,7 +12,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtGui import QPixmap
 import os
-
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
 class Main_UI(QMainWindow):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -85,10 +86,47 @@ class Main_UI(QMainWindow):
     # -------------------------------------------------
 
     # simple demo images
-    def init(self):
-        img_name = "UI/images/graph_demo.png"
-        img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
-        self.label_graph.setPixmap(img)
+    def add_demo_images(self):
         img_name = "UI/images/head_img.png"
         img = QPixmap(img_name).scaled(self.label_image.width(), self.label_image.height())
         self.label_image.setPixmap(img)
+
+    def add_event_listener(self):
+        self.pushButton_load_products.clicked.connect(self.load_products)
+        self.pushButton_add_order.clicked.connect(self.add_order)
+
+    def init(self):
+        self.clicked_order_index = None
+        self.add_demo_images()
+        self.add_event_listener()
+        self.orders = []
+        self.orders_model=QStringListModel()
+        self.listView_orders.setModel(self.orders_model)
+        self.listView_orders.clicked.connect(self.order_clicked)
+        self.pushButton_finish_order.clicked.connect(self.finish_order)
+
+    def order_clicked(self,index):
+        self.clicked_order_index = index.row()
+
+    def load_products(self):
+        default_file="graph_data/graph.txt"
+        filename, _ = QFileDialog.getOpenFileName(self, default_file)
+        #TODO: generate graph image
+        img_name = "UI/images/graph_demo.png"
+        img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
+        self.label_graph.setPixmap(img)
+
+    def add_order(self):
+        str="a->b->c"
+        # TODO: get a order
+        self.orders.append(str)
+        self.orders_model.setStringList(self.orders)
+
+    def finish_order(self):
+        if self.clicked_order_index is None:
+            QMessageBox.information(self, "Error", "Please select an order first！", QMessageBox.Yes, QMessageBox.Yes)
+        else:
+            self.orders.pop(self.clicked_order_index)
+            self.orders_model.setStringList(self.orders)
+            self.clicked_order_index = None
+
