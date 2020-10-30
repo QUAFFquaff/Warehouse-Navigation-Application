@@ -63,6 +63,9 @@ class Main_UI(QMainWindow):
         self.label_title = QtWidgets.QLabel(self.centralwidget)
         self.label_title.setGeometry(QtCore.QRect(240, 30, 421, 41))
         self.label_title.setObjectName("label_title")
+        self.pushButton_profile = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton_profile.setGeometry(QtCore.QRect(0, 90, 81, 41))
+        self.pushButton_profile.setObjectName("pushButton_profile")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -82,6 +85,7 @@ class Main_UI(QMainWindow):
         self.pushButton_add_order.setText(_translate("MainWindow", "Add order"))
         self.pushButton_logout.setText(_translate("MainWindow", "Logout"))
         self.label_title.setText(_translate("MainWindow", "                 Warehouse System Application"))
+        self.pushButton_profile.setText(_translate("MainWindow", "Profile"))
     # auto-generated code above
     # -------------------------------------------------
 
@@ -94,6 +98,7 @@ class Main_UI(QMainWindow):
     def add_event_listener(self):
         self.pushButton_load_products.clicked.connect(self.load_products)
         self.pushButton_add_order.clicked.connect(self.add_order)
+        self.pushButton_profile.clicked.connect(self.profile.exec_)
 
     def init(self):
         self.clicked_order_index = None
@@ -130,3 +135,5 @@ class Main_UI(QMainWindow):
             self.orders_model.setStringList(self.orders)
             self.clicked_order_index = None
 
+    def set_profile_window(self,profile_window):
+        self.profile=profile_window
