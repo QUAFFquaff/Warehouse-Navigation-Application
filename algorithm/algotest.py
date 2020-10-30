@@ -15,10 +15,10 @@ yup = np.triu(ytemp)
 y = yup + yup.T - np.diag(ytemp.diagonal())
 
 d = x+y
-#print(d)
+print(d)
 
 
 
 
-res = brute_force(x,y,d,0,1, [2,3,4])
+res = brute_force(x,y,d,0,0, [1,2,3,4])
 print(res)
