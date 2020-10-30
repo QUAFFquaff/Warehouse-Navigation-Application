@@ -8,6 +8,7 @@ class DataHandler:
         with open(path, 'r') as f:
             f.readline()
             for line in f.readlines():
-                data.append(list(map(int,line.split())))
+                data.append(list(map(float,line.split())))
         return data
 
+    
