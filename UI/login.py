@@ -10,8 +10,10 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QDialog
+from . import main_window
 
 class Login_UI(QDialog):
+    #new changes
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
         Dialog.resize(400, 300)
@@ -26,6 +28,7 @@ class Login_UI(QDialog):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.login_button = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.login_button.setObjectName("login_button")
+        #newchanges
         self.horizontalLayout.addWidget(self.login_button)
         self.exit_button = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.exit_button.setObjectName("exit_button")
@@ -67,5 +70,21 @@ class Login_UI(QDialog):
     # UI changes are above when update UI
     #---------------------------------------------
     # Add event listener to buttons
+    def init(self):
+        self.addEventListener(self)
+
+
     def addEventListener(self, Dialog):
-        pass
+
+        self.login_button.clicked.connect(self.handleLogin)
+
+
+
+    #Add login handler
+    def handleLogin(self, Dialog):
+        if (self.username_input.text() == 'alicebob' and self.password_input.text() == '123456'):
+            self.accept()
+
+        else:
+            QtWidgets.QMessageBox.warning(self, 'Error', 'Wrong username or password, retry!')
+            #self.reject()
