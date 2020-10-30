@@ -18,10 +18,10 @@ class WareHouse:
 
     def set_orders(self):
         self.orders = Order(time.time())
-    
-    def create_orders(self,num):
+
+    def add_order(self,num):
         order = Order(time.time())
-        order.init_products(num,self.products,999)
+        order.init_products(num,self.products)
         self.orders.append(order)
 
     def generate_path(self):
@@ -33,7 +33,7 @@ class WareHouse:
     def load_data(self,path):
         data = self.dhandler.load_txt(path)
         for d in data:
-            product = Product(d[0],d[1],d[2])
+            product = Product(int(d[0]),d[1],d[2])
             self.products.append(product)
     
     

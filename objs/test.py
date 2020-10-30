@@ -11,4 +11,8 @@ from WareHouse import WareHouse
 wh = WareHouse()
 wh.set_dhandler()
 wh.load_data('../data/qvBox-warehouse-data-f20-v01.txt')
-print(len(wh.products))
+wh.add_order(3)
+x_matrix
+for o in wh.orders:
+    for p in o.products:
+        print(p.id)
