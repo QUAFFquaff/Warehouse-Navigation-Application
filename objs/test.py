@@ -9,4 +9,6 @@ import sys
 from DataHandler import DataHandler
 from WareHouse import WareHouse
 wh = WareHouse()
-wh.load
+wh.set_dhandler()
+wh.load_data('../data/qvBox-warehouse-data-f20-v01.txt')
+print(len(wh.products))

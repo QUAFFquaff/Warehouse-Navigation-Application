@@ -5,12 +5,13 @@ from Order import Order
 from Products import Product
 import time
 class WareHouse:
-    def __init__(self,worker,orders = [], dhandler = None):
+    def __init__(self,worker = None ,orders = [], dhandler = None):
 
         self.worker = worker
         self.orders = orders
         self.dhandler = dhandler
         self.products = []
+        self.rules = ""
 
     def set_dhandler(self):
         self.dhandler = DataHandler()
@@ -30,7 +31,7 @@ class WareHouse:
         pass
 
     def load_data(self,path):
-        data = self.dhandler.loadTxt(path)
+        data = self.dhandler.load_txt(path)
         for d in data:
             product = Product(d[0],d[1],d[2])
             self.products.append(product)
