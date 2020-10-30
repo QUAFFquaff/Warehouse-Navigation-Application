@@ -14,13 +14,13 @@ from . import main_window
 
 class Login_UI(QDialog):
     #new changes
-    def setupUi(self, Dialog):
-        Dialog.setObjectName("Dialog")
-        Dialog.resize(400, 300)
-        self.label = QtWidgets.QLabel(Dialog)
-        self.label.setGeometry(QtCore.QRect(80, 40, 261, 31))
+    def setupUi(self, Login):
+        Login.setObjectName("Login")
+        Login.resize(400, 300)
+        self.label = QtWidgets.QLabel(Login)
+        self.label.setGeometry(QtCore.QRect(50, 40, 291, 31))
         self.label.setObjectName("label")
-        self.horizontalLayoutWidget = QtWidgets.QWidget(Dialog)
+        self.horizontalLayoutWidget = QtWidgets.QWidget(Login)
         self.horizontalLayoutWidget.setGeometry(QtCore.QRect(70, 220, 271, 51))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
@@ -32,7 +32,7 @@ class Login_UI(QDialog):
         self.exit_button = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.exit_button.setObjectName("exit_button")
         self.horizontalLayout.addWidget(self.exit_button)
-        self.gridLayoutWidget = QtWidgets.QWidget(Dialog)
+        self.gridLayoutWidget = QtWidgets.QWidget(Login)
         self.gridLayoutWidget.setGeometry(QtCore.QRect(70, 90, 271, 101))
         self.gridLayoutWidget.setObjectName("gridLayoutWidget")
         self.gridLayout = QtWidgets.QGridLayout(self.gridLayoutWidget)
@@ -54,18 +54,17 @@ class Login_UI(QDialog):
         self.username_input.setObjectName("username_input")
         self.gridLayout.addWidget(self.username_input, 0, 1, 1, 1)
 
-        self.retranslateUi(Dialog)
-        QtCore.QMetaObject.connectSlotsByName(Dialog)
+        self.retranslateUi(Login)
+        QtCore.QMetaObject.connectSlotsByName(Login)
 
-    def retranslateUi(self, Dialog):
+    def retranslateUi(self, Login):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "      Warehouse System Application"))
-        self.login_button.setText(_translate("Dialog", "login"))
-        self.exit_button.setText(_translate("Dialog", "exit"))
-        self.label_username.setText(_translate("Dialog", "username"))
-        self.label_password.setText(_translate("Dialog", "password"))
-
+        Login.setWindowTitle(_translate("Login", "Dialog"))
+        self.label.setText(_translate("Login", "      Warehouse System Application"))
+        self.login_button.setText(_translate("Login", "Login"))
+        self.exit_button.setText(_translate("Login", "Exit"))
+        self.label_username.setText(_translate("Login", "username"))
+        self.label_password.setText(_translate("Login", "password"))
     # UI changes are above when update UI
     #---------------------------------------------
     # Add event listener to buttons
@@ -74,16 +73,16 @@ class Login_UI(QDialog):
 
 
     def addEventListener(self, Dialog):
-
-        self.login_button.clicked.connect(self.handleLogin)
+        self.login_button.clicked.connect(self.login)
+        self.exit_button.clicked.connect(self.reject)
 
 
 
     #Add login handler
-    def handleLogin(self, Dialog):
+    def login(self):
         if (self.username_input.text() == 'alicebob' and self.password_input.text() == '123456'):
             self.accept()
-
         else:
             QtWidgets.QMessageBox.warning(self, 'Error', 'Wrong username or password, retry!')
-            #self.reject()
+            self.reject()
+
