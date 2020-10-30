@@ -21,6 +21,7 @@ if __name__ == "__main__":
     profile_window.setupUi(profile_window)
     main_window.setupUi(main_window)
     # demo images
+    login_window.init()
     profile_window.init()
     main_window.init()
 

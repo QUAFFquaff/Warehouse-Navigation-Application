@@ -24,7 +24,7 @@ class Profile_UI(QDialog):
         self.label_image.setGeometry(QtCore.QRect(50, 40, 51, 21))
         self.label_image.setObjectName("label_image")
         self.pushButton_logout = QtWidgets.QPushButton(Dialog)
-        self.pushButton_logout.setGeometry(QtCore.QRect(530, 40, 108, 28))
+        self.pushButton_logout.setGeometry(QtCore.QRect(620, 30, 108, 28))
         self.pushButton_logout.setObjectName("pushButton_logout")
         self.label_title = QtWidgets.QLabel(Dialog)
         self.label_title.setGeometry(QtCore.QRect(260, 30, 311, 41))
