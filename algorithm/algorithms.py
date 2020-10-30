@@ -12,7 +12,28 @@ def brute_force(x_matrix,y_matrix,d_matrix,source,target):
     res = []
 
     return res
+import networkx as nx
+import numpy as np
+import matplotlib.pyplot as plt
 
 def draw_png_graph(products,res):
-    
+    plt.figure(figsize=(9, 9))
+    G = nx.DiGraph()
+    for p in products:
+        G.add_node(p[0],label = p[0], pos=(p[1],p[2]))
+    for i in range(1,len(res)):
+        G.add_edge(res[i-1],res[i])
+    pos = nx.get_node_attributes(G,'pos')
+    node_labels = nx.get_node_attributes(G, 'label')
+    nx.draw(G, pos=pos,  node_size=500, labels=node_labels, font='bond',
+            arrowstyle='->', arrows=True,
+            arrowsize=30, edge_color='red',
+            width=1, directed=True
+            )
+    plt.savefig("path.png")
+    print("generate: path.png")
+    pass
 
+products = [[1,1,1],[2,2,4],[3,2,1]]
+res = [1,2,3,1]
+draw_png_graph(products,res)
