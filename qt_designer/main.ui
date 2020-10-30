@@ -134,6 +134,19 @@
      <string>                 Warehouse System Application</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_profile">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>90</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Profile</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

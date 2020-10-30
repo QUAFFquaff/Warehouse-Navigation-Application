@@ -24,9 +24,10 @@ if __name__ == "__main__":
     login_window.setupUi(login_window)
     profile_window.setupUi(profile_window)
     main_window.setupUi(main_window)
-    # demo images
+
     login_window.init()
     profile_window.init()
+    main_window.set_profile_window(profile_window)
     main_window.init()
 
     # init objs
@@ -44,9 +45,9 @@ if __name__ == "__main__":
         # TODO: validate username password
         # login validation should be done in login_window, not here
         # QMessageBox.information(login_window,"Info", "Login successful！", QMessageBox.Yes, QMessageBox.Yes)
-        if profile_window.exec_()==QDialog.Accepted:
-            profile_params=profile_window.get_params()
-            main_window.params=profile_params
-            main_window.show()
-            sys.exit(app.exec_())
+        # if profile_window.exec_()==QDialog.Accepted:
+        #     profile_params=profile_window.get_params()
+        #     main_window.params=profile_params
+        main_window.show()
+        sys.exit(app.exec_())
     abort(login_window, profile_window, main_window)
