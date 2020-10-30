@@ -3,7 +3,7 @@ from UI.main_window import Main_UI
 from UI.profile import Profile_UI
 import sys
 from PyQt5.QtWidgets import *
-
+from objs import *
 
 def abort(*args):
     for window in args:
@@ -24,7 +24,11 @@ if __name__ == "__main__":
     login_window.init()
     profile_window.init()
     main_window.init()
-
+    
+    # init objs
+    wh = WareHouse()
+    wh.set_dhandler()
+    
     if True:#login_window.exec_()==QDialog.Accepted:
         # TODO: validate username password
         # login validation should be done in login_window, not here
