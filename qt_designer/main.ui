@@ -83,7 +83,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Displayed Image here</string>
+     <string/>
     </property>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
@@ -111,8 +111,8 @@
    <widget class="QPushButton" name="pushButton_logout">
     <property name="geometry">
      <rect>
-      <x>650</x>
-      <y>40</y>
+      <x>760</x>
+      <y>30</y>
       <width>108</width>
       <height>28</height>
      </rect>
@@ -131,7 +131,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Warehouse System Application</string>
+     <string>                 Warehouse System Application</string>
     </property>
    </widget>
   </widget>

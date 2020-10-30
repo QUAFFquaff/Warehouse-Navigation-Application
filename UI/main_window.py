@@ -12,7 +12,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtGui import QPixmap
 import os
-
+from PyQt5.QtWidgets import *
+from PyQt5.QtCore import *
 class Main_UI(QMainWindow):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -42,6 +43,7 @@ class Main_UI(QMainWindow):
         self.label_username.setObjectName("label_username")
         self.label_graph = QtWidgets.QLabel(self.centralwidget)
         self.label_graph.setGeometry(QtCore.QRect(120, 110, 491, 341))
+        self.label_graph.setText("")
         self.label_graph.setObjectName("label_graph")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(630, 120, 160, 331))
@@ -56,7 +58,7 @@ class Main_UI(QMainWindow):
         self.pushButton_add_order.setObjectName("pushButton_add_order")
         self.verticalLayout.addWidget(self.pushButton_add_order)
         self.pushButton_logout = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_logout.setGeometry(QtCore.QRect(650, 40, 108, 28))
+        self.pushButton_logout.setGeometry(QtCore.QRect(760, 30, 108, 28))
         self.pushButton_logout.setObjectName("pushButton_logout")
         self.label_title = QtWidgets.QLabel(self.centralwidget)
         self.label_title.setGeometry(QtCore.QRect(250, 30, 311, 41))
@@ -77,18 +79,54 @@ class Main_UI(QMainWindow):
         self.pushButton_generate_path.setText(_translate("MainWindow", "Generate Path"))
         self.pushButton_finish_order.setText(_translate("MainWindow", "Finish Order"))
         self.label_username.setText(_translate("MainWindow", "username"))
-        self.label_graph.setText(_translate("MainWindow", "Displayed Image here"))
         self.pushButton_add_order.setText(_translate("MainWindow", "Add order"))
         self.pushButton_logout.setText(_translate("MainWindow", "Logout"))
-        self.label_title.setText(_translate("MainWindow", "Warehouse System Application"))
+        self.label_title.setText(_translate("MainWindow", "                 Warehouse System Application"))
     # auto-generated code above
     # -------------------------------------------------
 
     # simple demo images
-    def init(self):
-        img_name = "UI/images/graph_demo.png"
-        img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
-        self.label_graph.setPixmap(img)
+    def add_demo_images(self):
         img_name = "UI/images/head_img.png"
         img = QPixmap(img_name).scaled(self.label_image.width(), self.label_image.height())
         self.label_image.setPixmap(img)
+
+    def add_event_listener(self):
+        self.pushButton_load_products.clicked.connect(self.load_products)
+        self.pushButton_add_order.clicked.connect(self.add_order)
+
+    def init(self):
+        self.clicked_order_index = None
+        self.add_demo_images()
+        self.add_event_listener()
+        self.orders = []
+        self.orders_model=QStringListModel()
+        self.listView_orders.setModel(self.orders_model)
+        self.listView_orders.clicked.connect(self.order_clicked)
+        self.pushButton_finish_order.clicked.connect(self.finish_order)
+
+    def order_clicked(self,index):
+        self.clicked_order_index = index.row()
+
+    def load_products(self):
+        default_file="graph_data/graph.txt"
+        filename, _ = QFileDialog.getOpenFileName(self, default_file)
+        #TODO: generate graph image
+        img_name = "UI/images/graph_demo.png"
+        img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
+        self.label_graph.setPixmap(img)
+
+    def add_order(self):
+        str="a->b->c"
+        # TODO: get a order
+        self.orders.append(str)
+        self.orders_model.setStringList(self.orders)
+
+    def finish_order(self):
+        if self.clicked_order_index is None:
+            QMessageBox.information(self, "Error", "Please select an order first！", QMessageBox.Yes, QMessageBox.Yes)
+        else:
+            self.orders.pop(self.clicked_order_index)
+            self.orders_model.setStringList(self.orders)
+            self.clicked_order_index = None
+
