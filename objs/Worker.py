@@ -1,9 +1,4 @@
-#!/usr/bin/env python 
-# -*- coding: utf-8 -*-
-# @Time    : 10/27/2020 19:00
-# @Author  : Haoyu Lyu
-# @File    : Worker.py
-# @Software: PyCharm
+
 import math
 
 class worker:

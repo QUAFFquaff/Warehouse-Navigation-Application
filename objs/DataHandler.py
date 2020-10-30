@@ -1,9 +1,4 @@
-#!/usr/bin/env python 
-# -*- coding: utf-8 -*-
-# @Time    : 10/28/2020 9:45
-# @Author  : Haoyu Lyu
-# @File    : DataHandler.py
-# @Software: PyCharm
+
 class DataHandler:
     def __init__(self):
         pass

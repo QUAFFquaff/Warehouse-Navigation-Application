@@ -1,9 +1,4 @@
-#!/usr/bin/env python 
-# -*- coding: utf-8 -*-
-# @Time    : 10/28/2020 9:37
-# @Author  : Haoyu Lyu
-# @File    : Order.py
-# @Software: PyCharm
+
 import math
 import random
 def random_int_list(start, stop, length):

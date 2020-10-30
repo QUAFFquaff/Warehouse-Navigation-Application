@@ -1,9 +1,4 @@
-#!/usr/bin/env python 
-# -*- coding: utf-8 -*-
-# @Time    : 10/28/2020 9:51
-# @Author  : Haoyu Lyu
-# @File    : WareHouse.py
-# @Software: PyCharm
+
 import sys
 from .DataHandler import DataHandler
 from .Order import Order
