@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>Profile</class>
+ <widget class="QDialog" name="Profile">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -18,32 +18,19 @@
     <rect>
      <x>120</x>
      <y>40</y>
-     <width>71</width>
+     <width>101</width>
      <height>21</height>
     </rect>
    </property>
    <property name="text">
-    <string>username</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_image">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>40</y>
-     <width>51</width>
-     <height>21</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Image</string>
+    <string>alicebob</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_logout">
    <property name="geometry">
     <rect>
-     <x>620</x>
-     <y>30</y>
+     <x>530</x>
+     <y>40</y>
      <width>108</width>
      <height>28</height>
     </rect>
@@ -154,20 +141,33 @@
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pushButton_confirm">
       <property name="text">
-       <string>PushButton</string>
+       <string>Confirm</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="pushButton_exit">
       <property name="text">
-       <string>PushButton</string>
+       <string>Exit</string>
       </property>
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="label_image">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>30</y>
+     <width>51</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Image</string>
+   </property>
   </widget>
  </widget>
  <resources/>

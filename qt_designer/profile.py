@@ -9,10 +9,9 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QDialog
-from PyQt5.QtGui import QPixmap
 
-class Profile_UI(QDialog):
+
+class Ui_Profile(object):
     def setupUi(self, Profile):
         Profile.setObjectName("Profile")
         Profile.resize(788, 402)
@@ -95,31 +94,3 @@ class Profile_UI(QDialog):
         self.pushButton_confirm.setText(_translate("Profile", "Confirm"))
         self.pushButton_exit.setText(_translate("Profile", "Exit"))
         self.label_image.setText(_translate("Profile", "Image"))
-    # auto-generated code above
-    # -------------------------------------------------
-
-    # simple demo images
-    def init(self):
-        self.username=self.label_username.text()
-        self.lineEdit_maximum_products.setText("1")
-        self.add_event_listener()
-        img_name = "UI/images/head_img.png"
-        img = QPixmap(img_name).scaled(self.label_image.width(), self.label_image.height())
-        self.label_image.setPixmap(img)
-
-    def add_event_listener(self):
-        self.pushButton_logout.clicked.connect(self.reject)
-        self.pushButton_exit.clicked.connect(self.reject)
-        self.pushButton_confirm.clicked.connect(self.confirm)
-
-    def confirm(self):
-        self.accept()
-
-    # return a dict about the parameters in profile
-    def get_params(self):
-        params={}
-        params["username"]=self.label_username.text()
-        params["old_password"]=self.lineEdit_password_input1.text()
-        params["new_password"] = self.lineEdit_password_input2.text()
-        params["maximum_products"]=self.lineEdit_maximum_products.text()
-        return params
