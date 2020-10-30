@@ -42,8 +42,8 @@
   <widget class="QPushButton" name="pushButton_logout">
    <property name="geometry">
     <rect>
-     <x>530</x>
-     <y>40</y>
+     <x>620</x>
+     <y>30</y>
      <width>108</width>
      <height>28</height>
     </rect>

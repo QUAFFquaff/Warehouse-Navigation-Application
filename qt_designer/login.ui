@@ -23,7 +23,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Warehouse System Application</string>
+    <string>      Warehouse System Application</string>
    </property>
   </widget>
   <widget class="QWidget" name="horizontalLayoutWidget">
