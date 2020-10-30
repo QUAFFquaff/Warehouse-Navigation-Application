@@ -1,7 +1,3 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 from DataHandler import DataHandler
 import numpy as np
@@ -49,7 +45,9 @@ def MakeMatrix(data, order_list) -> dict:
 
     return {'xmatrix': x, 'ymatrix': y}
 
+###   testbench below ###
 
+"""
 file = DataHandler()
 datatest = DataHandler.load_txt(file, 'qvBox-warehouse-data-f20-v01.txt')
 
@@ -58,5 +56,5 @@ order_listtest = [1,2,3,4,5]
 ret = MakeMatrix(datatest,order_listtest)
 
 print(ret)
-
+"""
 
