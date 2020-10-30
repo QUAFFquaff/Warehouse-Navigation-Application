@@ -8,6 +8,7 @@ def random_int_list(start, stop, length):
     for i in range(length):
         random_list.append(random.randint(start, stop))
     return random_list
+
 class Order:
     def __init__(self, start_time, products = [], finish_time=-1):
         self.products = products
@@ -19,9 +20,9 @@ class Order:
         self.product_list = None
         self.finish_time = None
 
-    def init_products(self,num,all_products,max=math.inf):
+    def init_products(self,num,all_products):
         ids = random_int_list(0,len(all_products),num)
-        self.products = all_products[ids]
+        self.products = [all_products[id] for id in ids]
 
 
 

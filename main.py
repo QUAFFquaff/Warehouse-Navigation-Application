@@ -3,12 +3,15 @@ from UI.main_window import Main_UI
 from UI.profile import Profile_UI
 import sys
 from PyQt5.QtWidgets import *
-from objs import *
+from objs.WareHouse import *
 
 def abort(*args):
     for window in args:
         window.close()
     sys.exit(0)
+
+
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
