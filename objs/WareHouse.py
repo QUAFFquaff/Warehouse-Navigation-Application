@@ -1,8 +1,8 @@
 
 import sys
-from DataHandler import DataHandler
-from Order import Order
-from Products import Product
+from .DataHandler import DataHandler
+from .Order import Order
+from .Products import Product
 import time
 from enum import Enum
 
@@ -45,5 +45,5 @@ class WareHouse:
         for d in data:
             product = Product(int(d[0]),d[1],d[2])
             self.products.append(product)
-    
+
     

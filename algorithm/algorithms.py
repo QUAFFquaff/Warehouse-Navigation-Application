@@ -13,4 +13,6 @@ def brute_force(x_matrix,y_matrix,d_matrix,source,target):
 
     return res
 
+def draw_png_graph(products,res):
+    
 

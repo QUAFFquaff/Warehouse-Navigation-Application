@@ -4,6 +4,7 @@ from UI.profile import Profile_UI
 import sys
 from PyQt5.QtWidgets import *
 from objs.WareHouse import *
+from objs import WareHouse
 
 def abort(*args):
     for window in args:
@@ -29,7 +30,7 @@ if __name__ == "__main__":
     main_window.init()
 
     # init objs
-    wh = WareHouse()
+    wh = WareHouse.WareHouse()
     wh.set_dhandler()
 
     # fake username password for testing
