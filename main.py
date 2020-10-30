@@ -25,13 +25,20 @@ if __name__ == "__main__":
     profile_window.init()
     main_window.init()
 
-    if True:#login_window.exec_()==QDialog.Accepted:
+    # fake username password for testing
+    login_window.username_input.setText("alicebob")
+    login_window.password_input.setText("123456")
+
+    if login_window.exec_()==QDialog.Accepted:
+        password=login_window.password_input.text()
+        profile_window.lineEdit_password_input1.setText(password)
+        profile_window.lineEdit_password_input2.setText(password)
         # TODO: validate username password
         # login validation should be done in login_window, not here
         # QMessageBox.information(login_window,"Info", "Login successful！", QMessageBox.Yes, QMessageBox.Yes)
-        if True:#profile_window.exec_()==QDialog.Accepted:
-            login_window.exec_()
-            profile_window.exec_()
+        if profile_window.exec_()==QDialog.Accepted:
+            profile_params=profile_window.get_params()
+            main_window.params=profile_params
             main_window.show()
             sys.exit(app.exec_())
     abort(login_window, profile_window, main_window)
