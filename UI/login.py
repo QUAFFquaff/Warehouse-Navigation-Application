@@ -28,7 +28,6 @@ class Login_UI(QDialog):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.login_button = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.login_button.setObjectName("login_button")
-        #newchanges
         self.horizontalLayout.addWidget(self.login_button)
         self.exit_button = QtWidgets.QPushButton(self.horizontalLayoutWidget)
         self.exit_button.setObjectName("exit_button")
@@ -61,7 +60,7 @@ class Login_UI(QDialog):
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
-        self.label.setText(_translate("Dialog", "Warehouse System Application"))
+        self.label.setText(_translate("Dialog", "      Warehouse System Application"))
         self.login_button.setText(_translate("Dialog", "login"))
         self.exit_button.setText(_translate("Dialog", "exit"))
         self.label_username.setText(_translate("Dialog", "username"))

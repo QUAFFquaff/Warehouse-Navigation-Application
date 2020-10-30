@@ -43,6 +43,7 @@ class Main_UI(QMainWindow):
         self.label_username.setObjectName("label_username")
         self.label_graph = QtWidgets.QLabel(self.centralwidget)
         self.label_graph.setGeometry(QtCore.QRect(120, 110, 491, 341))
+        self.label_graph.setText("")
         self.label_graph.setObjectName("label_graph")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(630, 120, 160, 331))
@@ -57,7 +58,7 @@ class Main_UI(QMainWindow):
         self.pushButton_add_order.setObjectName("pushButton_add_order")
         self.verticalLayout.addWidget(self.pushButton_add_order)
         self.pushButton_logout = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_logout.setGeometry(QtCore.QRect(650, 40, 108, 28))
+        self.pushButton_logout.setGeometry(QtCore.QRect(760, 30, 108, 28))
         self.pushButton_logout.setObjectName("pushButton_logout")
         self.label_title = QtWidgets.QLabel(self.centralwidget)
         self.label_title.setGeometry(QtCore.QRect(250, 30, 311, 41))
@@ -78,10 +79,9 @@ class Main_UI(QMainWindow):
         self.pushButton_generate_path.setText(_translate("MainWindow", "Generate Path"))
         self.pushButton_finish_order.setText(_translate("MainWindow", "Finish Order"))
         self.label_username.setText(_translate("MainWindow", "username"))
-        self.label_graph.setText(_translate("MainWindow", "Displayed Image here"))
         self.pushButton_add_order.setText(_translate("MainWindow", "Add order"))
         self.pushButton_logout.setText(_translate("MainWindow", "Logout"))
-        self.label_title.setText(_translate("MainWindow", "Warehouse System Application"))
+        self.label_title.setText(_translate("MainWindow", "                 Warehouse System Application"))
     # auto-generated code above
     # -------------------------------------------------
 
