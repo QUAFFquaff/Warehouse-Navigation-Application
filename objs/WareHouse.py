@@ -18,7 +18,7 @@ class WareHouse:
 
     def set_orders(self):
         self.orders = Order(time.time())
-
+    
     def create_orders(self,num):
         order = Order(time.time())
         order.init_products(num,self.products,999)
