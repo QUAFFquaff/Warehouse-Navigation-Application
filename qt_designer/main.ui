@@ -20,7 +20,7 @@
       <x>20</x>
       <y>30</y>
       <width>51</width>
-      <height>21</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -64,13 +64,13 @@
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>30</y>
-      <width>81</width>
+      <y>40</y>
+      <width>151</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>username</string>
+     <string>alicebob</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_graph">
@@ -111,8 +111,8 @@
    <widget class="QPushButton" name="pushButton_logout">
     <property name="geometry">
      <rect>
-      <x>760</x>
-      <y>30</y>
+      <x>680</x>
+      <y>40</y>
       <width>108</width>
       <height>28</height>
      </rect>
@@ -124,9 +124,9 @@
    <widget class="QLabel" name="label_title">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>240</x>
       <y>30</y>
-      <width>311</width>
+      <width>421</width>
       <height>41</height>
      </rect>
     </property>
