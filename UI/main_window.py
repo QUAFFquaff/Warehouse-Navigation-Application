@@ -126,14 +126,11 @@ class Main_UI(QMainWindow):
 
     def add_order(self):
         self.order_len = 3
-        print("0")
         self.warehouse.add_order(self.order_len)
-        print("1 ")
         products = self.warehouse.orders[-1].products
-        print("2")
         l = []
         for p in products:
-            l.append(p.id)
+            l.append(str(p.get_id()))
         self.orders.append(", ".join(l))
         self.orders_model.setStringList(self.orders)
 
