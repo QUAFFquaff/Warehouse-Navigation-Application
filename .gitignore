@@ -1,4 +1,5 @@
 .idea/*
 UI/__pycache__/*
 objs/__pycache__/*
+algorithm/__pycache__/*
 venv/*
