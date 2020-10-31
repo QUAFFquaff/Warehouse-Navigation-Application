@@ -52,6 +52,23 @@ def draw_png_graph(products,res):
     print("generate: path.png")
     pass
 
+def draw_png_dot_graph(products):
+    plt.figure(figsize=(9, 9))
+    G = nx.DiGraph()
+    for p in products:
+        G.add_node(p[0],label = p[0], pos=(p[1],p[2]))
+    pos = nx.get_node_attributes(G,'pos')
+    node_labels = nx.get_node_attributes(G, 'label')
+    nx.draw(G, pos=pos,  node_size=500, labels=node_labels, font='bond',
+            arrowstyle='->', arrows=True,
+            arrowsize=30, edge_color='red',
+            width=1, directed=True
+            )
+    plt.savefig("../data/path/dot.png")
+    print("generate: path.png")
+    pass
+
 products = [[1,1,1],[2,2,4],[3,2,1]]
+draw_png_dot_graph(products)
 res = [1,2,3,1]
 draw_png_graph(products,res)
