@@ -34,6 +34,10 @@ if __name__ == "__main__":
     wh = WareHouse.WareHouse()
     wh.set_dhandler()
 
+    # set warehouse
+    profile_window.set_warehouse(wh)
+    main_window.set_warehouse(wh)
+
     # fake username password for testing
     login_window.username_input.setText("alicebob")
     login_window.password_input.setText("123456")

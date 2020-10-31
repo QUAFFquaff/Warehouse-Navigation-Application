@@ -123,3 +123,6 @@ class Profile_UI(QDialog):
         params["new_password"] = self.lineEdit_password_input2.text()
         params["maximum_products"]=self.lineEdit_maximum_products.text()
         return params
+
+    def set_warehouse(self,wh):
+        self.warehouse=wh

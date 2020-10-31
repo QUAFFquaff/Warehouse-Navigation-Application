@@ -137,3 +137,6 @@ class Main_UI(QMainWindow):
 
     def set_profile_window(self,profile_window):
         self.profile=profile_window
+
+    def set_warehouse(self,wh):
+        self.warehouse=wh
