@@ -5,7 +5,9 @@ import objs.Products as Products
 import objs.Order as Order
 import time
 from enum import Enum
+from algorithm.BruteForce import *
 from algorithm.MakeMatrix import *
+from algorithm.algorithms import *
 
 Rule = Enum('Rule', ('Brute_force','Dijkstra'))
 class WareHouse:
@@ -37,10 +39,14 @@ class WareHouse:
 
     def generate_path(self,order):
 
+        order_listtest = [self.data.index(i) for i in order.products]
+        pro_list = [[p.get_id(), p.x, p.y] for p in order.products]
+        ret = MakeMatrix(self.data, order_listtest)
+        print(ret)
+        d = ret['xmatrix'] + ret['ymatrix']
         if self.rules == Rule.Brute_force:
-            order_listtest = [self.data.index(i) for i in order.products]
-            ret = MakeMatrix(self.data, order_listtest)
-            print(ret)
+            res = brute_force(ret['xmatrix'], ret['ymatrix'], d, 0, 0, [1, 2, 3, 4, 5])
+            draw_png_graph(pro_list,res)
         pass
 
 

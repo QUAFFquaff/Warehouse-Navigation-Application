@@ -44,14 +44,14 @@ def MakeMatrix(data, order_list) -> dict:
 
 ###   testbench below ###
 
-#
-# file = WareHouse()
-# datatest = DataHandler.load_txt(file, '../data/qvBox-warehouse-data-f20-v01.txt')
-#
-# order_listtest = [1,2,3,4,5]
-#
-# ret = MakeMatrix(datatest,order_listtest)
-#
-# print(ret)
+
+file = WareHouse()
+datatest = DataHandler.load_txt(file, '../data/qvBox-warehouse-data-f20-v01.txt')
+
+order_listtest = [1,2,3,4,5]
+
+ret = MakeMatrix(datatest,order_listtest)
+
+print(ret)
 
 

@@ -8,6 +8,14 @@ version:
 python: 3.6 +  
 pyqt:
 
+packages: 
+
+import networkx as nx  
+import matplotlib.pyplot as plt    
+import numpy   
+
+
+
 ### file description  
 
 obj file saves all the classes such as Workers, Products etc.  
