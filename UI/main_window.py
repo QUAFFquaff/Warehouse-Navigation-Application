@@ -125,10 +125,18 @@ class Main_UI(QMainWindow):
         self.label_graph.setPixmap(img)
 
     def add_order(self):
-        str="a->b->c"
-        # TODO: get a order
-        self.orders.append(str)
+        self.order_len = 3
+        print("0")
+        self.warehouse.add_order(self.order_len)
+        print("1 ")
+        products = self.warehouse.orders[-1].products
+        print("2")
+        l = []
+        for p in products:
+            l.append(p.id)
+        self.orders.append(", ".join(l))
         self.orders_model.setStringList(self.orders)
+
 
     def finish_order(self):
         if self.clicked_order_index is None:
