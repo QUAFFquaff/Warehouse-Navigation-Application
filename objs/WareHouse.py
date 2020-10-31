@@ -1,8 +1,9 @@
 
 import sys
-from DataHandler import *
-from Order import *
-from Products import *
+from . import DataHandler
+from . import Order
+from . import Products
+
 import time
 from enum import Enum
 from algorithm.MakeMatrix import *
@@ -25,7 +26,7 @@ class WareHouse:
             self.rules = Rule.Dijkstra
 
     def set_dhandler(self):
-        self.dhandler = DataHandler()
+        self.dhandler = DataHandler.DataHandler()
 
     def set_orders(self):
         self.orders = Order(time.time())
@@ -47,7 +48,7 @@ class WareHouse:
     def load_data(self,path):
         self.data = self.dhandler.load_txt(path)
         for d in self.data:
-            product = Product(int(d[0]),d[1],d[2])
+            product = Products.Product(int(d[0]),d[1],d[2])
             self.products.append(product)
 
     
