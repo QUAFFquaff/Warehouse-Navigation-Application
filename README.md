@@ -36,4 +36,8 @@ main.py is the file should run
 ------------------------------------  
 10/29  
 load_data function in main_window:  
-if the path is None , system will crash.
+if the path is None , system will crash. 
+
+10/30  
+the font size in the picture is not clear.
+and it may looks weird when generate path cause there is a new node (start node) added into the graph.   
