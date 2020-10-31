@@ -32,7 +32,7 @@ class WareHouse:
         self.orders = Order(time.time())
 
     def add_order(self,num):
-        order = Order(time.time())
+        order = Order.Order()
         order.init_products(num,self.products)
         self.orders.append(order)
 
