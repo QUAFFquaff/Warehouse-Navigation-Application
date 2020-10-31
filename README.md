@@ -7,22 +7,32 @@ Based on python and pyqt.
 version:  
 python: 3.6 +  
 pyqt:
+-------------------
+**Packages**: 
 
-packages: 
-
-import networkx as nx  
-import matplotlib.pyplot as plt    
-import numpy   
-
+anaconda3  
+Python 3.8  
+64-Bit Graphical Installer (466 MB)  
+PyQt5  
+PyQt5-tools  
+networkx  
+matplotlib  
+numpy  
+---------------------
 
 
 ### file description  
 
 obj file saves all the classes such as Workers, Products etc.  
 
+data file shows all the data such as the information of the products and the path(the graph)  
+
+UI file shows ui controllers, qt_designer are the files build GUI  
+
+main.py is the file should run  
 
 ----------------------------------  
-##Bug report  
+## Bug report  
 ------------------------------------  
 10/29  
 load_data function in main_window:  
