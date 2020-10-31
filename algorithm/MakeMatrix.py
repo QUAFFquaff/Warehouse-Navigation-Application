@@ -3,14 +3,12 @@ import numpy as np
 from objs.WareHouse import *
 
 def MakeMatrix(data, order_list) -> dict:
-
     """
     :param data: data from txt
     :param order_list: random generated, value in order_list represents the # of an item, NOT PRODUCT ID
             Product id can be retrieved by id_dictionary
     :return: x matrix and y matrix
     """
-
     id_dictionary = []
     position_dictionary = []
 
@@ -46,9 +44,9 @@ def MakeMatrix(data, order_list) -> dict:
 
 ###   testbench below ###
 
-
-# file = WareHouse.WareHouse()
-# datatest = DataHandler.load_txt(file, 'qvBox-warehouse-data-f20-v01.txt')
+#
+# file = WareHouse()
+# datatest = DataHandler.load_txt(file, '../data/qvBox-warehouse-data-f20-v01.txt')
 #
 # order_listtest = [1,2,3,4,5]
 #

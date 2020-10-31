@@ -5,6 +5,7 @@ from Order import *
 from Products import *
 import time
 from enum import Enum
+from algorithm.MakeMatrix import *
 
 Rule = Enum('Rule', ('Brute_force','Dijkstra'))
 class WareHouse:
@@ -15,6 +16,7 @@ class WareHouse:
         self.dhandler = dhandler
         self.products = []
         self.rules = Rule.Brute_force
+        self.data = None
 
     def set_rules(self,num):
         if num == 0:
@@ -33,17 +35,18 @@ class WareHouse:
         order.init_products(num,self.products)
         self.orders.append(order)
 
-    def generate_path(self):
+    def generate_path(self,order):
 
         if self.rules == Rule.Brute_force:
-            pass
+            order_listtest = [self.data.index(i) for i in order.products]
+            ret = MakeMatrix(self.data, order_listtest)
+            print(ret)
         pass
 
 
     def load_data(self,path):
-        data = self.dhandler.load_txt(path)
-        print('get data')
-        for d in data:
+        self.data = self.dhandler.load_txt(path)
+        for d in self.data:
             product = Product(int(d[0]),d[1],d[2])
             self.products.append(product)
 
