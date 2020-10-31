@@ -16,6 +16,24 @@ import networkx as nx
 import numpy as np
 import matplotlib.pyplot as plt
 
+
+def dijkstra(start: int, mgraph: list) -> list:
+    passed = [start]
+    nopass = [x for x in range(len(mgraph)) if x != start]
+    dis = mgraph[start]
+
+    while len(nopass):
+        idx = nopass[0]
+        for i in nopass:
+            if dis[i] < dis[idx]: idx = i
+
+        nopass.remove(idx)
+        passed.append(idx)
+
+        for i in nopass:
+            if dis[idx] + mgraph[idx][i] < dis[i]: dis[i] = dis[idx] + mgraph[idx][i]
+    return dis
+
 def draw_png_graph(products,res):
     plt.figure(figsize=(9, 9))
     G = nx.DiGraph()

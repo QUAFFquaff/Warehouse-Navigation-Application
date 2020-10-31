@@ -91,7 +91,7 @@ class Main_UI(QMainWindow):
 
     # simple demo images
     def add_demo_images(self):
-        img_name = "UI/images/head_img.png"
+        img_name = "data/images/head_img.png"
         img = QPixmap(img_name).scaled(self.label_image.width(), self.label_image.height())
         self.label_image.setPixmap(img)
 
@@ -117,6 +117,8 @@ class Main_UI(QMainWindow):
         default_file="graph_data/graph.txt"
         filename, _ = QFileDialog.getOpenFileName(self, default_file)
         #TODO: generate graph image
+        print('loading file location: ',filename)
+        self.wh.load_data(filename)
         img_name = "UI/images/graph_demo.png"
         img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
         self.label_graph.setPixmap(img)

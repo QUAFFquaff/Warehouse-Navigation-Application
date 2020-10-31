@@ -1,6 +1,7 @@
 import numpy as np
-import itertools
 
+import BruteForce
+import algorithms
 """
 generate random matrix for testing 
 """
@@ -20,5 +21,7 @@ print(d)
 
 
 
-res = brute_force(x,y,d,0,0, [1,2,3,4])
+res = BruteForce.brute_force(x,y,d,0,0, [1,2,3,4])
+print(res)
+res = algorithms.dijkstra(0,d)
 print(res)
