@@ -1,7 +1,6 @@
 
-from DataHandler import DataHandler
 import numpy as np
-
+from objs.WareHouse import *
 
 def MakeMatrix(data, order_list) -> dict:
 
@@ -47,14 +46,14 @@ def MakeMatrix(data, order_list) -> dict:
 
 ###   testbench below ###
 
-"""
-file = DataHandler()
-datatest = DataHandler.load_txt(file, 'qvBox-warehouse-data-f20-v01.txt')
 
-order_listtest = [1,2,3,4,5]
+# file = WareHouse.WareHouse()
+# datatest = DataHandler.load_txt(file, 'qvBox-warehouse-data-f20-v01.txt')
+#
+# order_listtest = [1,2,3,4,5]
+#
+# ret = MakeMatrix(datatest,order_listtest)
+#
+# print(ret)
 
-ret = MakeMatrix(datatest,order_listtest)
-
-print(ret)
-"""
 
