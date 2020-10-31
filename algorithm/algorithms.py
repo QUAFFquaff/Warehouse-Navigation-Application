@@ -12,8 +12,9 @@ def brute_force(x_matrix,y_matrix,d_matrix,source,target):
     res = []
 
     return res
+
+
 import networkx as nx
-import numpy as np
 import matplotlib.pyplot as plt
 
 
@@ -34,7 +35,8 @@ def dijkstra(start: int, mgraph: list) -> list:
             if dis[idx] + mgraph[idx][i] < dis[i]: dis[i] = dis[idx] + mgraph[idx][i]
     return dis
 
-def draw_png_graph(products,res):
+def draw_png_graph(products,res_ind):
+    res = [products[i][0] for i in res_ind]
     plt.figure(figsize=(9, 9))
     G = nx.DiGraph()
     for p in products:
@@ -48,7 +50,7 @@ def draw_png_graph(products,res):
             arrowsize=30, edge_color='red',
             width=1, directed=True
             )
-    plt.savefig("path.png")
+    plt.savefig("data/path/path.png")
     print("generate: path.png")
     pass
 
