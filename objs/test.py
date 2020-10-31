@@ -6,11 +6,10 @@
 # @Software: PyCharm
 
 import sys
-from DataHandler import DataHandler
 from WareHouse import *
 wh = WareHouse()
 wh.set_dhandler()
-wh.load_data('../data/qvBox-warehouse-data-f20-v01.txt')
+wh.load_data('F:/Users/lenovo/Documents/!ProgramZone/Python/EECS221c/Warehouse-Navigation-Application/data/qvBox-warehouse-data-f20-v01.txt')
 wh.add_order(3)
 for o in wh.orders:
     for p in o.products:
