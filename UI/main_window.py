@@ -100,6 +100,7 @@ class Main_UI(QMainWindow):
         self.pushButton_load_products.clicked.connect(self.load_products)
         self.pushButton_add_order.clicked.connect(self.add_order)
         self.pushButton_profile.clicked.connect(self.profile.exec_)
+        self.pushButton_generate_path.clicked.connect(self.generate_path)
 
     def init(self):
         self.clicked_order_index = None
@@ -113,6 +114,7 @@ class Main_UI(QMainWindow):
 
     def order_clicked(self,index):
         self.clicked_order_index = index.row()
+        # TODO display image
 
     def load_products(self):
         default_file="graph_data/graph.txt"
@@ -141,17 +143,29 @@ class Main_UI(QMainWindow):
         img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
         self.label_graph.setPixmap(img)
 
-
-    def finish_order(self):
+    def get_order_index(self):
         if self.clicked_order_index is None:
             QMessageBox.information(self, "Error", "Please select an order first！", QMessageBox.Yes, QMessageBox.Yes)
+            return None
         else:
-            self.orders.pop(self.clicked_order_index)
-            self.orders_model.setStringList(self.orders)
+            index=self.clicked_order_index
             self.clicked_order_index = None
+            return index
+
+    def finish_order(self):
+        index=self.get_order_index()
+        if index is not None:
+            self.orders.pop(index)
+            self.orders_model.setStringList(self.orders)
 
     def set_profile_window(self,profile_window):
         self.profile=profile_window
 
     def set_warehouse(self,wh):
         self.warehouse=wh
+
+    def generate_path(self):
+        index = self.get_order_index()
+        if index is not None:
+            # TODO: display image here
+            pass
