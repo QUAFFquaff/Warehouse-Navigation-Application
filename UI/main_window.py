@@ -119,7 +119,8 @@ class Main_UI(QMainWindow):
         #TODO: generate graph image
         print('loading file location: ',filename)
         self.wh.load_data(filename)
-        img_name = "data/images/graph_demo.png"
+        print('load finish')
+        img_name = "../data/images/graph_demo.png"
         img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
         self.label_graph.setPixmap(img)
 
