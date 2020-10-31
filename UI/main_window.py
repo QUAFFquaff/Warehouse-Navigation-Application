@@ -168,4 +168,9 @@ class Main_UI(QMainWindow):
         index = self.get_order_index()
         if index is not None:
             # TODO: display image here
-            pass
+            print('send order',self.orders[index])
+            self.warehouse.generate_path(self.warehouse.orders[index],index)
+
+            img_name = "data/path/path.png"
+            img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
+            self.label_graph.setPixmap(img)

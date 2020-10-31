@@ -14,6 +14,7 @@ def brute_force(x_matrix,y_matrix,d_matrix,source,target,plist)->dict:
     :return: result dict
     """
 
+    print('in')
     dlist = []
     perm = list(itertools.permutations(plist, len(plist)))
 
