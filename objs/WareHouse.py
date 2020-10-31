@@ -1,8 +1,8 @@
 
 import sys
-from DataHandler import DataHandler
-from Order import Order
-from Products import Product
+from objs.DataHandler import *
+from objs.Order import *
+from objs.Products import *
 import time
 from enum import Enum
 
