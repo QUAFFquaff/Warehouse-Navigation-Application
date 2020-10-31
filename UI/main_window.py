@@ -14,6 +14,7 @@ from PyQt5.QtGui import QPixmap
 import os
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
+from algorithm.algorithms import *
 class Main_UI(QMainWindow):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -119,23 +120,25 @@ class Main_UI(QMainWindow):
         #TODO: generate graph image
         print('loading file location: ',filename)
         self.warehouse.load_data(str(filename))
-
-        img_name = "../data/images/graph_demo.png"
+        print('finish')
+        img_name = "data/images/graph_demo.png"
         img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
         self.label_graph.setPixmap(img)
 
     def add_order(self):
         self.order_len = 3
-        print("0")
         self.warehouse.add_order(self.order_len)
-        print("1 ")
         products = self.warehouse.orders[-1].products
-        print("2")
         l = []
         for p in products:
             l.append(p.id)
-        self.orders.append(", ".join(l))
-        self.orders_model.setStringList(self.orders)
+        print('l string',str(l))
+
+        draw_png_dot_graph(products)
+        img_name = "data/path/dot.png"
+        img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
+        self.label_graph.setPixmap(img)
+        self.orders_model.setStringList(str(l))
 
 
     def finish_order(self):

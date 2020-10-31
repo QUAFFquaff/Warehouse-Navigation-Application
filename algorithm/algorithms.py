@@ -64,8 +64,8 @@ def draw_png_dot_graph(products):
             arrowsize=30, edge_color='red',
             width=1, directed=True
             )
-    plt.savefig("../data/path/dot.png")
-    print("generate: path.png")
+    plt.savefig("data/path/dot.png")
+    print("generate: dot.png")
     pass
 
 products = [[1,1,1],[2,2,4],[3,2,1]]
