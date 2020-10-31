@@ -1,27 +1,28 @@
 import numpy as np
 
-import BruteForce
-import algorithms
+from algorithm.BruteForce import *
+
+from DataHandler import DataHandler
+from algorithm.MakeMatrix import MakeMatrix, brute_force
+
 """
 generate random matrix for testing 
 """
 
 
-xtemp = np.random.randint(1,6,(5,5))
-xup = np.triu(xtemp)
-x = xup + xup.T - np.diag(xtemp.diagonal())
+file = DataHandler()
+datatest = DataHandler.load_txt(file, '../data/qvBox-warehouse-data-f20-v01.txt')
 
-ytemp = np.random.randint(1,6,(5,5))
-yup = np.triu(ytemp)
-y = yup + yup.T - np.diag(ytemp.diagonal())
 
-d = x+y
+
+order_listtest = [11,22,33,44,56]
+
+ret = MakeMatrix(datatest,order_listtest)
+
+print(ret['xmatrix'])
+print(ret['ymatrix'])
+d = ret['xmatrix'] + ret['ymatrix']
 print(d)
 
-
-
-
-res = BruteForce.brute_force(x,y,d,0,0, [1,2,3,4])
-print(res)
-res = algorithms.dijkstra(0,d)
+res = brute_force(ret['xmatrix'],ret['ymatrix'],d,0,0, [1,2,3,4,5])
 print(res)

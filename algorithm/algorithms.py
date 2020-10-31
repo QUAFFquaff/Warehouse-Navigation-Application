@@ -1,17 +1,5 @@
 
-def brute_force(x_matrix,y_matrix,d_matrix,source,target):
-    '''
 
-    :param x_matrix: x difference
-    :param y_matrix: y-dimensional difference
-    :param d_matrix: x+y
-    :param source: start point
-    :param target: target point, usually source and target are the same
-    :return: result list
-    '''
-    res = []
-
-    return res
 
 
 import networkx as nx
@@ -36,11 +24,17 @@ def dijkstra(start: int, mgraph: list) -> list:
     return dis
 
 def draw_png_graph(products,res_ind):
-    res = [products[i][0] for i in res_ind]
+    print('in')
+    res = [products[i-1][0] for i in range(1,len(res_ind)-1)]
+    print('res: ',res)
     plt.figure(figsize=(9, 9))
     G = nx.DiGraph()
+    G.add_node(0,label = 'Smile!', pos=(0,0))
     for p in products:
         G.add_node(p[0],label = p[0], pos=(p[1],p[2]))
+
+    G.add_edge(0, res[0])
+    G.add_edge(res[-1],0)
     for i in range(1,len(res)):
         G.add_edge(res[i-1],res[i])
     pos = nx.get_node_attributes(G,'pos')
@@ -69,8 +63,3 @@ def draw_png_dot_graph(products):
     plt.savefig("data/path/dot.png")
     print("generate: dot.png")
     pass
-
-products = [[1,1,1],[2,2,4],[3,2,1]]
-draw_png_dot_graph(products)
-res = [1,2,3,1]
-draw_png_graph(products,res)
