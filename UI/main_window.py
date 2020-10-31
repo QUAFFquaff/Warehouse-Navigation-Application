@@ -131,14 +131,15 @@ class Main_UI(QMainWindow):
         products = self.warehouse.orders[-1].products
         l = []
         for p in products:
-            l.append(p.id)
-        print('l string',str(l))
+            l.append(str(p.get_id()))
+        self.orders.append(", ".join(l))
+        self.orders_model.setStringList(self.orders)
 
-        draw_png_dot_graph(products)
+        pro_list = [[p.get_id(),p.x,p.y] for p in products]
+        draw_png_dot_graph(pro_list)
         img_name = "data/path/dot.png"
         img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
         self.label_graph.setPixmap(img)
-        self.orders_model.setStringList(str(l))
 
 
     def finish_order(self):

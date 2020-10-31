@@ -1,9 +1,8 @@
 
 import sys
-from . import DataHandler
-from . import Order
-from . import Products
-
+import objs.DataHandler as DataHandler
+import objs.Products as Products
+import objs.Order as Order
 import time
 from enum import Enum
 from algorithm.MakeMatrix import *
@@ -29,10 +28,10 @@ class WareHouse:
         self.dhandler = DataHandler.DataHandler()
 
     def set_orders(self):
-        self.orders = Order(time.time())
+        self.orders = Order.Order(time.time())
 
     def add_order(self,num):
-        order = Order.Order()
+        order = Order.Order(time.time())
         order.init_products(num,self.products)
         self.orders.append(order)
 
