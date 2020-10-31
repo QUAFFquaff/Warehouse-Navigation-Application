@@ -7,7 +7,7 @@
 
 import sys
 from DataHandler import DataHandler
-from WareHouse import WareHouse
+from WareHouse import *
 wh = WareHouse()
 wh.set_dhandler()
 wh.load_data('../data/qvBox-warehouse-data-f20-v01.txt')
