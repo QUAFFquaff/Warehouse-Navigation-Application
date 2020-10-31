@@ -1,6 +1,6 @@
 
 import sys
-from .DataHandler import DataHandler
+from objs.DataHandler import *
 from .Order import Order
 from .Products import Product
 import time
@@ -42,6 +42,7 @@ class WareHouse:
 
     def load_data(self,path):
         data = self.dhandler.load_txt(path)
+        print('get data')
         for d in data:
             product = Product(int(d[0]),d[1],d[2])
             self.products.append(product)
