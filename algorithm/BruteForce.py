@@ -1,7 +1,6 @@
 import numpy as np
 import itertools
 
-
 def brute_force(x_matrix,y_matrix,d_matrix,source,target,plist)->dict:
 
     """
@@ -14,10 +13,15 @@ def brute_force(x_matrix,y_matrix,d_matrix,source,target,plist)->dict:
     :return: result dict
     """
 
-    print('in')
     dlist = []
     perm = list(itertools.permutations(plist, len(plist)))
+    #print(perm)
 
+    temp1 = plist[:]
+    temp1.insert(0,source)
+    temp1.append(target)
+    #print('!',plist)
+    #print('?',temp1)
 
     for i in range(len(perm)):
         d = 0
@@ -29,19 +33,23 @@ def brute_force(x_matrix,y_matrix,d_matrix,source,target,plist)->dict:
 
         for j in range(len(temp)-1):
             #print(temp[j])
-            d = d+d_matrix[temp[j]][temp[j+1]]
+            d = d+d_matrix[temp1.index(temp[j])][temp1.index(temp[j+1])]
+            #print(temp1.index(temp[j]),temp1.index(temp[j+1]))
             #print(d)
         dlist.append(d)
 
-    index_min = np.argmin(dlist)
+    #print('possible distances: ',dlist)
+    #print(perm[1])
+    index_min = int(np.argmin(dlist))
     path_min = min(dlist)
-
+    #print(type(index_min))
     temp_path = list(perm[index_min])
     temp_path.insert(0,source)
     temp_path.append(target)
     res = {'path': temp_path, 'distance': path_min}
 
     return res
+
 
 
 
