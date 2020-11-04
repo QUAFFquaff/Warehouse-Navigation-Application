@@ -36,7 +36,7 @@ def MakeMatrix(data, order_list) -> dict:
 
     order_list_temp.insert(0, 0)
     order_list_temp.append(len(position_dictionary) - 1)
-    print(order_list_temp)
+    #print(order_list_temp)
 
     x = np.zeros(shape=(len(order_list_temp), len(order_list_temp)))
     y = np.zeros(shape=(len(order_list_temp), len(order_list_temp)))
