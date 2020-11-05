@@ -44,3 +44,4 @@ def brute_force(m, d_matrix, source, target, plist):
             min_dist = d
             m['path'] = temp
             m['distance'] = min_dist
+            
