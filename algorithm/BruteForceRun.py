@@ -1,9 +1,9 @@
-from DataHandler import DataHandler
-from BruteForce import brute_force
-from MakeMatrix import make_matrix
+from objs.DataHandler import DataHandler
+from algorithm.BruteForce import brute_force
+from algorithm.MakeMatrix import make_matrix
 from multiprocessing import Process, Manager
-from Direction import direction
-from GreedyNN import greedy_nn
+from algorithm.Direction import direction
+from algorithm.GreedyNN import greedy_nn
 
 ##### INPUT ######
 

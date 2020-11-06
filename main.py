@@ -1,7 +1,7 @@
 from UI.login import Login_UI
 from UI.main_window import Main_UI
 from UI.profile import Profile_UI
-import sys
+import utils.LoggerFactory as LF
 from PyQt5.QtWidgets import *
 from objs.WareHouse import *
 
@@ -10,16 +10,17 @@ def abort(*args):
         window.close()
     sys.exit(0)
 
-
-
-
 if __name__ == "__main__":
+    logger=LF.get_logger(__name__)
+    logger.info("main start")
     app = QApplication(sys.argv)
 
+    logger.info("init UI windows")
     login_window = Login_UI()
     profile_window = Profile_UI()
     main_window = Main_UI()
 
+    logger.info("set up UI windows")
     login_window.setupUi(login_window)
     profile_window.setupUi(profile_window)
     main_window.setupUi(main_window)

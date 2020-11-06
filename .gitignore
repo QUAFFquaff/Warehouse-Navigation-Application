@@ -1,7 +1,6 @@
-.idea/*
-UI/__pycache__/*
-objs/__pycache__/*
-algorithm/__pycache__/*
-venv/*
-data/path*
+.idea
+venv
+data/path/*
 qt_designer/*.py
+*/__pycache__
+__pycache__
