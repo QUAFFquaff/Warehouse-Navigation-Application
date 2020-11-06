@@ -18,14 +18,14 @@ from algorithm.algorithms import *
 class Main_UI(QMainWindow):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(928, 614)
+        MainWindow.resize(1226, 758)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label_image = QtWidgets.QLabel(self.centralwidget)
         self.label_image.setGeometry(QtCore.QRect(20, 30, 51, 41))
         self.label_image.setObjectName("label_image")
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(110, 490, 681, 81))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(90, 620, 681, 81))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -43,11 +43,11 @@ class Main_UI(QMainWindow):
         self.label_username.setGeometry(QtCore.QRect(90, 40, 151, 21))
         self.label_username.setObjectName("label_username")
         self.label_graph = QtWidgets.QLabel(self.centralwidget)
-        self.label_graph.setGeometry(QtCore.QRect(120, 110, 491, 341))
+        self.label_graph.setGeometry(QtCore.QRect(150, 110, 611, 451))
         self.label_graph.setText("")
         self.label_graph.setObjectName("label_graph")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(630, 120, 160, 331))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(790, 100, 351, 571))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -55,18 +55,33 @@ class Main_UI(QMainWindow):
         self.listView_orders = QtWidgets.QListView(self.verticalLayoutWidget)
         self.listView_orders.setObjectName("listView_orders")
         self.verticalLayout.addWidget(self.listView_orders)
+        self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.label_products_id = QtWidgets.QLabel(self.verticalLayoutWidget)
+        self.label_products_id.setObjectName("label_products_id")
+        self.horizontalLayout_4.addWidget(self.label_products_id)
+        self.lineEdit_products_id = QtWidgets.QLineEdit(self.verticalLayoutWidget)
+        self.lineEdit_products_id.setObjectName("lineEdit_products_id")
+        self.horizontalLayout_4.addWidget(self.lineEdit_products_id)
+        self.verticalLayout.addLayout(self.horizontalLayout_4)
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.pushButton_add_order = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.pushButton_add_order.setObjectName("pushButton_add_order")
-        self.verticalLayout.addWidget(self.pushButton_add_order)
+        self.horizontalLayout_3.addWidget(self.pushButton_add_order)
+        self.verticalLayout.addLayout(self.horizontalLayout_3)
         self.pushButton_logout = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_logout.setGeometry(QtCore.QRect(680, 40, 108, 28))
+        self.pushButton_logout.setGeometry(QtCore.QRect(927, 40, 191, 28))
         self.pushButton_logout.setObjectName("pushButton_logout")
         self.label_title = QtWidgets.QLabel(self.centralwidget)
-        self.label_title.setGeometry(QtCore.QRect(240, 30, 421, 41))
+        self.label_title.setGeometry(QtCore.QRect(400, 30, 421, 41))
         self.label_title.setObjectName("label_title")
         self.pushButton_profile = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_profile.setGeometry(QtCore.QRect(0, 90, 81, 41))
         self.pushButton_profile.setObjectName("pushButton_profile")
+        self.label_path = QtWidgets.QLabel(self.centralwidget)
+        self.label_path.setGeometry(QtCore.QRect(240, 580, 371, 31))
+        self.label_path.setObjectName("label_path")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -83,7 +98,8 @@ class Main_UI(QMainWindow):
         self.pushButton_generate_path.setText(_translate("MainWindow", "Generate Path"))
         self.pushButton_finish_order.setText(_translate("MainWindow", "Finish Order"))
         self.label_username.setText(_translate("MainWindow", "alicebob"))
-        self.pushButton_add_order.setText(_translate("MainWindow", "Add order"))
+        self.label_products_id.setText(_translate("MainWindow", "Product(s) ID:"))
+        self.pushButton_add_order.setText(_translate("MainWindow", "Add an order"))
         self.pushButton_logout.setText(_translate("MainWindow", "Logout"))
         self.label_title.setText(_translate("MainWindow", "                 Warehouse System Application"))
         self.pushButton_profile.setText(_translate("MainWindow", "Profile"))
@@ -122,30 +138,43 @@ class Main_UI(QMainWindow):
         #TODO: generate graph image
         print('loading file location: ',filename)
         self.warehouse.load_data(str(filename))
+        self.label_path.setText("")
+
         print('finish')
-        img_name = "data/images/graph_demo.png"
-        img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
-        self.label_graph.setPixmap(img)
+
+        #img_name = "data/images/graph_demo.png"
+        #img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
+        #self.label_graph.setPixmap(img)
 
     def add_order(self):
+        #import pdb
+        #pdb.set_trace()
         self.order_len = 3
+        #pdb.set_trace()
         self.warehouse.add_order(self.order_len)
+        #pdb.set_trace()
         products = self.warehouse.orders[-1].products
+        #pdb.set_trace()
         l = []
         for p in products:
             l.append(str(p.get_id()))
         self.orders.append(", ".join(l))
         self.orders_model.setStringList(self.orders)
-
+        #pdb.set_trace()
         pro_list = [[p.get_id(),p.x,p.y] for p in products]
+        #pdb.set_trace()
         draw_png_dot_graph(pro_list)
+        #pdb.set_trace()
         img_name = "data/path/dot.png"
+        #pdb.set_trace()
         img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
         self.label_graph.setPixmap(img)
 
     def get_order_index(self):
         if self.clicked_order_index is None:
             QMessageBox.information(self, "Error", "Please select an order first！", QMessageBox.Yes, QMessageBox.Yes)
+            # self = QLabel()
+            # self.label.setText("123")
             return None
         else:
             index=self.clicked_order_index
@@ -166,6 +195,8 @@ class Main_UI(QMainWindow):
 
     def generate_path(self):
         index = self.get_order_index()
+        #new
+        self.label_path.setText("The graph above is blah blah blah...")
         if index is not None:
             # TODO: display image here
             print('send order',self.orders[index])
@@ -174,3 +205,5 @@ class Main_UI(QMainWindow):
             img_name = "data/path/path.png"
             img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
             self.label_graph.setPixmap(img)
+
+            #self.label.setText("This graph shows the path from the starting area to the return area. The worker will follow the path to get products")
