@@ -43,7 +43,7 @@ class Main_UI(QMainWindow):
         self.label_username.setGeometry(QtCore.QRect(90, 40, 151, 21))
         self.label_username.setObjectName("label_username")
         self.label_graph = QtWidgets.QLabel(self.centralwidget)
-        self.label_graph.setGeometry(QtCore.QRect(120, 110, 641, 481))
+        self.label_graph.setGeometry(QtCore.QRect(150, 110, 611, 451))
         self.label_graph.setText("")
         self.label_graph.setObjectName("label_graph")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
@@ -79,6 +79,9 @@ class Main_UI(QMainWindow):
         self.pushButton_profile = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_profile.setGeometry(QtCore.QRect(0, 90, 81, 41))
         self.pushButton_profile.setObjectName("pushButton_profile")
+        self.label_path = QtWidgets.QLabel(self.centralwidget)
+        self.label_path.setGeometry(QtCore.QRect(240, 580, 371, 31))
+        self.label_path.setObjectName("label_path")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -135,30 +138,43 @@ class Main_UI(QMainWindow):
         #TODO: generate graph image
         print('loading file location: ',filename)
         self.warehouse.load_data(str(filename))
+        self.label_path.setText("")
+
         print('finish')
-        img_name = "data/images/graph_demo.png"
-        img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
-        self.label_graph.setPixmap(img)
+
+        #img_name = "data/images/graph_demo.png"
+        #img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
+        #self.label_graph.setPixmap(img)
 
     def add_order(self):
+        #import pdb
+        #pdb.set_trace()
         self.order_len = 3
+        #pdb.set_trace()
         self.warehouse.add_order(self.order_len)
+        #pdb.set_trace()
         products = self.warehouse.orders[-1].products
+        #pdb.set_trace()
         l = []
         for p in products:
             l.append(str(p.get_id()))
         self.orders.append(", ".join(l))
         self.orders_model.setStringList(self.orders)
-
+        #pdb.set_trace()
         pro_list = [[p.get_id(),p.x,p.y] for p in products]
+        #pdb.set_trace()
         draw_png_dot_graph(pro_list)
+        #pdb.set_trace()
         img_name = "data/path/dot.png"
+        #pdb.set_trace()
         img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
         self.label_graph.setPixmap(img)
 
     def get_order_index(self):
         if self.clicked_order_index is None:
             QMessageBox.information(self, "Error", "Please select an order first！", QMessageBox.Yes, QMessageBox.Yes)
+            # self = QLabel()
+            # self.label.setText("123")
             return None
         else:
             index=self.clicked_order_index
@@ -179,6 +195,8 @@ class Main_UI(QMainWindow):
 
     def generate_path(self):
         index = self.get_order_index()
+        #new
+        self.label_path.setText("The graph above is blah blah blah...")
         if index is not None:
             # TODO: display image here
             print('send order',self.orders[index])
@@ -187,3 +205,5 @@ class Main_UI(QMainWindow):
             img_name = "data/path/path.png"
             img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
             self.label_graph.setPixmap(img)
+
+            #self.label.setText("This graph shows the path from the starting area to the return area. The worker will follow the path to get products")
