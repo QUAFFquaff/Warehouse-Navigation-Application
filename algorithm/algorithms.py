@@ -2,7 +2,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 import utils.LoggerFactory as LF
-from DataHandler import DataHandler
+from objs.DataHandler import DataHandler
 shelf = [
          [[20,0],[20,16]],
 
