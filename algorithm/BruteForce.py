@@ -1,5 +1,6 @@
 import itertools
 
+import utils.LoggerFactory as LF
 
 def brute_force(m, d_matrix, source, target, plist):
     """
@@ -9,6 +10,8 @@ def brute_force(m, d_matrix, source, target, plist):
     :param source: start point
     :param target: target point, usually source and target are the same
     """
+    logger=LF.get_logger(__name__)
+    logger.info("entering brute force")
     temp1 = plist[:]
     temp1.insert(0, source)
     temp1.append(target)

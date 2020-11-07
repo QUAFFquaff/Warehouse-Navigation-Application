@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .idea/*
 UI/__pycache__/*
 objs/__pycache__/*
@@ -5,3 +6,12 @@ algorithm/__pycache__/*
 venv/*
 data/path*
 qt_designer/*.py
+=======
+.idea
+venv
+data/path/*
+data/images/*
+qt_designer/*.py
+*/__pycache__
+__pycache__
+>>>>>>> 756e2613afb0331f9036c2291c4617cb876d19b6
