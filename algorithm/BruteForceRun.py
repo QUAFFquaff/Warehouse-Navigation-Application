@@ -1,23 +1,15 @@
-<<<<<<< HEAD
-from DataHandler import DataHandler
-from BruteForce import brute_force
-from MakeMatrix import make_matrix
-from multiprocessing import Process, Manager
-from Direction import direction
-from GreedyNN import greedy_nn
-=======
+
 from objs.DataHandler import DataHandler
 from algorithm.BruteForce import brute_force
 from algorithm.MakeMatrix import make_matrix
 from multiprocessing import Process, Manager
 from algorithm.Direction import direction
 from algorithm.GreedyNN import greedy_nn
->>>>>>> 756e2613afb0331f9036c2291c4617cb876d19b6
 
 ##### INPUT ######
 
 file = DataHandler()
-datatest = DataHandler.load_txt(file, 'qvBox-warehouse-data-f20-v01.txt')
+datatest = DataHandler.load_txt(file, '../data/qvBox-warehouse-data-f20-v01.txt')
 
 order_listtest = [17,15,1,2,3,4,5,6,7,8,9,10,11,12,13,14,16,18,19,20]
 
@@ -30,10 +22,7 @@ targettest = 25526
 
 ret = make_matrix(datatest, start_point, end_point, order_listtest)
 
-# print('xmatrix\n',ret['xmatrix'])
-# print('ymatrix\n',ret['ymatrix'])
 d = ret['xmatrix'] + ret['ymatrix']
-# print('dmatrix\n',d)
 
 
 #################################################################
@@ -62,10 +51,10 @@ route = direction(datatest, start_point, end_point, res)
 #print(route)
 
 ##### Write into txt #####
-
-with open('Route Direction Description.txt', 'a+') as ftest:
-    ftest.write('    NEW ORDER\n -----START-----\n')
-    for i in range(len(route)):
-        ftest.write(route[i])
-    ftest.write(' ------END------\n')
-
+#
+# with open('Route Direction Description.txt', 'a+') as ftest:
+#     ftest.write('    NEW ORDER\n -----START-----\n')
+#     for i in range(len(route)):
+#         ftest.write(route[i])
+#     ftest.write(' ------END------\n')
+#

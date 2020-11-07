@@ -4,7 +4,7 @@ import numpy as np
 def make_matrix(data, start_point, end_point, order_list) -> dict:
     """
     :param end_point:
-    :param start_point:
+    :param start_point:start_point = (x,y)
     :param data: data from txt
     :param order_list: random generated, value in order_list represents the # of an item, NOT PRODUCT ID
             Product id can be retrieved by id_dictionary

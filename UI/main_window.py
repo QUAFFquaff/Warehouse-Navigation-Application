@@ -144,14 +144,6 @@ class Main_UI(QMainWindow):
         #self.label_graph.setPixmap(img)
 
     def add_order(self):
-        #import pdb
-        #pdb.set_trace()
-        self.order_len = 3
-        #pdb.set_trace()
-        self.warehouse.add_order(self.order_len)
-        #pdb.set_trace()
-        products = self.warehouse.orders[-1].products
-        #pdb.set_trace()
         self.order_len = 3
         self.warehouse.add_order(self.order_len)
         products = self.warehouse.orders[-1].products
@@ -160,16 +152,9 @@ class Main_UI(QMainWindow):
             l.append(str(p.get_id()))
         self.orders.append(", ".join(l))
         self.orders_model.setStringList(self.orders)
-        #pdb.set_trace()
         pro_list = [[p.get_id(),p.x,p.y] for p in products]
-        #pdb.set_trace()
-        draw_png_dot_graph(pro_list)
-        #pdb.set_trace()
         img_name = "data/path/dot.png"
-        #pdb.set_trace()
-        pro_list = [[p.get_id(),p.x,p.y] for p in products]
-        draw_png_dot_graph(pro_list)
-        img_name = "data/path/dot.png"
+        draw_png_dot_graph(pro_list,img_name)
         img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
         self.label_graph.setPixmap(img)
 

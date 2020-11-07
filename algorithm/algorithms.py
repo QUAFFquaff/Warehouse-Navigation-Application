@@ -20,6 +20,7 @@ def dijkstra(start: int, mgraph: list) -> list:
             if dis[idx] + mgraph[idx][i] < dis[i]: dis[i] = dis[idx] + mgraph[idx][i]
     return dis
 
+anchor = [[-1,-1],[20,20],]
 def draw_png_graph(products,res_ind):
     logger.info("start drawing png graph")
     res = [products[i-1][0] for i in range(1,len(res_ind)-1)]
@@ -43,32 +44,28 @@ def draw_png_graph(products,res_ind):
     plt.savefig("data/path/path.png")
     print("generate: path.png")
 
-def draw_png_dot_graph(products):
+
+def draw_png_dot_graph(products,path):
+    logger.info("drawing")
     plt.figure(figsize=(9, 9))
     G = nx.DiGraph()
+    for p in anchor:
+        G.add_node(-p[0]-p[1], label="", pos=(p[0], p[1]), col='white')
     for p in products:
-        G.add_node(p[0],label = p[0], pos=(p[1],p[2]))
+        G.add_node(p[0],label = p[0], pos=(p[1],p[2]),col = 'grey')
+
     pos = nx.get_node_attributes(G,'pos')
     node_labels = nx.get_node_attributes(G, 'label')
-    nx.draw(G, pos=pos,  node_size=500, labels=node_labels,
+    col =  nx.get_node_attributes(G, 'col').values()
+    print(pos)
+    nx.draw(G, pos=pos,  node_size=500, labels=node_labels,node_color = col,
             arrowstyle='->', arrows=True,
             arrowsize=30, edge_color='red',
             width=1
             )
-    logger.info("draw_png_graph generate: path.png")
+    plt.savefig(path)
+    logger.info("draw_png_graph generate: dot.png")
 
-def draw_png_dot_graph(products):
-    plt.figure(figsize=(9, 9))
-    G = nx.DiGraph()
-    for p in products:
-        G.add_node(p[0],label = p[0], pos=(p[1],p[2]))
-    pos = nx.get_node_attributes(G,'pos')
-    node_labels = nx.get_node_attributes(G, 'label')
-    nx.draw(G, pos=pos,  node_size=500, labels=node_labels, font='bond',
-            arrowstyle='->', arrows=True,
-            arrowsize=30, edge_color='red',
-            width=1, directed=True
-            )
-    plt.savefig("data/path/dot.png")
-    print("generate: dot.png")
-    pass
+#
+# p = [[1,1,1],[2,2,2],[4,5,5]]
+# draw_png_dot_graph(p,"../data/path/dot.png")

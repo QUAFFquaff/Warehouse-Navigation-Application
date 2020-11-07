@@ -38,20 +38,22 @@ class WareHouse:
     def set_orders(self):
         self.orders = Order.Order(time.time())
 
-    def add_order(self,num):
-        order = Order.Order(time.time())
-        ids = order.init_products(num,self.products)
-        self.order_listtest.append(ids)
-        self.orders.append(order)
-        return ids
+    def add_order(self,num, p_list= None):
+        if not p_list:
+            order = Order.Order(time.time())
+            ids = order.init_products(num,self.products)
+            self.order_listtest.append(ids)
+            self.orders.append(order)
+            return ids
+        else:
 
-    def add_order(self,p_list):
-        order = Order.Order(time.time())
+            order = Order.Order(time.time())
 
-        ids = p_list
-        self.order_listtest.append(ids)
-        self.orders.append(order)
-        return ids
+            ids = p_list
+            self.order_listtest.append(ids)
+            self.orders.append(order)
+            return ids
+
 
     def generate_path(self,order,index):
         order_listtest = self.order_listtest[index]
