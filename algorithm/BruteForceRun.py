@@ -48,13 +48,13 @@ print(m)
 ##### SHOW DIRECTION #####
 
 route = direction(datatest, start_point, end_point, res)
-#print(route)
+print(route)
 
-##### Write into txt #####
-#
-# with open('Route Direction Description.txt', 'a+') as ftest:
-#     ftest.write('    NEW ORDER\n -----START-----\n')
-#     for i in range(len(route)):
-#         ftest.write(route[i])
-#     ftest.write(' ------END------\n')
+#### Write into txt #####
+
+with open('Route Direction Description.txt', 'a+') as ftest:
+    ftest.write('    NEW ORDER\n -----START-----\n')
+    for i in range(len(route)):
+        ftest.write(route[i])
+    ftest.write(' ------END------\n')
 #
