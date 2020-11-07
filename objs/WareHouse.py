@@ -25,6 +25,7 @@ class WareHouse:
         self.order_listtest = []
         self.start_point=(0.0, 0.0)
         self.end_point = (0.0, 0.0)
+        self.products_index_of_one_order_in_data = []
 
     def set_rules(self,num):
         if num == 0:
@@ -44,6 +45,7 @@ class WareHouse:
             ids = order.init_products(num,self.products)
             self.order_listtest.append(ids)
             self.orders.append(order)
+            self.products_index_of_one_order_in_data.append(ids)
             return ids
         else:
 
@@ -51,22 +53,25 @@ class WareHouse:
 
             ids = p_list
             self.order_listtest.append(ids)
+            self.products_index_of_one_order_in_data.append(ids)
             self.orders.append(order)
             return ids
 
 
     def generate_path(self,order,index):
-        order_listtest = self.order_listtest[index]
+        products_index_of_one_order_in_data = self.products_index_of_one_order_in_data[index]
         # order_listtest = [10790, 21432, 643]
+        print(products_index_of_one_order_in_data)
 
         pro_list = [[p.get_id(), p.x, p.y] for p in order.products]
-        ret = make_matrix(self.data, self.start_point, self.end_point, order_listtest)
+        ret = make_matrix(self.data, self.start_point, self.end_point, products_index_of_one_order_in_data)
 
         d = ret['xmatrix'] + ret['ymatrix']
 
         if self.rules == Rule.Brute_force:
             self.logger.info("using brute force")
-            res = brute_force(ret['xmatrix'], ret['ymatrix'], d, 0, 0, [1, 2, 3])
+            temp = [i+1 for i in range(len(pro_list))]
+            res = brute_force(ret['xmatrix'], ret['ymatrix'], d, 0, 0, products_index_of_one_order_in_data)
             self.logger.info("brute force result(path): {}".format(res["path"]))
             self.logger.info("draw png graph")
             draw_png_graph(pro_list,res['path'])
