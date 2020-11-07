@@ -1,7 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtGui import QPixmap
-
+import re
 import os
 import utils.LoggerFactory as LF
 logger=LF.get_logger(__name__)
@@ -128,6 +128,8 @@ class Main_UI(QMainWindow):
     def load_products(self):
         default_file="graph_data/graph.txt"
         filename, _ = QFileDialog.getOpenFileName(self, default_file)
+        if filename is None or filename=="":
+            filename="data/qvBox-warehouse-data-f20-v01.txt"
         #TODO: generate graph image
 
         logger.info('loading file location: {}'.format(filename))
@@ -139,8 +141,15 @@ class Main_UI(QMainWindow):
         #self.label_graph.setPixmap(img)
 
     def add_order(self):
-        self.order_len = 3
-        self.warehouse.add_order(self.order_len)
+        products_id=self.lineEdit_products_id.text()
+        if  products_id == "":
+            self.order_len = 3
+            self.warehouse.add_order(self.order_len)
+        else:
+            if not re.match("(\d+)(,\d+)*",products_id):
+                QMessageBox.information(self, "Error", "invalid format! should be like: 123,456,789", QMessageBox.Yes, QMessageBox.Yes)
+                return
+            self.warehouse.add_order(3,products_id.split(","))
         products = self.warehouse.orders[-1].products
         l = []
         for p in products:
@@ -176,12 +185,12 @@ class Main_UI(QMainWindow):
 
     def generate_path(self):
         index = self.get_order_index()
-        self.label_path.setText("The graph above is blah blah blah...")
         if index is not None:
             # TODO: display image here
 
             logger.info('send order {}'.format(self.orders[index]))
             self.warehouse.generate_path(self.warehouse.orders[index],index)
+            # self.label_path.setText("The graph above is blah blah blah...")
 
             img_name = "data/path/path.png"
             img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
