@@ -7,7 +7,7 @@
 | **Version Modification Record** |
 | --- |
 | **No.** | **Date** | **Version** | **Modified By** | **Modification** |
-| 4 | 2020/11/06 | V4.0 | All team member | Update the document, add Qlabel for mainwindow, enhance our map, add brute_force algorithm, update MakeMatrix.py, add test cases. |
+| 4 | 2020/11/06 | V4.0 | All team member | Update the document, add Qlabel for mainwindow, enhance our map(location and path), add brute_force algorithm, update MakeMatrix.py, add Timeout, add test cases. |
 | 3 | 2020/10/30
  | V3.0 | All team member | Change some function&#39;s decription
  |
