@@ -72,9 +72,6 @@ class Main_UI(QMainWindow):
         self.pushButton_profile = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_profile.setGeometry(QtCore.QRect(0, 90, 81, 41))
         self.pushButton_profile.setObjectName("pushButton_profile")
-        self.label_path = QtWidgets.QLabel(self.centralwidget)
-        self.label_path.setGeometry(QtCore.QRect(240, 580, 371, 31))
-        self.label_path.setObjectName("label_path")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -189,8 +186,8 @@ class Main_UI(QMainWindow):
             # TODO: display image here
 
             logger.info('send order {}'.format(self.orders[index]))
-            self.warehouse.generate_path(self.warehouse.orders[index],index)
-            # self.label_path.setText("The graph above is blah blah blah...")
+            route=self.warehouse.generate_path(self.warehouse.orders[index],index)
+            QMessageBox.information(self, "Info", " ".join(route), QMessageBox.Yes, QMessageBox.Yes)
 
             img_name = "data/path/path.png"
             img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
