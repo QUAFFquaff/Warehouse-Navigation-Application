@@ -65,7 +65,6 @@ class WareHouse:
         :return:
         '''
         products_index_of_one_order_in_data = self.products_index_of_one_order_in_data[index]
-        products_index_of_one_order_in_data = [10790, 21432, 643]
         print(products_index_of_one_order_in_data)
 
         pro_list = [[p.get_id(), p.x, p.y] for p in order.products]
