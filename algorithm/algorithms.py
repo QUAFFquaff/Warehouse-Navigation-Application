@@ -50,22 +50,23 @@ def draw_png_graph(products,res_ind):
         id2 = - s[0][0]-1
         G.add_node(id1,label = "", pos=(s[0][0],s[0][1]),col = 'white',size = 1)
         G.add_node(id2,label = "", pos=(s[1][0],s[1][1]),col = 'white',size = 1)
-        G.add_edge(id1,id2,col = 'red')
+        G.add_edge(id1,id2,col = 'red',style = '-')
 
 
     G.add_node(0,label = 'Smile!', pos=(0,0),col='grey',size = 100)
     for p in products:
         G.add_node(p[0],label = p[0], pos=(p[1],p[2]),col='grey',size = 100)
 
-    G.add_edge(0, res[0])
-    G.add_edge(res[-1],0)
+    G.add_edge(0, res[0],col = 'black',style = '->')
+    G.add_edge(res[-1],0,col = 'black',style = '->')
     for i in range(1,len(res)):
-        G.add_edge(res[i-1],res[i],col = "black")
+        G.add_edge(res[i-1],res[i],col = "black",style = '->')
     pos = nx.get_node_attributes(G, 'pos')
     node_labels = nx.get_node_attributes(G, 'label')
     col = nx.get_node_attributes(G, 'col').values()
     size = list(nx.get_node_attributes(G, 'size').values())
     edge_color = nx.get_edge_attributes(G, 'col').values()
+    edge_style = nx.get_edge_attributes(G, 'style').values()
     nx.draw(G, pos=pos, node_size=size, labels=node_labels, node_color=col,
             arrowstyle='-', arrows=True,
             arrowsize=30, edge_color=edge_color,
