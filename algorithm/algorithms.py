@@ -75,14 +75,15 @@ def draw_png_dot_graph(products,path):
         id2 = - s[0][0]-1
         G.add_node(id1,label = "", pos=(s[0][0],s[0][1]),col = 'white',size = 1)
         G.add_node(id2,label = "", pos=(s[1][0],s[1][1]),col = 'white',size = 1)
-        G.add_edge(id1,id2)
+        G.add_edge(id1,id2,col = 'red')
     pos = nx.get_node_attributes(G,'pos')
     node_labels = nx.get_node_attributes(G, 'label')
     col =  nx.get_node_attributes(G, 'col').values()
     size = list(nx.get_node_attributes(G, 'size').values())
+    edge_color = nx.get_edge_attributes(G, 'col').values()
     nx.draw(G, pos=pos,   node_size = size,labels=node_labels,node_color = col,
             arrowstyle='-', arrows=True,
-            arrowsize=30, edge_color='red',
+            arrowsize=30, edge_color=edge_color,
             width=1
             )
     plt.savefig(path)
