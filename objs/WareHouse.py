@@ -11,6 +11,7 @@ from algorithm.algorithms import *
 from objs.DataHandler import *
 Rule = Enum('Rule', ('Brute_force','Dijkstra'))
 import utils.LoggerFactory as LF
+from multiprocessing import Process, Manager
 
 Rule = Enum('Rule', ('Brute_force','Dijkstra'))
 class WareHouse:
@@ -66,7 +67,7 @@ class WareHouse:
         :return:
         '''
         products_index_of_one_order_in_data = self.products_index_of_one_order_in_data[index]
-        # products_index_of_one_order_in_data = [1, 2, 3]
+        # products_index_of_one_order_in_data = [10790, 21432, 643]
         print(products_index_of_one_order_in_data)
 
         pro_list = [[p.get_id(), p.x, p.y] for p in order.products]
@@ -76,12 +77,19 @@ class WareHouse:
 
         if self.rules == Rule.Brute_force:
             self.logger.info("using brute force")
-            temp = [i+1 for i in range(len(pro_list))]
-            res = brute_force(ret['xmatrix'], ret['ymatrix'], d, 0, 0, products_index_of_one_order_in_data)
-            self.logger.info("brute force result(path): {}".format(res["path"]))
-            self.logger.info("draw png graph")
-            draw_png_graph(pro_list,res['path'])
-        self.logger.info("finish generating path")
+            temp = [i + 1 for i in range(len(pro_list))]
+
+            ##################
+            sourcetest = 0
+            targettest = 25526
+            manager = Manager()
+            m = manager.dict()
+            p1 = Process(target=brute_force, args=(m, d, sourcetest, targettest, products_index_of_one_order_in_data),
+                         name='process 1')
+            p1.start()
+            p1.join(timeout=4)
+            p1.terminate()
+            print(m['path'])
 
     def load_data(self,path):
         self.data = self.dhandler.load_txt(path)
