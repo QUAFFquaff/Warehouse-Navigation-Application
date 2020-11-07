@@ -186,10 +186,9 @@ class Main_UI(QMainWindow):
 
             logger.info('send order {}'.format(self.orders[index]))
             route=self.warehouse.generate_path(self.warehouse.orders[index],index)
-            QMessageBox.information(self, "Info", " ".join(route), QMessageBox.Yes, QMessageBox.Yes)
 
             img_name = "data/path/path.png"
             img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
             self.label_graph.setPixmap(img)
-
+            QMessageBox.information(self, "Info", " ".join(route), QMessageBox.Yes, QMessageBox.Yes)
             #self.label.setText("This graph shows the path from the starting area to the return area. The worker will follow the path to get products")
