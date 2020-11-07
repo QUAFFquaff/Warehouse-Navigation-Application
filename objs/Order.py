@@ -19,9 +19,15 @@ class Order:
         self.finish_time = None
 
     def init_products(self,num,all_products):
-
         list = range(len(all_products))
-        ids = random_int_list(0,len(all_products),num)
+        randomlist = random.sample(list, num)
+
+        ids = randomlist
+        self.products = [all_products[id] for id in ids]
+        return ids
+
+    def add_products(self,list,all_products):
+        ids = list
         print(ids)
         self.products = [all_products[id] for id in ids]
         return ids

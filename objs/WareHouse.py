@@ -49,10 +49,9 @@ class WareHouse:
             self.products_index_of_one_order_in_data.append(ids)
             return ids
         else:
-
             order = Order.Order(time.time())
-
-            ids = p_list
+            p_list = list(map(int,p_list))
+            ids = order.add_products(p_list,self.products)
             self.order_listtest.append(ids)
             self.products_index_of_one_order_in_data.append(ids)
             self.orders.append(order)
