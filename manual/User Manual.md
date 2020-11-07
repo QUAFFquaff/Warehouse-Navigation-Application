@@ -80,7 +80,7 @@ Fields should be an area or a point, it is the target position of all the produc
 
 Our program is a python-based system. This system consists of an application for our shopping carts gatherers at our \&lt; **WoBoAI** \&gt; store. The system allows our workers to login/change passwords and provides directions/instructions for the worker to pick up products that need to be returned to the &#39;Shopping Products Return Area&#39;. We will set some rules to generate our path, a specific number of products may have different paths to the Return area,etc.
 
-![](RackMultipart20201102-4-kk64tp_html_a16ace79c28efcf5.png)
+![](1.png)
 
 Figure 1 Use case for worker
 
@@ -96,13 +96,13 @@ The system has the following features:
 
 1. Scenario 1:
 
-![](RackMultipart20201102-4-kk64tp_html_b8cf5b5b3f860fbd.png)
+![](2.png)
 
 Figure 2 Login window
 
 Logging in and Picking up products on an average day.
 
-![](RackMultipart20201102-4-kk64tp_html_3f438c7e8d14921f.png)
+![](3.png)
 
 Figure 3 Failed login
 
@@ -112,27 +112,28 @@ Wrong Username/password, user need re-enter the correct username/password.
 
 In this interface, a map with several products will be displayed. You can click buttons to load products, generate shortest paths by different rules/algorithms and create orders by clicking the &#39;Add Order&#39; button. Each time we add some products per order.
 
-![](RackMultipart20201102-4-kk64tp_html_fcc66149318f2e68.png)
+![](4.png)
 
 Figure 4 main window
 
 If you have finished the orders, you can click on the line named &#39;a\&gt;-b\&gt;-c&#39; and click finish button to finish the order, and it will be removed from that list.
 
-![](RackMultipart20201102-4-kk64tp_html_321906531a9c4db6.png)
+![](5.png)
 
 Figure 5 Add an Order to the list
 
-![](RackMultipart20201102-4-kk64tp_html_d62ca359454cf29b.png)
+![](6.png)
 
 Figure 6 Finish one Order in the list
 
 When you click the generate button without selecting an order, it will show you a message which you need to select an order first!
 
+![](7.png)
 Figure 7 Generate path without selecting orders
 
 After you select one order, when you click the &#39;Generate Path&#39; button, the graph below will show us a specific path from the starting point to the return area, a label will also shown under the graph which tells the user the meaning of this graph.
 
-![](RackMultipart20201102-4-kk64tp_html_3a5e06c5f4c6a65a.png)
+![](7.png)
 
 Figure 8 Generate path 
  
@@ -141,7 +142,7 @@ Figure 8 Generate path
 
 In this case, you can click the user symbol on the top left corner of the interface. The worker can enter their personal settings to change passwords, set different rulers for the Paths and maximum products to deliver.
 
-![](RackMultipart20201102-4-kk64tp_html_eef521d00db137f7.png)
+![](8.png)
 
 Figure 9 Personal setting
 

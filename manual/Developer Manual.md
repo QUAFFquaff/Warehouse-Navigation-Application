@@ -105,7 +105,7 @@ Fields should be an area or a point, it is the target position of all the produc
 
 Our program is a python-based system. This system consists of an application for our shopping carts gatherers at our \&lt; **WoBoAI** \&gt; store. The system allows our workers to login/change passwords and provides directions/instructions for the worker to pick up products that need to be returned to the &#39;Shopping Products Return Area&#39;. We will set some rules to generate our path, a specific number of products may have different paths to the Return area,etc.
 
-![](RackMultipart20201107-4-1fify6d_html_c1a185aed263f2aa.png)
+![](1.png)
 
 Figure 1 Use case
 
@@ -121,13 +121,13 @@ The system has the following features:
 
 1. Scenario 1:
 
-![](RackMultipart20201107-4-1fify6d_html_b8cf5b5b3f860fbd.png)
+![](2.png)
 
 Figure 2 Login window
 
 Logging in and Picking up products on an average day.
 
-![](RackMultipart20201107-4-1fify6d_html_3f438c7e8d14921f.png)
+![](3.png)
 
 Figure 3 Failed login
 
@@ -137,17 +137,17 @@ Wrong Username/password, user need re-enter the correct username/password.
 
 In this interface, a map with several products will be displayed. You can click buttons to load products, generate shortest paths by different rules/algorithms and create orders by clicking the &#39;Add Order&#39; button. Each time we add some products per order.
 
-![](RackMultipart20201107-4-1fify6d_html_fcc66149318f2e68.png)
+![](4.png)
 
 Figure 4 main window
 
 If you have finished the orders, you can click on the line named &#39;a\&gt;-b\&gt;-c&#39; and click finish button to finish the order, and it will be removed from that list.
 
-![](RackMultipart20201107-4-1fify6d_html_321906531a9c4db6.png)
+![](5.png)
 
 Figure 5 Add an Order to the list
 
-![](RackMultipart20201107-4-1fify6d_html_d62ca359454cf29b.png)
+![](6.png)
 
 Figure 6 Finish one Order in the list
 
@@ -157,7 +157,7 @@ Figure 7 Generate path without selecting orders
 
 After you select one order, when you click the &#39;Generate Path&#39; button, the graph below will show us a specific path from the starting point to the return area, a label will also shown under the graph which tells the user the meaning of this graph.
 
-![](RackMultipart20201102-4-kk64tp_html_3a5e06c5f4c6a65a.png)
+![](7.png)
 
 Figure 8 Generate path 
 
@@ -165,7 +165,7 @@ Figure 8 Generate path
 
 In this case, you can click the user symbol on the top left corner of the interface. The worker can enter their personal settings to change passwords, set different rulers for the Paths and maximum products to deliver.
 
-![](RackMultipart20201107-4-1fify6d_html_eef521d00db137f7.png)
+![](8.png)
 
 Figure 9 Personal setting
 
@@ -185,7 +185,7 @@ The system has the following features:
 
 ## 3.1 Main data types and structures
 
-![](RackMultipart20201107-4-1fify6d_html_3376f2b4481e7f6f.gif)
+![](9.png)
 
 Figure 10 Class structure
 
@@ -193,7 +193,7 @@ The Warehouse System is the main part of the application. Its function will be c
 
 ## 3.2 Major software components
 
-![](RackMultipart20201107-4-1fify6d_html_3e9be9160dad0582.png)
+![](10.png)
 
 Figure 11 Interfaces
 
@@ -201,7 +201,7 @@ The system has three different components, one is UI controller, it controls GUI
 
 ## 3.3 Diagram of module hierarchy
 
-![](RackMultipart20201107-4-1fify6d_html_3906f1223a2fa1c3.png)
+![](11.png)
 
 Figure 12 Module connections
 
@@ -223,7 +223,7 @@ Order: init()-\&gt;None
 
 ### 3.5.1 Overall program control flow
 
-![](RackMultipart20201107-4-1fify6d_html_1275e2cbeac84136.png)
+![](12.png)
 
 Figure 13 Sequence diagram for main functions
 
@@ -271,7 +271,7 @@ If you don&#39;t want to use this application any more, simply delete its source
 
 ## 5.1 Detailed description of data structures
 
-![](RackMultipart20201107-4-1fify6d_html_d33e353f3b363ce.png)
+![](13.png)
 
 Figure 14 Class diagram of the system
 
@@ -307,7 +307,7 @@ This class used to control GUI and communicate with system/users.
 
 - Critical snippets of source code:
 
-![](RackMultipart20201107-4-1fify6d_html_8d4f1c9710c3ff60.png)
+![](14.png)
 
 Figure 15 Source code snippets
 
@@ -363,7 +363,7 @@ The output will be a PNG or HTML which shows our user the shortest path from the
 
 - Syntax/format of a move input by the user
 
-![](RackMultipart20201107-4-1fify6d_html_6dfb30239f582de9.png)
+![](15.png)
 
 Figure 15 Graph data structure
 
