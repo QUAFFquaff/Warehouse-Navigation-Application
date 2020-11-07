@@ -59,8 +59,14 @@ class WareHouse:
 
 
     def generate_path(self,order,index):
+        '''
+
+        :param order:
+        :param index: index of the order in all orders
+        :return:
+        '''
         products_index_of_one_order_in_data = self.products_index_of_one_order_in_data[index]
-        # order_listtest = [10790, 21432, 643]
+        # products_index_of_one_order_in_data = [1, 2, 3]
         print(products_index_of_one_order_in_data)
 
         pro_list = [[p.get_id(), p.x, p.y] for p in order.products]
@@ -79,8 +85,7 @@ class WareHouse:
 
     def load_data(self,path):
         self.data = self.dhandler.load_txt(path)
-        for d in self.data:
+        for idx, d in enumerate(self.data):
             product = Products.Product(int(d[0]),d[1],d[2])
             self.products.append(product)
-
     

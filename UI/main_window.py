@@ -129,11 +129,6 @@ class Main_UI(QMainWindow):
         default_file="graph_data/graph.txt"
         filename, _ = QFileDialog.getOpenFileName(self, default_file)
         #TODO: generate graph image
-        print('loading file location: ',filename)
-        self.warehouse.load_data(str(filename))
-        self.label_path.setText("")
-
-        print('finish')
 
         logger.info('loading file location: {}'.format(filename))
         self.warehouse.load_data(str(filename))

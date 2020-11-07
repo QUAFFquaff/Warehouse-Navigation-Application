@@ -71,7 +71,6 @@ def draw_png_dot_graph(products,path):
 
     for ind in range(len(shelf)):
         s = shelf[ind]
-        print(s)
         id1 = str(s[0][0])
         id2 = - s[0][0]-1
         G.add_node(id1,label = "", pos=(s[0][0],s[0][1]),col = 'white',size = 1)
@@ -80,9 +79,7 @@ def draw_png_dot_graph(products,path):
     pos = nx.get_node_attributes(G,'pos')
     node_labels = nx.get_node_attributes(G, 'label')
     col =  nx.get_node_attributes(G, 'col').values()
-    print(pos)
     size = list(nx.get_node_attributes(G, 'size').values())
-    print(size)
     nx.draw(G, pos=pos,   node_size = size,labels=node_labels,node_color = col,
             arrowstyle='-', arrows=True,
             arrowsize=30, edge_color='red',
