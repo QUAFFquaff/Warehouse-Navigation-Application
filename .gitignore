@@ -1,7 +1,6 @@
 .idea
 venv
 data/path/*
-data/images/*
 qt_designer/*.py
 */__pycache__
 *.spec
