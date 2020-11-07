@@ -131,7 +131,6 @@ class Main_UI(QMainWindow):
 
         logger.info('loading file location: {}'.format(filename))
         self.warehouse.load_data(str(filename))
-        self.label_path.setText("")
 
         #img_name = "data/images/graph_demo.png"
         #img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
