@@ -5,6 +5,7 @@ import objs.Order as Order
 import time
 from enum import Enum
 from algorithm.BruteForce import *
+from algorithm.Direction import direction
 from algorithm.MakeMatrix import *
 from algorithm.algorithms import *
 from objs.DataHandler import *
@@ -12,9 +13,6 @@ from objs.DataHandler import *
 Rule = Enum('Rule', ('Brute_force', 'Dijkstra'))
 import utils.LoggerFactory as LF
 from multiprocessing import Process, Manager
-
-Rule = Enum('Rule', ('Brute_force', 'Dijkstra'))
-
 
 class WareHouse:
     def __init__(self, worker=None, orders=[], dhandler=None):
@@ -60,8 +58,14 @@ class WareHouse:
             self.orders.append(order)
             return ids
 
-    def generate_path(self, order, index):
-        # products_index_of_one_order_in_data = self.products_index_of_one_order_in_data[index]
+    def generate_path(self,order,index):
+        '''
+
+        :param order:
+        :param index: index of the order in all orders
+        :return:
+        '''
+        products_index_of_one_order_in_data = self.products_index_of_one_order_in_data[index]
         products_index_of_one_order_in_data = [10790, 21432, 643]
         print(products_index_of_one_order_in_data)
 
@@ -77,18 +81,23 @@ class WareHouse:
             ##################
             sourcetest = 0
             targettest = 25526
+            start_point = (0,0)
+            end_point = (0,0)
             manager = Manager()
             m = manager.dict()
-            p1 = Process(target=brute_force, args=(m, d, sourcetest, targettest, products_index_of_one_order_in_data), name='process 1')
+            p1 = Process(target=brute_force, args=(m, d, sourcetest, targettest, products_index_of_one_order_in_data),
+                         name='process 1')
             p1.start()
             p1.join(timeout=4)
             p1.terminate()
             print(m['path'])
-
+            route = direction(self.data, start_point, end_point, m)
             ############################
             self.logger.info("brute force result(path): {}".format(m["path"]))
             self.logger.info("draw png graph")
             draw_png_graph(pro_list, m['path'])
+            self.logger.info("finish generating path")
+            return route
         self.logger.info("finish generating path")
 
     def load_data(self, path):
