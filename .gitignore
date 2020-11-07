@@ -4,6 +4,5 @@ data/path/*
 data/images/*
 qt_designer/*.py
 */__pycache__
-__pycache__
 *.spec
 */*.spec
