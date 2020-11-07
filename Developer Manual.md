@@ -7,6 +7,7 @@
 | **Version Modification Record** |
 | --- |
 | **No.** | **Date** | **Version** | **Modified By** | **Modification** |
+| 4 | 2020/11/06 | V4.0 | All team member | Update the document,change some name of functions/UI, add some function screenshots, add test cases. |
 | 3 | 2020/10/30
  | V3.0 | All team member | Change some function&#39;s decription
  |
@@ -104,7 +105,7 @@ Fields should be an area or a point, it is the target position of all the produc
 
 Our program is a python-based system. This system consists of an application for our shopping carts gatherers at our \&lt; **WoBoAI** \&gt; store. The system allows our workers to login/change passwords and provides directions/instructions for the worker to pick up products that need to be returned to the &#39;Shopping Products Return Area&#39;. We will set some rules to generate our path, a specific number of products may have different paths to the Return area,etc.
 
-![](RackMultipart20201102-4-4426nn_html_c1a185aed263f2aa.png)
+![](RackMultipart20201107-4-1fify6d_html_c1a185aed263f2aa.png)
 
 Figure 1 Use case
 
@@ -120,13 +121,13 @@ The system has the following features:
 
 1. Scenario 1:
 
-![](RackMultipart20201102-4-4426nn_html_b8cf5b5b3f860fbd.png)
+![](RackMultipart20201107-4-1fify6d_html_b8cf5b5b3f860fbd.png)
 
 Figure 2 Login window
 
 Logging in and Picking up products on an average day.
 
-![](RackMultipart20201102-4-4426nn_html_3f438c7e8d14921f.png)
+![](RackMultipart20201107-4-1fify6d_html_3f438c7e8d14921f.png)
 
 Figure 3 Failed login
 
@@ -136,33 +137,37 @@ Wrong Username/password, user need re-enter the correct username/password.
 
 In this interface, a map with several products will be displayed. You can click buttons to load products, generate shortest paths by different rules/algorithms and create orders by clicking the &#39;Add Order&#39; button. Each time we add some products per order.
 
-![](RackMultipart20201102-4-4426nn_html_fcc66149318f2e68.png)
+![](RackMultipart20201107-4-1fify6d_html_fcc66149318f2e68.png)
 
 Figure 4 main window
 
 If you have finished the orders, you can click on the line named &#39;a\&gt;-b\&gt;-c&#39; and click finish button to finish the order, and it will be removed from that list.
 
-![](RackMultipart20201102-4-4426nn_html_321906531a9c4db6.png)
+![](RackMultipart20201107-4-1fify6d_html_321906531a9c4db6.png)
 
 Figure 5 Add an Order to the list
 
-![](RackMultipart20201102-4-4426nn_html_d62ca359454cf29b.png)
+![](RackMultipart20201107-4-1fify6d_html_d62ca359454cf29b.png)
 
 Figure 6 Finish one Order in the list
 
-When you click the &#39;Generate Path&#39; button, the graph below will show us a specific path from the starting point to the return area.
+When you click the generate button without selecting an order, it will show you a message which you need to select an order first!
 
-![](RackMultipart20201102-4-4426nn_html_3a5e06c5f4c6a65a.png)
+Figure 7 Generate path without selecting orders
 
-Figure 7 Generate path
+After you select one order, when you click the &#39;Generate Path&#39; button, the graph below will show us a specific path from the starting point to the return area, a label will also shown under the graph which tells the user the meaning of this graph.
+
+![](RackMultipart20201102-4-kk64tp_html_3a5e06c5f4c6a65a.png)
+
+Figure 8 Generate path 
 
 1. Scenario 3: Personal Settings.
 
 In this case, you can click the user symbol on the top left corner of the interface. The worker can enter their personal settings to change passwords, set different rulers for the Paths and maximum products to deliver.
 
-![](RackMultipart20201102-4-4426nn_html_eef521d00db137f7.png)
+![](RackMultipart20201107-4-1fify6d_html_eef521d00db137f7.png)
 
-Figure 8 Personal setting
+Figure 9 Personal setting
 
 ## 2.2 Advanced Features
 
@@ -174,31 +179,31 @@ The system has the following features:
 ### 2.2.1 Usage instructions/scenarios
 
 1. Scenario 1: Generating a Path for a specific number of products to the return area.
-2. Scenario 2: Workers have a limitation of products each time. From the figure 6, you can see that in the personal setting, the worker can set the maximum number of products to deliver.
+2. Scenario 2: Workers have a limitation of products each time. From the figure 9, you can see that in the personal setting, the worker can set the maximum number of products to deliver.
 
 ## 3 Software Architecture Overview
 
 ## 3.1 Main data types and structures
 
-![](RackMultipart20201102-4-4426nn_html_3376f2b4481e7f6f.gif)
+![](RackMultipart20201107-4-1fify6d_html_3376f2b4481e7f6f.gif)
 
-Figure 9 Class structure
+Figure 10 Class structure
 
 The Warehouse System is the main part of the application. Its function will be called by the UI controller which is responsible for UI event listening. The warehouse system has at least one user which is also a Worker, who will move the products. Also it will have several orders which the Worker will deliver. For each order, it will have at least one Product to be collected by the Worker.
 
 ## 3.2 Major software components
 
-![](RackMultipart20201102-4-4426nn_html_3e9be9160dad0582.png)
+![](RackMultipart20201107-4-1fify6d_html_3e9be9160dad0582.png)
 
-Figure 10 Interfaces
+Figure 11 Interfaces
 
 The system has three different components, one is UI controller, it controls GUI and communicates with the user or system. One is DataHandler, it controls the input and output of the system. The other one is System, it contains some structures to save information of worker products and orders, and it can also generate path etc.
 
 ## 3.3 Diagram of module hierarchy
 
-![](RackMultipart20201102-4-4426nn_html_3906f1223a2fa1c3.png)
+![](RackMultipart20201107-4-1fify6d_html_3906f1223a2fa1c3.png)
 
-Figure 11 Module connections
+Figure 12 Module connections
 
 The UI Controller Module will add event listeners to the UI component, which will trigger backend functions to display the result. Backend will only load the data when the user asks for it and will not write back anything to it.
 
@@ -218,9 +223,9 @@ Order: init()-\&gt;None
 
 ### 3.5.1 Overall program control flow
 
-![](RackMultipart20201102-4-4426nn_html_1275e2cbeac84136.png)
+![](RackMultipart20201107-4-1fify6d_html_1275e2cbeac84136.png)
 
-Figure 12 Sequence diagram for main functions
+Figure 13 Sequence diagram for main functions
 
 ## 4 Installation
 
@@ -266,9 +271,9 @@ If you don&#39;t want to use this application any more, simply delete its source
 
 ## 5.1 Detailed description of data structures
 
-![](RackMultipart20201102-4-4426nn_html_d33e353f3b363ce.png)
+![](RackMultipart20201107-4-1fify6d_html_d33e353f3b363ce.png)
 
-Figure 13 Class diagram of the system
+Figure 14 Class diagram of the system
 
 Product:
 
@@ -302,9 +307,9 @@ This class used to control GUI and communicate with system/users.
 
 - Critical snippets of source code:
 
-![](RackMultipart20201102-4-4426nn_html_8d4f1c9710c3ff60.png)
+![](RackMultipart20201107-4-1fify6d_html_8d4f1c9710c3ff60.png)
 
-Figure 14 Source code snippets
+Figure 15 Source code snippets
 
 ## 5.2 Detailed description of functions and parameters
 
@@ -358,7 +363,7 @@ The output will be a PNG or HTML which shows our user the shortest path from the
 
 - Syntax/format of a move input by the user
 
-![](RackMultipart20201102-4-4426nn_html_6dfb30239f582de9.png)
+![](RackMultipart20201107-4-1fify6d_html_6dfb30239f582de9.png)
 
 Figure 15 Graph data structure
 

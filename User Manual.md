@@ -7,6 +7,7 @@
 | **Version Modification Record** |
 | --- |
 | **No.** | **Date** | **Version** | **Modified By** | **Modification** |
+| 3 | 2020/11/06 | V3.0 | All team member | Update the graph and UI, added new function for user. |
 | 2 | 2020/10/30 | V2.0 | All team member | Update the graph images and description, changed the system requirement. |
 | 1 | 2020/10/13 | V1.0 | All team member | Generate All the New Doc.
  |
@@ -125,11 +126,16 @@ Figure 5 Add an Order to the list
 
 Figure 6 Finish one Order in the list
 
-When you click the &#39;Generate Path&#39; button, the graph below will show us a specific path from the starting point to the return area.
+When you click the generate button without selecting an order, it will show you a message which you need to select an order first!
+
+Figure 7 Generate path without selecting orders
+
+After you select one order, when you click the &#39;Generate Path&#39; button, the graph below will show us a specific path from the starting point to the return area, a label will also shown under the graph which tells the user the meaning of this graph.
 
 ![](RackMultipart20201102-4-kk64tp_html_3a5e06c5f4c6a65a.png)
 
-Figure 7 Generate path
+Figure 8 Generate path 
+ 
 
 1. Scenario 3: Personal Settings.
 
@@ -137,7 +143,7 @@ In this case, you can click the user symbol on the top left corner of the interf
 
 ![](RackMultipart20201102-4-kk64tp_html_eef521d00db137f7.png)
 
-Figure 8 Personal setting
+Figure 9 Personal setting
 
 ## 2.2 Advanced Features
 
