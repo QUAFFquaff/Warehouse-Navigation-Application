@@ -4,17 +4,14 @@
 | --- | --- |
 | Affiliation | The Samueli School of Engineering, University of California, Irvine |
 
-| **Version Modification Record** |
-| --- |
+# Version Modification Record
+
 | **No.** | **Date** | **Version** | **Modified By** | **Modification** |
+| --- | --- | --- | --- | --- |
 | 3 | 2020/11/06 | V3.0 | All team member | Update the graph and UI, added new function for user. |
 | 2 | 2020/10/30 | V2.0 | All team member | Update the graph images and description, changed the system requirement. |
 | 1 | 2020/10/13 | V1.0 | All team member | Generate All the New Doc.
  |
-
-  -
-
-# Table of contents
 
 # Table of Contents
 
