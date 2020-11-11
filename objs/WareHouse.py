@@ -27,6 +27,7 @@ class WareHouse:
         self.start_point = (0.0, 0.0)
         self.end_point = (0.0, 0.0)
         self.products_index_of_one_order_in_data = []
+        self.id_to_ind_dict = {}
 
     def set_rules(self, num):
         if num == 0:
@@ -100,7 +101,10 @@ class WareHouse:
 
     def load_data(self, path):
         self.data = self.dhandler.load_txt(path)
-        for d in self.data:
+        for ind,d in enumerate(self.data):
             product = Products.Product(int(d[0]), d[1], d[2])
             self.products.append(product)
+            self.id_to_ind_dict[d[0]] = ind
 
+        pro_list = [[p.get_id(),p.x,p.y] for p in self.products]
+        draw_warehouse(pro_list,"data/path/warehouse.png")

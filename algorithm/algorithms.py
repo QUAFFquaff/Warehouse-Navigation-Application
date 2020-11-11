@@ -3,19 +3,32 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import utils.LoggerFactory as LF
 from objs.DataHandler import DataHandler
-shelf = [
-         [[20,0],[20,16]],
-
-         [[18, 0], [18, 16]],
-         [[16, 0], [16, 16]],
-         [[14, 0], [14, 16]],
-         [[12, 0], [12, 16]],
-         [[10, 0], [10, 16]],
-         [[8,0],[8,16]],
-         [[6,0],[6,16]],
-         [[4,0],[4,16]],
-         [[2,0],[2,16]],
+# shelf = [
+#          [[20,0],[20,16]],
+#
+#          [[18, 0], [18, 16]],
+#          [[16, 0], [16, 16]],
+#          [[14, 0], [14, 16]],
+#          [[12, 0], [12, 16]],
+#          [[10, 0], [10, 16]],
+#          [[8,0],[8,16]],
+#          [[6,0],[6,16]],
+#          [[4,0],[4,16]],
+#          [[2,0],[2,16]],
+#          ]
+shelf = [[[0,0],[20,0]],
+         [[0,2],[20,2]],
+         [[0,4],[20,4]],
+         [[0,6],[20,6]],
+         [[0,8],[20,8]],
+         [[0,10],[20,10]],
+         [[0,12],[20,12]],
+         [[0,14],[20,14]],
+         [[0,16],[20,16]],
+         [[0,18],[20,18]],
+         [[0,20],[20,20]],
          ]
+
 logger=LF.get_logger(__name__)
 def dijkstra(start: int, mgraph: list) -> list:
     passed = [start]
@@ -111,5 +124,33 @@ def draw_png_dot_graph(products,path):
 # p = [[1,8.2,10],[2,6.62,10],[4,16.4,12]]
 # draw_png_dot_graph(p,"../data/path/dot.png")
 
-def build_shelf():
-   pass
+def draw_warehouse(products,path):
+    logger.info("drawing")
+    plt.figure(figsize=(9, 9))
+    G = nx.Graph()
+    for p in anchor:
+        G.add_node(-p[0] - p[1], label="", pos=(p[0], p[1]), col='white', size=1)
+
+    for p in products:
+        G.add_node(p[0], label="", pos=(p[1], p[2]), col='grey', size=10)
+
+    for ind in range(len(shelf)):
+        s = shelf[ind]
+        id1 = str(s[0][0])+str(s[0][1])
+        id2 = str(s[1][0])+str(s[1][1])
+        G.add_node(id1, label="", pos=(s[0][0], s[0][1]), col='white', size=1)
+        G.add_node(id2, label="", pos=(s[1][0], s[1][1]), col='white', size=1)
+        G.add_edge(id1, id2, col='red')
+
+    pos = nx.get_node_attributes(G, 'pos')
+    node_labels = nx.get_node_attributes(G, 'label')
+    col = nx.get_node_attributes(G, 'col').values()
+    size = list(nx.get_node_attributes(G, 'size').values())
+    edge_color = nx.get_edge_attributes(G, 'col').values()
+    nx.draw(G, pos=pos, node_size=size,  node_color=col,
+            arrowstyle='-', arrows=True,
+            arrowsize=30, edge_color=edge_color,
+            width=1
+            )
+    plt.savefig(path)
+    logger.info("draw_png_graph generate: warehouse.png")
