@@ -59,12 +59,11 @@ def draw_png_graph(products,res_ind):
     # add shelf
     for ind in range(len(shelf)):
         s = shelf[ind]
-        id1 = str(s[0][0])
-        id2 = - s[0][0]-1
-        G.add_node(id1,label = "", pos=(s[0][0],s[0][1]),col = 'white',size = 1)
-        G.add_node(id2,label = "", pos=(s[1][0],s[1][1]),col = 'white',size = 1)
-        G.add_edge(id1,id2,col = 'red',style = '-')
-
+        id1 = str(s[0][0]) + str(s[0][1])
+        id2 = str(s[1][0]) + str(s[1][1])
+        G.add_node(id1, label="", pos=(s[0][0], s[0][1]), col='white', size=1)
+        G.add_node(id2, label="", pos=(s[1][0], s[1][1]), col='white', size=1)
+        G.add_edge(id1, id2, col='red')
 
     G.add_node(0,label = 'Smile!', pos=(0,0),col='grey',size = 100)
     for p in products:
@@ -101,11 +100,11 @@ def draw_png_dot_graph(products,path):
 
     for ind in range(len(shelf)):
         s = shelf[ind]
-        id1 = str(s[0][0])
-        id2 = - s[0][0]-1
-        G.add_node(id1,label = "", pos=(s[0][0],s[0][1]),col = 'white',size = 1)
-        G.add_node(id2,label = "", pos=(s[1][0],s[1][1]),col = 'white',size = 1)
-        G.add_edge(id1,id2,col = 'red')
+        id1 = str(s[0][0]) + str(s[0][1])
+        id2 = str(s[1][0]) + str(s[1][1])
+        G.add_node(id1, label="", pos=(s[0][0], s[0][1]), col='white', size=1)
+        G.add_node(id2, label="", pos=(s[1][0], s[1][1]), col='white', size=1)
+        G.add_edge(id1, id2, col='red')
 
     pos = nx.get_node_attributes(G,'pos')
     node_labels = nx.get_node_attributes(G, 'label')
