@@ -174,6 +174,8 @@ class Main_UI(QMainWindow):
         index=self.get_order_index()
         if index is not None:
             self.orders.pop(index)
+            self.warehouse.orders.pop(index)
+            self.warehouse.products_index_of_one_order_in_data.pop(index)
             self.orders_model.setStringList(self.orders)
 
     def set_profile_window(self,profile_window):

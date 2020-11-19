@@ -66,7 +66,7 @@ class WareHouse:
         :return:
         '''
         products_index_of_one_order_in_data = self.products_index_of_one_order_in_data[index]
-        print(products_index_of_one_order_in_data)
+        logger.info("products_index_of_one_order_in_data: {}".format(products_index_of_one_order_in_data))
 
         pro_list = [[p.get_id(), p.x, p.y] for p in order.products]
         ret = make_matrix(self.data, self.start_point, self.end_point, products_index_of_one_order_in_data)
@@ -89,11 +89,12 @@ class WareHouse:
             p1.start()
             p1.join(timeout=4)
             p1.terminate()
-            print(m['path'])
+            logger.info("m['path']: {}".format(m['path']))
             route = direction(self.data, start_point, end_point, m)
             ############################
             self.logger.info("brute force result(path): {}".format(m["path"]))
             self.logger.info("draw png graph")
+            self.logger.info("pro_list: {}".format(pro_list))
             draw_png_graph(pro_list, m['path'])
             self.logger.info("finish generating path")
             return route
