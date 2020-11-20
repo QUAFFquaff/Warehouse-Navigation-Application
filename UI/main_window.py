@@ -127,7 +127,6 @@ class Main_UI(QMainWindow):
         filename, _ = QFileDialog.getOpenFileName(self, default_file)
         if filename is None or filename=="":
             filename="data/qvBox-warehouse-data-f20-v01.txt"
-        #TODO: generate graph image
 
         logger.info('loading file location: {}'.format(filename))
         self.warehouse.load_data(str(filename))
@@ -187,8 +186,6 @@ class Main_UI(QMainWindow):
     def generate_path(self):
         index = self.get_order_index()
         if index is not None:
-            # TODO: display image here
-
             logger.info('send order {}'.format(self.orders[index]))
             route=self.warehouse.generate_path(self.warehouse.orders[index],index)
 
@@ -197,3 +194,21 @@ class Main_UI(QMainWindow):
             self.label_graph.setPixmap(img)
             QMessageBox.information(self, "Info", " ".join(route), QMessageBox.Yes, QMessageBox.Yes)
             #self.label.setText("This graph shows the path from the starting area to the return area. The worker will follow the path to get products")
+
+    def set_start_and_end_point(self):
+        start_x = self.lineEdit_start_x.text()
+        start_y = self.lineEdit_start_y.text()
+        end_x = self.lineEdit_end_x.text()
+        end_y = self.lineEdit_end_y.text()
+        reg="\d+"
+        if not re.match(reg,start_x) or not re.match(reg,start_y) or not re.match(reg,end_x) or not re.match(reg,end_y):
+            QMessageBox.information(self, "Error", "Wrong input format, numbers only!", QMessageBox.Yes, QMessageBox.Yes)
+            return
+        try:
+            self.warehouse.start_point=(int(start_x),int(start_y))
+            self.warehouse.end_point=(int(end_x),int(end_y))
+            pass
+        except Exception() as e:
+            QMessageBox.information(self, "Exception", e, QMessageBox.Yes, QMessageBox.Yes)
+            return
+        QMessageBox.information(self, "Info", "success", QMessageBox.Yes, QMessageBox.Yes)
