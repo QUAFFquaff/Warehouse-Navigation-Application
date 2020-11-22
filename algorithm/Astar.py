@@ -3,7 +3,7 @@ import heapq
 import utils.LoggerFactory as LF
 
 
-logger = LF.get_logger(__name__)
+aslogger = LF.get_logger(__name__)
 
 class Node:
     """
@@ -39,7 +39,7 @@ def return_path(current_node):
     while current is not None:
         path.append(current.position)
         current = current.parent
-    print(path[::-1])
+    aslogger.info("partial path is {}".format(path[::-1]))
     #return len(path)
     return path[::-1]  # Return reversed path
 
@@ -92,7 +92,7 @@ def astar(maze, start, end, allow_diagonal_movement=False):
 
         # Found the goal
         if current_node == end_node:
-            print('successful')
+            aslogger.info('successful')
             print_map(return_path(current_node),maze)
             return return_path(current_node)
 
@@ -191,8 +191,8 @@ def print_map(path,maze):
                 line.append("_")
             elif col == 2:
                 line.append(".")
-        print("".join(line))
+        aslogger.info("".join(line))
 
 
     #print(path)
-    return path
+    #return path
