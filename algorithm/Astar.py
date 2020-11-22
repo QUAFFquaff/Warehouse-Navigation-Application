@@ -91,7 +91,7 @@ def astar(maze, start, end, allow_diagonal_movement=False):
         # Found the goal
         if current_node == end_node:
             print('successful')
-            #print_map(return_path(current_node),maze)
+            print_map(return_path(current_node),maze)
             return return_path(current_node)
 
         # Generate children
