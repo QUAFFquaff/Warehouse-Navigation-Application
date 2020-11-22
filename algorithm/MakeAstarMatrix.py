@@ -62,10 +62,13 @@ def make_astar_matrix(data, maze, start_point, end_point, order_list) -> dict:
     ##############
 
     distance_matrix = np.zeros(shape=(len(order_list_temp), len(order_list_temp)))
-    path_matrix = np.zeros(shape=(len(order_list_temp), len(order_list_temp)))
+    path_list = []
+    #path_matrix = np.zeros(shape=(len(order_list_temp), len(order_list_temp)))
 
     for i, val_i in enumerate(order_list_temp):
         for j, val_j in enumerate(order_list_temp[i + 1:], i + 1):
+            #if i == j:
+             #   break
             mamlogger.info("from {} to {}".format(position_dictionary[val_i], position_dictionary[val_j]))
             distance_matrix[i][j] = len(astar(maze, position_dictionary[val_i], position_dictionary[val_j]))-1
             #path_matrix[i][j] = Astar.astar(maze, position_dictionary[val_i], position_dictionary[val_j])
