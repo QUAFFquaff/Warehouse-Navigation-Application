@@ -121,7 +121,7 @@ class WareHouse:
         for ind,d in enumerate(self.data):
             product = Products.Product(int(d[0]), d[1], d[2])
             self.products.append(product)
-            self.id_to_ind_dict[d[0]] = ind
+            self.id_to_ind_dict[d[0]] = ind+1
 
         pro_list = [[p.get_id(),p.x,p.y] for p in self.products]
         draw_warehouse(pro_list,"data/path/warehouse.png")
