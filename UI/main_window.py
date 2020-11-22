@@ -200,12 +200,12 @@ class Main_UI(QMainWindow):
     def add_orders_from_file(self):
         default_file = "data/qvBox-warehouse-orders-list-part01.txt"
         filename, _ = QFileDialog.getOpenFileName(self, default_file)
-        filename, _ = QFileDialog.getOpenFileName(self, default_file)
         if filename is None or filename=="":
             filename="data/qvBox-warehouse-orders-list-part01.txt"
         logger.info('loading file location: {}'.format(filename))
         self.warehouse.load_orders(str(filename))
-
+        self.orders=self.warehouse.get_string_list_orders()
+        self.orders_model.setStringList(self.orders)
         QMessageBox.information(self, "Info", "success", QMessageBox.Yes, QMessageBox.Yes)
 
     def add_order(self):

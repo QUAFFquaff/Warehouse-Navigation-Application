@@ -63,6 +63,10 @@ class WareHouse:
             self.orders.append(order)
             return ids
 
+    def load_orders(self,filename):
+        logger.info("loading orders from {}".format(filename))
+        pass
+
     def generate_path(self,order,index):
         '''
 
@@ -114,3 +118,9 @@ class WareHouse:
 
         pro_list = [[p.get_id(),p.x,p.y] for p in self.products]
         draw_warehouse(pro_list,"data/path/warehouse.png")
+
+    def get_string_list_orders(self):
+        orders=[]
+        for order in self.orders:
+            orders.append(order.to_string())
+        return orders

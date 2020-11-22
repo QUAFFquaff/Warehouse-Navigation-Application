@@ -47,4 +47,8 @@ class Order:
         else:
             print('This order has %d items, created at %s, finished at %s' % (len(self.product_list), self.start_time,
                                                                               self.finish_time))
-
+    def to_string(self):
+        order=[]
+        for p in self.products:
+            order.append(str(p.get_id()))
+        return ", ".join(order)
