@@ -11,14 +11,14 @@ from algorithm.algorithms import *
 class Main_UI(QMainWindow):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1226, 758)
+        MainWindow.resize(1296, 796)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.label_image = QtWidgets.QLabel(self.centralwidget)
         self.label_image.setGeometry(QtCore.QRect(20, 30, 51, 41))
         self.label_image.setObjectName("label_image")
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(90, 620, 681, 81))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(20, 680, 681, 81))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -36,11 +36,11 @@ class Main_UI(QMainWindow):
         self.label_username.setGeometry(QtCore.QRect(90, 40, 151, 21))
         self.label_username.setObjectName("label_username")
         self.label_graph = QtWidgets.QLabel(self.centralwidget)
-        self.label_graph.setGeometry(QtCore.QRect(150, 110, 611, 451))
+        self.label_graph.setGeometry(QtCore.QRect(30, 210, 641, 441))
         self.label_graph.setText("")
         self.label_graph.setObjectName("label_graph")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(790, 100, 351, 571))
+        self.verticalLayoutWidget.setGeometry(QtCore.QRect(880, 80, 391, 631))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout.setContentsMargins(0, 0, 0, 0)
@@ -62,9 +62,12 @@ class Main_UI(QMainWindow):
         self.pushButton_add_order = QtWidgets.QPushButton(self.verticalLayoutWidget)
         self.pushButton_add_order.setObjectName("pushButton_add_order")
         self.horizontalLayout_3.addWidget(self.pushButton_add_order)
+        self.pushButton_add_orders_from_file = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.pushButton_add_orders_from_file.setObjectName("pushButton_add_orders_from_file")
+        self.horizontalLayout_3.addWidget(self.pushButton_add_orders_from_file)
         self.verticalLayout.addLayout(self.horizontalLayout_3)
         self.pushButton_logout = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_logout.setGeometry(QtCore.QRect(927, 40, 191, 28))
+        self.pushButton_logout.setGeometry(QtCore.QRect(1070, 40, 191, 28))
         self.pushButton_logout.setObjectName("pushButton_logout")
         self.label_title = QtWidgets.QLabel(self.centralwidget)
         self.label_title.setGeometry(QtCore.QRect(400, 30, 421, 41))
@@ -72,6 +75,47 @@ class Main_UI(QMainWindow):
         self.pushButton_profile = QtWidgets.QPushButton(self.centralwidget)
         self.pushButton_profile.setGeometry(QtCore.QRect(0, 90, 81, 41))
         self.pushButton_profile.setObjectName("pushButton_profile")
+        self.formLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
+        self.formLayoutWidget_2.setGeometry(QtCore.QRect(720, 80, 158, 154))
+        self.formLayoutWidget_2.setObjectName("formLayoutWidget_2")
+        self.formLayout_2 = QtWidgets.QFormLayout(self.formLayoutWidget_2)
+        self.formLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.formLayout_2.setObjectName("formLayout_2")
+        self.label_start_x = QtWidgets.QLabel(self.formLayoutWidget_2)
+        self.label_start_x.setObjectName("label_start_x")
+        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_start_x)
+        self.lineEdit_start_x = QtWidgets.QLineEdit(self.formLayoutWidget_2)
+        self.lineEdit_start_x.setObjectName("lineEdit_start_x")
+        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.lineEdit_start_x)
+        self.label_start_y = QtWidgets.QLabel(self.formLayoutWidget_2)
+        self.label_start_y.setObjectName("label_start_y")
+        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_start_y)
+        self.lineEdit_start_y = QtWidgets.QLineEdit(self.formLayoutWidget_2)
+        self.lineEdit_start_y.setObjectName("lineEdit_start_y")
+        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_start_y)
+        self.label_end_x = QtWidgets.QLabel(self.formLayoutWidget_2)
+        self.label_end_x.setObjectName("label_end_x")
+        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_end_x)
+        self.label_end_y = QtWidgets.QLabel(self.formLayoutWidget_2)
+        self.label_end_y.setObjectName("label_end_y")
+        self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_end_y)
+        self.lineEdit_end_x = QtWidgets.QLineEdit(self.formLayoutWidget_2)
+        self.lineEdit_end_x.setObjectName("lineEdit_end_x")
+        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_end_x)
+        self.lineEdit_end_y = QtWidgets.QLineEdit(self.formLayoutWidget_2)
+        self.lineEdit_end_y.setObjectName("lineEdit_end_y")
+        self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.lineEdit_end_y)
+        self.pushButton_set_start_and_end_point = QtWidgets.QPushButton(self.formLayoutWidget_2)
+        self.pushButton_set_start_and_end_point.setObjectName("pushButton_set_start_and_end_point")
+        self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.pushButton_set_start_and_end_point)
+        self.label_end_y_2 = QtWidgets.QLabel(self.centralwidget)
+        self.label_end_y_2.setGeometry(QtCore.QRect(30, 640, 661, 24))
+        self.label_end_y_2.setObjectName("label_end_y_2")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(20, 160, 21, 491))
+        self.label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.label.setWordWrap(True)
+        self.label.setObjectName("label")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -90,9 +134,18 @@ class Main_UI(QMainWindow):
         self.label_username.setText(_translate("MainWindow", "alicebob"))
         self.label_products_id.setText(_translate("MainWindow", "Product(s) ID:"))
         self.pushButton_add_order.setText(_translate("MainWindow", "Add an order"))
+        self.pushButton_add_orders_from_file.setText(_translate("MainWindow", "Add orders from file"))
         self.pushButton_logout.setText(_translate("MainWindow", "Logout"))
         self.label_title.setText(_translate("MainWindow", "                 Warehouse System Application"))
         self.pushButton_profile.setText(_translate("MainWindow", "Profile"))
+        self.label_start_x.setText(_translate("MainWindow", "start x"))
+        self.label_start_y.setText(_translate("MainWindow", "start y"))
+        self.label_end_x.setText(_translate("MainWindow", "end x"))
+        self.label_end_y.setText(_translate("MainWindow", "end y"))
+        self.pushButton_set_start_and_end_point.setText(_translate("MainWindow", "set"))
+        self.label_end_y_2.setText(_translate("MainWindow", "------------------------------------------------------------------------------> x"))
+        self.label.setText(_translate("MainWindow", "y ^ | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |"))
+
     # auto-generated code above
     # -------------------------------------------------
 
@@ -107,6 +160,8 @@ class Main_UI(QMainWindow):
         self.pushButton_add_order.clicked.connect(self.add_order)
         self.pushButton_profile.clicked.connect(self.profile.exec_)
         self.pushButton_generate_path.clicked.connect(self.generate_path)
+        self.pushButton_add_orders_from_file.clicked.connect(self.add_orders_from_file)
+        self.pushButton_set_start_and_end_point.clicked.connect(self.set_start_and_end_point)
 
     def init(self):
         self.clicked_order_index = None
@@ -117,6 +172,10 @@ class Main_UI(QMainWindow):
         self.listView_orders.setModel(self.orders_model)
         self.listView_orders.clicked.connect(self.order_clicked)
         self.pushButton_finish_order.clicked.connect(self.finish_order)
+        self.lineEdit_start_x.setText("0")
+        self.lineEdit_start_y.setText("0")
+        self.lineEdit_end_x.setText("0")
+        self.lineEdit_end_y.setText("0")
 
     def order_clicked(self,index):
         self.clicked_order_index = index.row()
@@ -138,16 +197,31 @@ class Main_UI(QMainWindow):
         #img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
         #self.label_graph.setPixmap(img)
 
+    def add_orders_from_file(self):
+        default_file = "data/qvBox-warehouse-orders-list-part01.txt"
+        filename, _ = QFileDialog.getOpenFileName(self, default_file)
+        filename, _ = QFileDialog.getOpenFileName(self, default_file)
+        if filename is None or filename=="":
+            filename="data/qvBox-warehouse-orders-list-part01.txt"
+        logger.info('loading file location: {}'.format(filename))
+        self.warehouse.load_orders(str(filename))
+
+        QMessageBox.information(self, "Info", "success", QMessageBox.Yes, QMessageBox.Yes)
+
     def add_order(self):
         products_id=self.lineEdit_products_id.text()
-        if  products_id == "":
+        if products_id == "":
             self.order_len = 3
             self.warehouse.add_order(self.order_len)
         else:
             if not re.match("(\d+)(,\d+)*",products_id):
                 QMessageBox.information(self, "Error", "invalid format! should be like: 123,456,789", QMessageBox.Yes, QMessageBox.Yes)
                 return
-            self.warehouse.add_order(3,products_id.split(","))
+            try:
+                self.warehouse.add_order(3,products_id.split(","))
+            except:
+                QMessageBox.information(self, "Error", "exception", QMessageBox.Yes, QMessageBox.Yes)
+                return
         products = self.warehouse.orders[-1].products
         l = []
         for p in products:
@@ -193,22 +267,24 @@ class Main_UI(QMainWindow):
             img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
             self.label_graph.setPixmap(img)
             QMessageBox.information(self, "Info", " ".join(route), QMessageBox.Yes, QMessageBox.Yes)
-            #self.label.setText("This graph shows the path from the starting area to the return area. The worker will follow the path to get products")
 
     def set_start_and_end_point(self):
         start_x = self.lineEdit_start_x.text()
         start_y = self.lineEdit_start_y.text()
         end_x = self.lineEdit_end_x.text()
         end_y = self.lineEdit_end_y.text()
-        reg="\d+"
-        if not re.match(reg,start_x) or not re.match(reg,start_y) or not re.match(reg,end_x) or not re.match(reg,end_y):
+        reg="(\d+)"
+
+        if not re.fullmatch(reg,start_x) or not re.fullmatch(reg,start_y) or not re.fullmatch(reg,end_x) or not re.fullmatch(reg,end_y):
             QMessageBox.information(self, "Error", "Wrong input format, numbers only!", QMessageBox.Yes, QMessageBox.Yes)
             return
         try:
             self.warehouse.start_point=(int(start_x),int(start_y))
             self.warehouse.end_point=(int(end_x),int(end_y))
-            pass
+            logger.info("setting start point to ({}, {})".format(start_x,start_y))
+            logger.info("setting end point to ({}, {})".format(end_x,end_y))
         except Exception() as e:
             QMessageBox.information(self, "Exception", e, QMessageBox.Yes, QMessageBox.Yes)
             return
         QMessageBox.information(self, "Info", "success", QMessageBox.Yes, QMessageBox.Yes)
+

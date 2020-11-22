@@ -52,6 +52,11 @@ class WareHouse:
         else:
             order = Order.Order(time.time())
             p_list = list(map(int,p_list))
+            for i in range(len(p_list)):
+                if self.id_to_ind_dict.get(p_list[i]) is None:
+                    logger.error("Product id {} not found!".format(p_list[i]))
+                    raise Exception("Product id not found!")
+                p_list[i]=self.id_to_ind_dict[p_list[i]]
             ids = order.add_products(p_list,self.products)
             self.order_listtest.append(ids)
             self.products_index_of_one_order_in_data.append(ids)
