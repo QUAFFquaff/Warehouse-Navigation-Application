@@ -2,6 +2,11 @@ import numpy as np
 import math
 from algorithm.Astar import *
 
+import utils.LoggerFactory as LF
+
+
+mamlogger = LF.get_logger(__name__)
+
 
 def make_astar_matrix(data, maze, start_point, end_point, order_list) -> dict:
     """
@@ -22,7 +27,7 @@ def make_astar_matrix(data, maze, start_point, end_point, order_list) -> dict:
     end_point_floor[1] = math.floor(end_point[1])
     start_point_floor = tuple(start_point_floor)
     end_point_floor = tuple(end_point_floor)
-    print('s/e', start_point_floor, end_point_floor)
+    mamlogger.info("s/e {}".format(start_point_floor, end_point_floor))
 
     id_dictionary = []
     position_dictionary = []
@@ -47,21 +52,24 @@ def make_astar_matrix(data, maze, start_point, end_point, order_list) -> dict:
 
     order_list_temp.insert(0, 0)
     order_list_temp.append(len(position_dictionary) - 1)
-    print('olist', order_list_temp)
+    mamlogger.info("orderlist(rank) {}".format(order_list_temp))
 
     ##################
     plist_position = []
     for i in order_list_temp:
         plist_position.append(position_dictionary[i])
-    print('plistposi', plist_position)
+    mamlogger.info("plistposi {}".format(plist_position))
     ##############
 
     distance_matrix = np.zeros(shape=(len(order_list_temp), len(order_list_temp)))
-    path_matrix = np.zeros(shape=(len(order_list_temp), len(order_list_temp)))
+    path_list = []
+    #path_matrix = np.zeros(shape=(len(order_list_temp), len(order_list_temp)))
 
     for i, val_i in enumerate(order_list_temp):
         for j, val_j in enumerate(order_list_temp[i + 1:], i + 1):
-            print(position_dictionary[val_i], position_dictionary[val_j])
+            #if i == j:
+             #   break
+            mamlogger.info("from {} to {}".format(position_dictionary[val_i], position_dictionary[val_j]))
             distance_matrix[i][j] = len(astar(maze, position_dictionary[val_i], position_dictionary[val_j]))-1
             #path_matrix[i][j] = Astar.astar(maze, position_dictionary[val_i], position_dictionary[val_j])
             #print(path_matrix)

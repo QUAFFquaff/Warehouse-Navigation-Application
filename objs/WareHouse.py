@@ -88,7 +88,7 @@ class WareHouse:
      #############
         maze1 = make_maze(self.data)
         d = make_astar_matrix(self.data, maze1, self.start_point, self.end_point, products_index_of_one_order_in_data)
-
+        print(d)
         if self.rules == Rule.Brute_force:
             self.logger.info("using brute force")
             temp = [i + 1 for i in range(len(pro_list))]
