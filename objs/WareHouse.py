@@ -8,6 +8,9 @@ from algorithm.BruteForce import *
 from algorithm.Direction import direction
 from algorithm.MakeMatrix import *
 from algorithm.algorithms import *
+from algorithm.MakeMaze import *
+from algorithm.MakeAstarMatrix import *
+
 from objs.DataHandler import *
 
 Rule = Enum('Rule', ('Brute_force', 'Dijkstra'))
@@ -74,9 +77,13 @@ class WareHouse:
         logger.info("products_index_of_one_order_in_data: {}".format(products_index_of_one_order_in_data))
 
         pro_list = [[p.get_id(), p.x, p.y] for p in order.products]
-        ret = make_matrix(self.data, self.start_point, self.end_point, products_index_of_one_order_in_data)
+     #############
+        #ret = make_matrix(self.data, self.start_point, self.end_point, products_index_of_one_order_in_data)
 
-        d = ret['xmatrix'] + ret['ymatrix']
+        #d = ret['xmatrix'] + ret['ymatrix']
+     #############
+        maze1 = make_maze(self.data)
+        d = make_astar_matrix(self.data, maze1, self.start_point, self.end_point, products_index_of_one_order_in_data)
 
         if self.rules == Rule.Brute_force:
             self.logger.info("using brute force")
@@ -92,7 +99,7 @@ class WareHouse:
             p1 = Process(target=brute_force, args=(m, d, sourcetest, targettest, products_index_of_one_order_in_data),
                          name='process 1')
             p1.start()
-            p1.join(timeout=4)
+            p1.join(timeout=60)
             p1.terminate()
             logger.info("m['path']: {}".format(m['path']))
             route = direction(self.data, start_point, end_point, m)

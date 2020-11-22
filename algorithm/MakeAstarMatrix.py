@@ -1,6 +1,6 @@
 import numpy as np
 import math
-import Astar
+from algorithm.Astar import *
 
 
 def make_astar_matrix(data, maze, start_point, end_point, order_list) -> dict:
@@ -62,7 +62,7 @@ def make_astar_matrix(data, maze, start_point, end_point, order_list) -> dict:
     for i, val_i in enumerate(order_list_temp):
         for j, val_j in enumerate(order_list_temp[i + 1:], i + 1):
             print(position_dictionary[val_i], position_dictionary[val_j])
-            distance_matrix[i][j] = len(Astar.astar(maze, position_dictionary[val_i], position_dictionary[val_j]))-1
+            distance_matrix[i][j] = len(astar(maze, position_dictionary[val_i], position_dictionary[val_j]))-1
             #path_matrix[i][j] = Astar.astar(maze, position_dictionary[val_i], position_dictionary[val_j])
             #print(path_matrix)
             #distance_matrix[i][j] = Astar.example(maze, position_dictionary[val_i], position_dictionary[val_j])
