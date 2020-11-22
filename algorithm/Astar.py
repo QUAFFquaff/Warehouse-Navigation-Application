@@ -1,7 +1,9 @@
 from warnings import warn
 import heapq
+import utils.LoggerFactory as LF
 
 
+logger = LF.get_logger(__name__)
 
 class Node:
     """
@@ -37,7 +39,7 @@ def return_path(current_node):
     while current is not None:
         path.append(current.position)
         current = current.parent
-    #print(path[::-1])
+    print(path[::-1])
     #return len(path)
     return path[::-1]  # Return reversed path
 
