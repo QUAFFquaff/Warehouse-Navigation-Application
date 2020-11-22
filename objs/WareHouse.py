@@ -10,6 +10,7 @@ from algorithm.MakeMatrix import *
 from algorithm.algorithms import *
 from algorithm.MakeMaze import *
 from algorithm.MakeAstarMatrix import *
+from algorithm.ShowMeThePath import *
 
 from objs.DataHandler import *
 
@@ -87,7 +88,7 @@ class WareHouse:
         #d = ret['xmatrix'] + ret['ymatrix']
      #############
         maze1 = make_maze(self.data)
-        d = make_astar_matrix(self.data, maze1, self.start_point, self.end_point, products_index_of_one_order_in_data)
+        d, path_list = make_astar_matrix(self.data, maze1, self.start_point, self.end_point, products_index_of_one_order_in_data)
         print(d)
         if self.rules == Rule.Brute_force:
             self.logger.info("using brute force")
@@ -106,7 +107,19 @@ class WareHouse:
             p1.join(timeout=60)
             p1.terminate()
             logger.info("m['path']: {}".format(m['path']))
+
+            #### maze !!!
+            route1 = show_me_the_path(m['path'], path_list, products_index_of_one_order_in_data,maze1)
+
+            ###############################
+            ###     TO DO:              ###
+            ###  CHANGE ROUTE TO ROUTE1 ###
+            ###                         ###
+            ###############################
             route = direction(self.data, start_point, end_point, m)
+
+
+
             ############################
             self.logger.info("brute force result(path): {}".format(m["path"]))
             self.logger.info("draw png graph")

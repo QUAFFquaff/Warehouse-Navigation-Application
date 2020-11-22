@@ -89,7 +89,7 @@ def make_astar_matrix(data, maze, start_point, end_point, order_list) -> dict:
         #print(path_list[i])
 
     #return {'xmatrix': x, 'ymatrix': y}
-    return distance_matrix
+    return distance_matrix, path_list
 
 
 

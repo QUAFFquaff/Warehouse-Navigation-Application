@@ -1,0 +1,21 @@
+import utils.LoggerFactory as LF
+from algorithm.Astar import *
+
+smtplogger = LF.get_logger(__name__)
+
+def show_me_the_path(result, path_list, plist, maze):
+    plist_temp = plist[:]
+    plist_temp.insert(0, 0)
+    plist_temp.append(25526)
+    order = []
+    for i,val in enumerate(result):
+        order.append(plist_temp.index(val))
+    smtplogger.info('order {}'.format(order))
+    path_dot = []
+    for j in range(len(plist_temp)-1):
+        for k in path_list[(order[j]*len(plist_temp)) + (order[j+1])]:
+            path_dot.append(k)
+        print_map(path_dot, maze)
+        smtplogger.info('next episode')
+    smtplogger.info("path_dot{}".format(path_dot))
+    return path_dot
