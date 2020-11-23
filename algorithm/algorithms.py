@@ -85,7 +85,7 @@ def draw_png_graph(products,res_ind):
             width=1
             )
     plt.savefig("data/path/path.png")
-    print("generate: path.png")
+    logger.info("generate: path.png")
 
 
 def draw_png_dot_graph(products,path):

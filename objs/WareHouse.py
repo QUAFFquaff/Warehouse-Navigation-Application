@@ -8,6 +8,10 @@ from algorithm.BruteForce import *
 from algorithm.Direction import direction
 from algorithm.MakeMatrix import *
 from algorithm.algorithms import *
+from algorithm.MakeMaze import *
+from algorithm.MakeAstarMatrix import *
+from algorithm.ShowMeThePath import *
+
 from objs.DataHandler import *
 
 Rule = Enum('Rule', ('Brute_force', 'Dijkstra'))
@@ -52,11 +56,20 @@ class WareHouse:
         else:
             order = Order.Order(time.time())
             p_list = list(map(int,p_list))
+            for i in range(len(p_list)):
+                if self.id_to_ind_dict.get(p_list[i]) is None:
+                    logger.error("Product id {} not found!".format(p_list[i]))
+                    raise Exception("Product id not found!")
+                p_list[i]=self.id_to_ind_dict[p_list[i]]
             ids = order.add_products(p_list,self.products)
             self.order_listtest.append(ids)
             self.products_index_of_one_order_in_data.append(ids)
             self.orders.append(order)
             return ids
+
+    def load_orders(self,filename):
+        logger.info("loading orders from {}".format(filename))
+        pass
 
     def generate_path(self,order,index):
         '''
@@ -66,13 +79,17 @@ class WareHouse:
         :return:
         '''
         products_index_of_one_order_in_data = self.products_index_of_one_order_in_data[index]
-        print(products_index_of_one_order_in_data)
+        logger.info("products_index_of_one_order_in_data: {}".format(products_index_of_one_order_in_data))
 
         pro_list = [[p.get_id(), p.x, p.y] for p in order.products]
-        ret = make_matrix(self.data, self.start_point, self.end_point, products_index_of_one_order_in_data)
+     #############
+        #ret = make_matrix(self.data, self.start_point, self.end_point, products_index_of_one_order_in_data)
 
-        d = ret['xmatrix'] + ret['ymatrix']
-
+        #d = ret['xmatrix'] + ret['ymatrix']
+     #############
+        maze1 = make_maze(self.data)
+        d, path_list = make_astar_matrix(self.data, maze1, self.start_point, self.end_point, products_index_of_one_order_in_data)
+        print(d)
         if self.rules == Rule.Brute_force:
             self.logger.info("using brute force")
             temp = [i + 1 for i in range(len(pro_list))]
@@ -87,13 +104,26 @@ class WareHouse:
             p1 = Process(target=brute_force, args=(m, d, sourcetest, targettest, products_index_of_one_order_in_data),
                          name='process 1')
             p1.start()
-            p1.join(timeout=4)
+            p1.join(timeout=60)
             p1.terminate()
-            print(m['path'])
+            logger.info("m['path']: {}".format(m['path']))
+
+            #### maze !!!
+            route1 = show_me_the_path(m['path'], path_list, products_index_of_one_order_in_data,maze1)
+
+            ###############################
+            ###     TO DO:              ###
+            ###  CHANGE ROUTE TO ROUTE1 ###
+            ###                         ###
+            ###############################
             route = direction(self.data, start_point, end_point, m)
+
+
+
             ############################
             self.logger.info("brute force result(path): {}".format(m["path"]))
             self.logger.info("draw png graph")
+            self.logger.info("pro_list: {}".format(pro_list))
             draw_png_graph(pro_list, m['path'])
             self.logger.info("finish generating path")
             return route
@@ -104,7 +134,13 @@ class WareHouse:
         for ind,d in enumerate(self.data):
             product = Products.Product(int(d[0]), d[1], d[2])
             self.products.append(product)
-            self.id_to_ind_dict[d[0]] = ind
+            self.id_to_ind_dict[d[0]] = ind+1
 
         pro_list = [[p.get_id(),p.x,p.y] for p in self.products]
         draw_warehouse(pro_list,"data/path/warehouse.png")
+
+    def get_string_list_orders(self):
+        orders=[]
+        for order in self.orders:
+            orders.append(order.to_string())
+        return orders

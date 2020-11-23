@@ -19,7 +19,7 @@ class Order:
         self.finish_time = None
 
     def init_products(self,num,all_products):
-        list = range(len(all_products))
+        list = range(1,len(all_products) + 1)
         randomlist = random.sample(list, num)
 
         ids = randomlist
@@ -29,7 +29,7 @@ class Order:
     def add_products(self,list,all_products):
         ids = list
         print(ids)
-        self.products = [all_products[id] for id in ids]
+        self.products = [all_products[id-1] for id in ids]
         return ids
 
 
@@ -47,4 +47,8 @@ class Order:
         else:
             print('This order has %d items, created at %s, finished at %s' % (len(self.product_list), self.start_time,
                                                                               self.finish_time))
-
+    def to_string(self):
+        order=[]
+        for p in self.products:
+            order.append(str(p.get_id()))
+        return ", ".join(order)
