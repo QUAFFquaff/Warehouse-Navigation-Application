@@ -68,6 +68,10 @@ class WareHouse:
             return ids
 
     def load_orders(self,filename):
+
+        orders = self.dhandler.load_orders(filename)
+        for o in orders:
+            self.orders.append(o)
         logger.info("loading orders from {}".format(filename))
         pass
 
@@ -144,3 +148,4 @@ class WareHouse:
         for order in self.orders:
             orders.append(order.to_string())
         return orders
+
