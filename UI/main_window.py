@@ -1,4 +1,4 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets,QtWebEngineWidgets
 from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtGui import QPixmap
 import re
@@ -35,9 +35,10 @@ class Main_UI(QMainWindow):
         self.label_username = QtWidgets.QLabel(self.centralwidget)
         self.label_username.setGeometry(QtCore.QRect(90, 40, 151, 21))
         self.label_username.setObjectName("label_username")
-        self.label_graph = QtWidgets.QLabel(self.centralwidget)
+        self.label_graph = QtWebEngineWidgets.QWebEngineView(self.centralwidget)
+        # self.label_graph = QtWidgets.QLabel(self.centralwidget)
         self.label_graph.setGeometry(QtCore.QRect(30, 210, 641, 441))
-        self.label_graph.setText("")
+        # self.label_graph.setText("")
         self.label_graph.setObjectName("label_graph")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(880, 80, 391, 631))
@@ -189,13 +190,14 @@ class Main_UI(QMainWindow):
 
         logger.info('loading file location: {}'.format(filename))
         self.warehouse.load_data(str(filename))
+        path = os.path.join(os.getcwd(),"data","path","file_name.html").replace("\\","/")
+        print(path)
+        # self.label_graph.load(QUrl("D:/program/python/Warehouse-Navigation-Application/data/path/file_name.html"))
+        self.label_graph.load(QUrl("file:///{}".format(path)))
+        # img_name = "data/path/warehouse.png"
+        # img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
+        # self.label_graph.setPixmap(img)
 
-        img_name = "data/path/warehouse.png"
-        img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
-        self.label_graph.setPixmap(img)
-        #img_name = "data/images/graph_demo.png"
-        #img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
-        #self.label_graph.setPixmap(img)
 
     def add_orders_from_file(self):
         default_file = "data/qvBox-warehouse-orders-list-part01.txt"
