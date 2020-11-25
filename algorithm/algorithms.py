@@ -267,7 +267,6 @@ def draw_path_html(shelf_list,p_nodes,path, file_name):
             "symbol": "square"
         })
     logger.info("finish shelf")
-    logger.info(p_nodes)
     for node in p_nodes:
         nodes.append({
             "x": node[1],
@@ -282,6 +281,18 @@ def draw_path_html(shelf_list,p_nodes,path, file_name):
         })
     logger.info("finish products")
 
+    for node in path:
+        nodes.append({
+            "x": node[1],
+            "y": node[2],
+            "id": node[0],
+            'is_fixed': True,
+            "name": str(node[0]),
+            "symbolSize": 14,
+            "itemStyle": {"normal": {"color": 'blue'}},
+            "categories": 1,
+            "symbol": "square"
+        })
     edges = []
     # for node in path:
     #     nodes.append({
