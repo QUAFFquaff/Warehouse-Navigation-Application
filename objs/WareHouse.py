@@ -85,7 +85,9 @@ class WareHouse:
         :return:
         '''
 
-        start_time = time.time()
+        #TEST ONLY
+        #start_time = time.time()
+
         products_index_of_one_order_in_data = self.products_index_of_one_order_in_data[index]
         logger.info("products_index_of_one_order_in_data: {}".format(products_index_of_one_order_in_data))
 
@@ -125,7 +127,8 @@ class WareHouse:
             ###                         ###
             ###############################
             route = direction(self.data, start_point, end_point, m)
-
+            # FOR TEST ONLY
+            """
             end_time = time.time()
             path_result_id = []
             for i, step in enumerate(m['path']):
@@ -135,7 +138,8 @@ class WareHouse:
                     pass
             print("Order[{}] total running time {}s result path is{}".format(order.to_string(),end_time-start_time,path_result_id))
 
-            #print("end time", end_time)
+            """
+
 
             ############################
             self.logger.info("brute force result(path): {}".format(m["path"]))
