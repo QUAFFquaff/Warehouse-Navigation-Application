@@ -73,7 +73,6 @@ class WareHouse:
         for o in orders:
             self.orders.append(o)
         logger.info("loading orders from {}".format(filename))
-        pass
 
     def generate_path(self,order,index):
         '''
