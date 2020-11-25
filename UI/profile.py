@@ -58,6 +58,7 @@ class Profile_UI(QDialog):
         self.comboBox_set_rules = QtWidgets.QComboBox(self.formLayoutWidget)
         self.comboBox_set_rules.setObjectName("comboBox_set_rules")
         self.comboBox_set_rules.addItem("")
+        self.comboBox_set_rules.addItem("")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.comboBox_set_rules)
         self.lineEdit_maximum_products = QtWidgets.QLineEdit(self.formLayoutWidget)
         self.lineEdit_maximum_products.setObjectName("lineEdit_maximum_products")
@@ -91,7 +92,8 @@ class Profile_UI(QDialog):
         self.label_confirm_password.setText(_translate("Profile", "Comfirm Password"))
         self.label_set_rules.setText(_translate("Profile", "Set Rules"))
         self.label_maximum_products.setText(_translate("Profile", "Maximum Products"))
-        self.comboBox_set_rules.setItemText(0, _translate("Profile", "Dijkstra"))
+        self.comboBox_set_rules.setItemText(0, _translate("Profile", "Brute_force"))
+        self.comboBox_set_rules.setItemText(1, _translate("Profile", "Greedy_nn"))
         self.pushButton_confirm.setText(_translate("Profile", "Confirm"))
         self.pushButton_exit.setText(_translate("Profile", "Exit"))
         self.label_image.setText(_translate("Profile", "Image"))
@@ -113,6 +115,8 @@ class Profile_UI(QDialog):
         self.pushButton_confirm.clicked.connect(self.confirm)
 
     def confirm(self):
+        params=self.get_params()
+        self.warehouse.set_rules(params["rule"])
         self.accept()
 
     # return a dict about the parameters in profile
@@ -122,6 +126,11 @@ class Profile_UI(QDialog):
         params["old_password"]=self.lineEdit_password_input1.text()
         params["new_password"] = self.lineEdit_password_input2.text()
         params["maximum_products"]=self.lineEdit_maximum_products.text()
+        rule = self.comboBox_set_rules.currentText()
+        if rule == "Brute_force":
+            params["rule"] = 0
+        elif rule == "Greedy_nn":
+            params["rule"] = 1
         return params
 
     def set_warehouse(self,wh):

@@ -15,7 +15,7 @@ from algorithm.GreedyNN import *
 
 from objs.DataHandler import *
 
-Rule = Enum('Rule', ('Brute_force', 'Dijkstra'))
+Rule = Enum('Rule', ('Brute_force', 'Greedy_nn'))
 import utils.LoggerFactory as LF
 from multiprocessing import Process, Manager
 
@@ -115,8 +115,6 @@ class WareHouse:
             ### to do: target len
             sourcetest = 0
             targettest = 25526
-            start_point = (0,0)
-            end_point = (0,0)
             manager = Manager()
             m = manager.dict()
             p1 = Process(target=brute_force, args=(m, d, sourcetest, targettest, products_index_of_one_order_in_data),
@@ -134,7 +132,7 @@ class WareHouse:
             ###  CHANGE ROUTE TO ROUTE1 ###
             ###                         ###
             ###############################
-            route = direction(self.data, start_point, end_point, m)
+            route = direction(self.data, self.start_point, self.end_point, m)
             # FOR TEST ONLY
             """
             end_time = time.time()
@@ -161,12 +159,12 @@ class WareHouse:
 
             sourcetest = 0
             targettest = 25526
-            start_point = (0, 0)
-            end_point = (0, 0)
 
             res = greedy_nn(d, sourcetest, targettest, products_index_of_one_order_in_data)
-            #route1 = show_me_the_path(res['path'], path_list, products_index_of_one_order_in_data, maze1)
-            #return route
+            route1 = []
+            for p in show_me_the_path(res['path'], path_list, products_index_of_one_order_in_data, maze1):
+                route1.append("({},{})".format(p[0],p[1]))
+            return route1
 
         self.logger.info("finish generating path")
 

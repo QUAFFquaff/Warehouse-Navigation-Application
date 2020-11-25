@@ -300,7 +300,7 @@ class Main_UI(QMainWindow):
 
             path = os.path.join(os.getcwd(), "data", "path", "path.html").replace("\\", "/")
             self.label_graph.load(QUrl("file:///{}".format(path)))
-            QMessageBox.information(self, "Info", " ".join(route), QMessageBox.Yes, QMessageBox.Yes)
+            QMessageBox.information(self, "Info", " -> ".join(route), QMessageBox.Yes, QMessageBox.Yes)
 
     def set_start_and_end_point(self):
         start_x = self.lineEdit_start_x.text()
