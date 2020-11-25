@@ -18,6 +18,8 @@ Rule = Enum('Rule', ('Brute_force', 'Dijkstra'))
 import utils.LoggerFactory as LF
 from multiprocessing import Process, Manager
 
+import time
+
 class WareHouse:
     def __init__(self, worker=None, orders=[], dhandler=None):
         self.logger = LF.get_logger(__name__)
@@ -82,6 +84,8 @@ class WareHouse:
         :param index: index of the order in all orders
         :return:
         '''
+
+        start_time = time.time()
         products_index_of_one_order_in_data = self.products_index_of_one_order_in_data[index]
         logger.info("products_index_of_one_order_in_data: {}".format(products_index_of_one_order_in_data))
 
@@ -122,7 +126,16 @@ class WareHouse:
             ###############################
             route = direction(self.data, start_point, end_point, m)
 
+            end_time = time.time()
+            path_result_id = []
+            for i, step in enumerate(m['path']):
+                if i != 0 and i != len(m['path'])-1:
+                    path_result_id.append(int(self.data[step][0]))
+                else:
+                    pass
+            print("Order[{}] total running time {}s result path is{}".format(order.to_string(),end_time-start_time,path_result_id))
 
+            #print("end time", end_time)
 
             ############################
             self.logger.info("brute force result(path): {}".format(m["path"]))
