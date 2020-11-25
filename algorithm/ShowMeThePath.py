@@ -10,7 +10,7 @@ def show_me_the_path(result, path_list, plist, maze):
     order = []
     for i,val in enumerate(result):
         order.append(plist_temp.index(val))
-    smtplogger.info('order {}'.format(order))
+    # smtplogger.info('order {}'.format(order))
     path_dot = []
     for j in range(len(plist_temp)-1):
         for k in path_list[(order[j]*len(plist_temp)) + (order[j+1])]:

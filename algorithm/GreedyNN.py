@@ -30,7 +30,7 @@ def greedy_nn(d_matrix, source, target, plist) -> dict:
 
         # print('nnd_trim',nnl_trim)
         d = d + min(nnl_trim)
-        path_list.append(list(d_matrix[prev]).index(min(nnl_trim)))
+        path_list.append(temp[list(d_matrix[prev]).index(min(nnl_trim))])
         pop_list.append(prev)
         prev = list(d_matrix[prev]).index(min(nnl_trim))
         # print(path_list,pop_list,d)
