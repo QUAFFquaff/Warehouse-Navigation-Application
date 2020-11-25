@@ -168,6 +168,8 @@ class WareHouse:
             end_point = (0, 0)
 
             res = greedy_nn(d, sourcetest, targettest, products_index_of_one_order_in_data)
+            #route1 = show_me_the_path(res['path'], path_list, products_index_of_one_order_in_data, maze1)
+            #return route
 
         self.logger.info("finish generating path")
 
