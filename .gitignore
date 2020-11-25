@@ -5,4 +5,9 @@ qt_designer/*.py
 */__pycache__/*
 *.spec
 */*.spec
+<<<<<<< HEAD
 data/path
+=======
+data/path
+test.html
+>>>>>>> 1dc7756439d67a905bf71470384a90268c34eafb
