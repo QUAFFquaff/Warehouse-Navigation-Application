@@ -11,6 +11,7 @@ from algorithm.algorithms import *
 from algorithm.MakeMaze import *
 from algorithm.MakeAstarMatrix import *
 from algorithm.ShowMeThePath import *
+from algorithm.GreedyNN import *
 
 from objs.DataHandler import *
 
@@ -41,7 +42,7 @@ class WareHouse:
         if num == 0:
             self.rules = Rule.Brute_force
         elif num == 1:
-            self.rules = Rule.Dijkstra
+            self.rules = Rule.Greedy_nn
 
     def set_dhandler(self):
         self.dhandler = DataHandler()
@@ -158,6 +159,16 @@ class WareHouse:
             draw_png_graph(pro_list, m['path'])
             self.logger.info("finish generating path")
             return route
+        if self.rules == Rule.Greedy_nn:
+            self.logger.info("using greedy nn")
+
+            sourcetest = 0
+            targettest = 25526
+            start_point = (0, 0)
+            end_point = (0, 0)
+
+            route = greedy_nn(d, sourcetest, targettest, products_index_of_one_order_in_data)
+
         self.logger.info("finish generating path")
 
     def load_data(self, path):
