@@ -52,10 +52,10 @@ class WareHouse:
         if not p_list:
             order = Order.Order(time.time())
             ids = order.init_products(num, self.products)
-            self.order_listtest.append(ids)
-            self.orders.append(order)
-            self.products_index_of_one_order_in_data.append(ids)
-            return ids
+            # self.order_listtest.append(ids)
+            # self.orders.append(order)
+            # self.products_index_of_one_order_in_data.append(ids)
+            # return ids
         else:
             order = Order.Order(time.time())
             p_list = list(map(int,p_list))
@@ -65,10 +65,10 @@ class WareHouse:
                     raise Exception("Product id not found!")
                 p_list[i]=self.id_to_ind_dict[p_list[i]]
             ids = order.add_products(p_list,self.products)
-            self.order_listtest.append(ids)
-            self.products_index_of_one_order_in_data.append(ids)
-            self.orders.append(order)
-            return ids
+        self.order_listtest.append(ids)
+        self.products_index_of_one_order_in_data.append(ids)
+        self.orders.append(order)
+        return ids
 
     def load_orders(self,filename):
 
@@ -154,7 +154,7 @@ class WareHouse:
             self.id_to_ind_dict[d[0]] = ind+1
 
         pro_list = [[p.get_id(),p.x,p.y] for p in self.products]
-        draw_warehouse(pro_list,"data/path/warehouse.png")
+        # draw_warehouse(pro_list,"data/path/warehouse.png")
         draw_warehouse_html(pro_list,"data/path/warehouse.html")
 
     def get_string_list_orders(self):

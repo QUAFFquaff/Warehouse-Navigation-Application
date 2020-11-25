@@ -158,8 +158,51 @@ def draw_warehouse(products,path):
     plt.savefig(path)
     logger.info("draw_png_graph generate: warehouse.png")
 
+def draw_warehouse_html(products, file_name):
+    dot_list = []
+    for p in products:
+        temp = [int(p[1]),int(p[2])]
+        if temp not in dot_list:
+            dot_list.append(p)
+    logger.info("start drawing warehouse html graph")
+    nodes = []
+    for node in dot_list:
+        nodes.append({
+            "x": node[1],
+            "y": node[2],
+            "id": node[0],
+            'is_fixed': True,
+            "name": "("+str(node[1])+','+str(node[2]),
+            "symbolSize": 15,
+            "itemStyle": {"normal": {"color": 'grey'}},
+            "categories": 0,
+            "symbol": "square"
+        })
 
-def draw_warehouse_html(g_nodes, file_name):
+    edges = []
+    (
+        Graph(init_opts=opts.InitOpts(width="1600px", height="800px"))
+            .add(
+            series_name="",
+            nodes=nodes,
+            links=edges,
+            layout="none",
+            #         is_roam=True,
+            is_focusnode=True,
+            categories=[{"name":'shelf'}],
+            label_opts=opts.LabelOpts(is_show=False),
+            linestyle_opts=opts.LineStyleOpts(width=0.9, opacity=0.9, color="source"),
+            #             linestyle_opts=opts.LineStyleOpts(width=0.5, curve=0.3, opacity=0.7),
+        )
+            .set_global_opts(
+            legend_opts=opts.LegendOpts(orient="vertical", pos_left="2%", pos_top="20%"),
+            title_opts=opts.TitleOpts(title="Warehouse products distribution"),
+        )
+            .render(file_name)
+    )
+    print("done")
+
+def draw_dots_html(g_nodes, file_name):
     logger.info("start drawing warehouse html graph")
     nodes = []
     for node in g_nodes:
@@ -167,7 +210,8 @@ def draw_warehouse_html(g_nodes, file_name):
             "x": node[1],
             "y": node[2],
             "id": node[0],
-            "name": node[0],
+            'is_fixed': True,
+            "name": str(node[0])+":("+str(node[1])+','+str(node[2]),
             "symbolSize": 10,
             "itemStyle": {"normal": {"color": 'grey'}},
             "categories": "products1"
@@ -196,6 +240,65 @@ def draw_warehouse_html(g_nodes, file_name):
     )
     print("done")
 
+
+# def draw_path_html(products,path, file_name):
+#     nodes_id = []
+#     logger.info("start drawing warehouse html graph")
+#     nodes = []
+#     for node in products:
+#         nodes.append({
+#             "x": node[1],
+#             "y": node[2],
+#             "id": node[0],
+#             "name": node[0],
+#             "symbolSize": 10,
+#             "itemStyle": {"normal": {"color": 'grey'}},
+#             "categories": "products"
+#         })
+#     for node in path:
+#         nodes.append({
+#             "x": pos[node][0],
+#             "y": pos[node][1],
+#             "id": node,
+#             "name": name[node] + name_to_cn.get(name[node], ""),
+#             "symbolSize": size[node],
+#             "itemStyle": {"normal": {"color": colors[node]}},
+#             "categories": "a"
+#         })
+#         nodes_id.append(node)
+#
+#     edges = []
+#     for edge in G.edges():
+#         if colors[edge[0]] in ['orange', 'blue']:
+#             edges.append({"source": nodes_id.index(edge[0]),
+#                           "target": nodes_id.index(edge[1])
+#                           })
+#         else:
+#             edges.append({"source": nodes_id.index(edge[1]),
+#                           "target": nodes_id.index(edge[0])
+#                           })
+#
+#     links = [opts.GraphLink(source=nodes_id.index(e[0]), target=nodes_id.index(e[1])) for e in G.edges()]
+#     (
+#         Graph(init_opts=opts.InitOpts(width="1600px", height="800px"))
+#             .add(
+#             series_name="",
+#             nodes=nodes,
+#             links=edges,
+#             layout="none",
+#             #         is_roam=True,
+#             is_focusnode=True,
+#             label_opts=opts.LabelOpts(is_show=False),
+#             linestyle_opts=opts.LineStyleOpts(width=0.9, opacity=0.9, color="source"),
+#             #             linestyle_opts=opts.LineStyleOpts(width=0.5, curve=0.3, opacity=0.7),
+#         )
+#             .set_global_opts(
+#             legend_opts=opts.LegendOpts(orient="vertical", pos_left="2%", pos_top="20%"),
+#             title_opts=opts.TitleOpts(title="数据提取关系图"),
+#         )
+#             .render(file_name)
+#     )
+#     print("done")
 
 # def draw_html(G, file_name):
 #     pos = nx.get_node_attributes(G, 'pos')
@@ -248,5 +351,5 @@ def draw_warehouse_html(g_nodes, file_name):
 #             .render(file_name)
 #     )
 #     print("done")
-nodes = [[1,2,3],[2,12,23],[4,42,24]]
-draw_warehouse_html(nodes,'test.html')
+# nodes = [[1,2,3],[2,12,23],[4,42,24]]
+# draw_warehouse_html(nodes,'test.html')
