@@ -22,15 +22,16 @@ class Order:
         list = range(1,len(all_products) + 1)
         randomlist = random.sample(list, num)
 
-        ids = randomlist
-        self.products = [all_products[id] for id in ids]
-        return ids
+        inds = randomlist
+        self.products = [all_products[id] for id in inds]
+        print(inds)
+        return inds
 
     def add_products(self,list,all_products):
-        ids = list
-        print(ids)
-        self.products = [all_products[id-1] for id in ids]
-        return ids
+        inds = list
+        print(inds)
+        self.products = [all_products[id-1] for id in inds]
+        return inds
 
 
 

@@ -36,6 +36,7 @@ class WareHouse:
         self.products_index_of_one_order_in_data = []
         self.id_to_ind_dict = {}
         self.timeout=60
+        self.shelf_list = []
 
     def set_rules(self, num):
         if num == 0:
@@ -52,7 +53,7 @@ class WareHouse:
     def add_order(self, num, p_list=None):
         if not p_list:
             order = Order.Order(time.time())
-            ids = order.init_products(num, self.products)
+            inds = order.init_products(num, self.products)
             # self.order_listtest.append(ids)
             # self.orders.append(order)
             # self.products_index_of_one_order_in_data.append(ids)
@@ -65,11 +66,20 @@ class WareHouse:
                     logger.error("Product id {} not found!".format(p_list[i]))
                     raise Exception("Product id not found!")
                 p_list[i]=self.id_to_ind_dict[p_list[i]]
-            ids = order.add_products(p_list,self.products)
-        self.order_listtest.append(ids)
-        self.products_index_of_one_order_in_data.append(ids)
+            inds = order.add_products(p_list,self.products)
+        self.order_listtest.append(inds)
+        self.products_index_of_one_order_in_data.append(inds)
         self.orders.append(order)
-        return ids
+
+        img_name = "data/path/dot.html"
+        p_nodes = []
+        for i in inds:
+            p = self.products[i]
+            print(p)
+            p_nodes.append([p.get_id(),p.x,p.y])
+        print(p_nodes)
+        draw_dots_html(self.shelf_list,p_nodes,img_name)
+        return inds
 
     def load_orders(self,filename):
 
@@ -170,7 +180,14 @@ class WareHouse:
 
         pro_list = [[p.get_id(),p.x,p.y] for p in self.products]
         # draw_warehouse(pro_list,"data/path/warehouse.png")
-        draw_warehouse_html(pro_list,"data/path/warehouse.html")
+
+        dot_list = []
+        for p in pro_list:
+            temp = [int(p[1]), int(p[2])]
+            if temp not in dot_list:
+                dot_list.append(temp)
+        self.shelf_list = dot_list
+        draw_warehouse_html(self.shelf_list,"data/path/warehouse.html")
 
     def get_string_list_orders(self):
         orders=[]
