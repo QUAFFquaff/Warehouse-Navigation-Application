@@ -112,6 +112,7 @@ class WareHouse:
             temp = [i + 1 for i in range(len(pro_list))]
 
             ##################
+            ### to do: target len
             sourcetest = 0
             targettest = 25526
             start_point = (0,0)
