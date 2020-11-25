@@ -163,7 +163,7 @@ class WareHouse:
             start_point = (0, 0)
             end_point = (0, 0)
 
-            route = greedy_nn(d, sourcetest, targettest, products_index_of_one_order_in_data)
+            res = greedy_nn(d, sourcetest, targettest, products_index_of_one_order_in_data)
 
         self.logger.info("finish generating path")
 
