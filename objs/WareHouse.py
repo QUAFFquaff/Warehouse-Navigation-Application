@@ -32,6 +32,7 @@ class WareHouse:
         self.end_point = (0.0, 0.0)
         self.products_index_of_one_order_in_data = []
         self.id_to_ind_dict = {}
+        self.timeout=60
 
     def set_rules(self, num):
         if num == 0:
@@ -107,7 +108,7 @@ class WareHouse:
             p1 = Process(target=brute_force, args=(m, d, sourcetest, targettest, products_index_of_one_order_in_data),
                          name='process 1')
             p1.start()
-            p1.join(timeout=60)
+            p1.join(timeout=self.timeout)
             p1.terminate()
             logger.info("m['path']: {}".format(m['path']))
 
