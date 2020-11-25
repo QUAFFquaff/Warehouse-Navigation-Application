@@ -163,17 +163,18 @@ def draw_warehouse_html(products, file_name):
     for p in products:
         temp = [int(p[1]),int(p[2])]
         if temp not in dot_list:
-            dot_list.append(p)
+            dot_list.append(temp)
+    print(dot_list)
     logger.info("start drawing warehouse html graph")
     nodes = []
-    for node in dot_list:
+    for ind,node in enumerate(dot_list):
         nodes.append({
-            "x": node[1],
-            "y": node[2],
-            "id": node[0],
+            "x": node[0],
+            "y": node[1],
+            "id": ind,
             'is_fixed': True,
-            "name": "("+str(node[1])+','+str(node[2]),
-            "symbolSize": 15,
+            "name": "("+str(node[0])+','+str(node[1])+')',
+            "symbolSize": 14,
             "itemStyle": {"normal": {"color": 'grey'}},
             "categories": 0,
             "symbol": "square"
@@ -181,7 +182,7 @@ def draw_warehouse_html(products, file_name):
 
     edges = []
     (
-        Graph(init_opts=opts.InitOpts(width="1600px", height="800px"))
+        Graph(init_opts=opts.InitOpts(width="641px", height="441px"))
             .add(
             series_name="",
             nodes=nodes,
