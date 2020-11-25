@@ -5,5 +5,5 @@ qt_designer/*.py
 */__pycache__/*
 *.spec
 */*.spec
-data/path
+data/path/*
 test.html
