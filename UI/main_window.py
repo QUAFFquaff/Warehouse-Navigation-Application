@@ -258,10 +258,10 @@ class Main_UI(QMainWindow):
         self.orders.append(", ".join(l))
         self.orders_model.setStringList(self.orders)
         pro_list = [[p.get_id(),p.x,p.y] for p in products]
-        img_name = "data/path/dot.png"
-        draw_png_dot_graph(pro_list,img_name)
-        img_name = "data/path/dot.html"
-        draw_dots_html(pro_list,img_name)
+        # img_name = "data/path/dot.png"
+        # draw_png_dot_graph(pro_list,img_name)
+        # img_name = "data/path/dot.html"
+        # draw_dots_html(pro_list,img_name)
         path = os.path.join(os.getcwd(),"data","path","dot.html").replace("\\","/")
         self.label_graph.load(QUrl("file:///{}".format(path)))
 

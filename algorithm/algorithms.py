@@ -158,16 +158,10 @@ def draw_warehouse(products,path):
     plt.savefig(path)
     logger.info("draw_png_graph generate: warehouse.png")
 
-def draw_warehouse_html(products, file_name):
-    dot_list = []
-    for p in products:
-        temp = [int(p[1]),int(p[2])]
-        if temp not in dot_list:
-            dot_list.append(temp)
-    print(dot_list)
+def draw_warehouse_html(shelf_list, file_name):
     logger.info("start drawing warehouse html graph")
     nodes = []
-    for ind,node in enumerate(dot_list):
+    for ind,node in enumerate(shelf_list):
         nodes.append({
             "x": node[0],
             "y": node[1],
@@ -203,24 +197,39 @@ def draw_warehouse_html(products, file_name):
     )
     print("done")
 
-def draw_dots_html(g_nodes, file_name):
-    logger.info("start drawing warehouse html graph")
+def draw_dots_html(shelf_list,p_nodes, file_name):
+    logger.info("start drawing products html graph")
     nodes = []
-    for node in g_nodes:
+    for ind,node in enumerate(shelf_list):
+        nodes.append({
+            "x": node[0],
+            "y": node[1],
+            "id": -ind,
+            'is_fixed': True,
+            "name": "("+str(node[0])+','+str(node[1])+')',
+            "symbolSize": 14,
+            "itemStyle": {"normal": {"color": 'grey'}},
+            "categories": 0,
+            "symbol": "square"
+        })
+    logger.info("finish shelf")
+    logger.info(p_nodes)
+    for node in p_nodes:
         nodes.append({
             "x": node[1],
             "y": node[2],
             "id": node[0],
             'is_fixed': True,
-            "name": str(node[0])+":("+str(node[1])+','+str(node[2]),
-            "symbolSize": 10,
-            "itemStyle": {"normal": {"color": 'grey'}},
-            "categories": "products1"
+            "name": str(node[0]),
+            "symbolSize": 14,
+            "itemStyle": {"normal": {"color": 'blue'}},
+            "categories": 1,
+            "symbol": "square"
         })
-
+    logger.info("finish products")
     edges = []
     (
-        Graph(init_opts=opts.InitOpts(width="1600px", height="800px"))
+        Graph(init_opts=opts.InitOpts(width="641px", height="441px"))
             .add(
             series_name="",
             nodes=nodes,
@@ -228,7 +237,7 @@ def draw_dots_html(g_nodes, file_name):
             layout="none",
             #         is_roam=True,
             is_focusnode=True,
-            # categories=[{"name":'products'},{"name":'products1'}],
+            categories=[{"name":'shelf'},{"name":'products'}],
             label_opts=opts.LabelOpts(is_show=False),
             linestyle_opts=opts.LineStyleOpts(width=0.9, opacity=0.9, color="source"),
             #             linestyle_opts=opts.LineStyleOpts(width=0.5, curve=0.3, opacity=0.7),
