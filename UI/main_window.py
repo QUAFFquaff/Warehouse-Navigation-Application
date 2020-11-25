@@ -191,8 +191,6 @@ class Main_UI(QMainWindow):
         logger.info('loading file location: {}'.format(filename))
         self.warehouse.load_data(str(filename))
         path = os.path.join(os.getcwd(),"data","path","file_name.html").replace("\\","/")
-        print(path)
-        # self.label_graph.load(QUrl("D:/program/python/Warehouse-Navigation-Application/data/path/file_name.html"))
         self.label_graph.load(QUrl("file:///{}".format(path)))
         # img_name = "data/path/warehouse.png"
         # img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
@@ -233,8 +231,8 @@ class Main_UI(QMainWindow):
         pro_list = [[p.get_id(),p.x,p.y] for p in products]
         img_name = "data/path/dot.png"
         draw_png_dot_graph(pro_list,img_name)
-        img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
-        self.label_graph.setPixmap(img)
+        path = os.path.join(os.getcwd(),"data","path","dot.html").replace("\\","/")
+        self.label_graph.load(QUrl("file:///{}".format(path)))
 
     def get_order_index(self):
         if self.clicked_order_index is None:
@@ -265,9 +263,8 @@ class Main_UI(QMainWindow):
             logger.info('send order {}'.format(self.orders[index]))
             route=self.warehouse.generate_path(self.warehouse.orders[index],index)
 
-            img_name = "data/path/path.png"
-            img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
-            self.label_graph.setPixmap(img)
+            path = os.path.join(os.getcwd(), "data", "path", "path.html").replace("\\", "/")
+            self.label_graph.load(QUrl("file:///{}".format(path)))
             QMessageBox.information(self, "Info", " ".join(route), QMessageBox.Yes, QMessageBox.Yes)
 
     def set_start_and_end_point(self):
