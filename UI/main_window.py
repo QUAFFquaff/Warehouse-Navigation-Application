@@ -194,11 +194,16 @@ class Main_UI(QMainWindow):
         filename, _ = QFileDialog.getOpenFileName(self, default_file)
         if filename is None or filename=="":
             filename="data/qvBox-warehouse-data-f20-v01.txt"
-
+        if not filename.endswith(".txt"):
+            QMessageBox.information(self, "error", "The file has to be a txt file", QMessageBox.Yes, QMessageBox.Yes)
+            return
         logger.info('loading file location: {}'.format(filename))
-        self.warehouse.load_data(str(filename))
+        try:
+            self.warehouse.load_data(str(filename))
+        except Exception() as e:
+            QMessageBox.information(self, "error", "exception", QMessageBox.Yes, QMessageBox.Yes)
+            return
         path = os.path.join(os.getcwd(),"data","path","warehouse.html").replace("\\","/")
-        print(path)
         # self.label_graph.load(QUrl("D:/program/python/Warehouse-Navigation-Application/data/path/file_name.html"))
         self.label_graph.load(QUrl("file:///{}".format(path)))
         # img_name = "data/path/warehouse.png"
@@ -207,17 +212,32 @@ class Main_UI(QMainWindow):
 
 
     def add_orders_from_file(self):
+        if self.warehouse.data is None:
+            QMessageBox.information(self, "error", "no data loaded", QMessageBox.Yes,
+                                    QMessageBox.Yes)
+            return
         default_file = "data/qvBox-warehouse-orders-list-part01.txt"
         filename, _ = QFileDialog.getOpenFileName(self, default_file)
         if filename is None or filename=="":
             filename="data/qvBox-warehouse-orders-list-part01.txt"
+        if not filename.endswith(".txt"):
+            QMessageBox.information(self, "error", "The file has to be a txt file", QMessageBox.Yes, QMessageBox.Yes)
+            return
         logger.info('loading file location: {}'.format(filename))
-        self.warehouse.load_orders(str(filename))
-        self.orders=self.warehouse.get_string_list_orders()
-        self.orders_model.setStringList(self.orders)
+        try:
+            self.warehouse.load_orders(str(filename))
+            self.orders=self.warehouse.get_string_list_orders()
+            self.orders_model.setStringList(self.orders)
+        except Exception() as e:
+            QMessageBox.information(self, "error", "exception", QMessageBox.Yes, QMessageBox.Yes)
+            return
         QMessageBox.information(self, "Info", "success", QMessageBox.Yes, QMessageBox.Yes)
 
     def add_order(self):
+        if self.warehouse.data is None:
+            QMessageBox.information(self, "error", "no data loaded", QMessageBox.Yes,
+                                    QMessageBox.Yes)
+            return
         products_id=self.lineEdit_products_id.text()
         if products_id == "":
             self.order_len = 3
@@ -267,6 +287,10 @@ class Main_UI(QMainWindow):
         self.warehouse=wh
 
     def generate_path(self):
+        if self.warehouse.data is None:
+            QMessageBox.information(self, "error", "no data loaded", QMessageBox.Yes,
+                                    QMessageBox.Yes)
+            return
         index = self.get_order_index()
         if index is not None:
             logger.info('send order {}'.format(self.orders[index]))
