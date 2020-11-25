@@ -54,10 +54,6 @@ class WareHouse:
         if not p_list:
             order = Order.Order(time.time())
             inds = order.init_products(num, self.products)
-            # self.order_listtest.append(ids)
-            # self.orders.append(order)
-            # self.products_index_of_one_order_in_data.append(ids)
-            # return ids
         else:
             order = Order.Order(time.time())
             p_list = list(map(int,p_list))
