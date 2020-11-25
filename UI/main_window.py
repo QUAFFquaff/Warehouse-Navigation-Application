@@ -36,9 +36,7 @@ class Main_UI(QMainWindow):
         self.label_username.setGeometry(QtCore.QRect(90, 40, 151, 21))
         self.label_username.setObjectName("label_username")
         self.label_graph = QtWebEngineWidgets.QWebEngineView(self.centralwidget)
-        # self.label_graph = QtWidgets.QLabel(self.centralwidget)
         self.label_graph.setGeometry(QtCore.QRect(30, 210, 641, 441))
-        # self.label_graph.setText("")
         self.label_graph.setObjectName("label_graph")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(880, 80, 391, 631))
@@ -77,7 +75,7 @@ class Main_UI(QMainWindow):
         self.pushButton_profile.setGeometry(QtCore.QRect(0, 90, 81, 41))
         self.pushButton_profile.setObjectName("pushButton_profile")
         self.formLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
-        self.formLayoutWidget_2.setGeometry(QtCore.QRect(720, 80, 158, 154))
+        self.formLayoutWidget_2.setGeometry(QtCore.QRect(720, 80, 151, 201))
         self.formLayoutWidget_2.setObjectName("formLayoutWidget_2")
         self.formLayout_2 = QtWidgets.QFormLayout(self.formLayoutWidget_2)
         self.formLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -106,9 +104,16 @@ class Main_UI(QMainWindow):
         self.lineEdit_end_y = QtWidgets.QLineEdit(self.formLayoutWidget_2)
         self.lineEdit_end_y.setObjectName("lineEdit_end_y")
         self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.lineEdit_end_y)
+        self.lineEdit_timeout = QtWidgets.QLineEdit(self.formLayoutWidget_2)
+        self.lineEdit_timeout.setObjectName("lineEdit_timeout")
+        self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineEdit_timeout)
         self.pushButton_set_start_and_end_point = QtWidgets.QPushButton(self.formLayoutWidget_2)
         self.pushButton_set_start_and_end_point.setObjectName("pushButton_set_start_and_end_point")
-        self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.pushButton_set_start_and_end_point)
+        self.formLayout_2.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.pushButton_set_start_and_end_point)
+        self.label_timeout = QtWidgets.QLabel(self.formLayoutWidget_2)
+        self.label_timeout.setWordWrap(True)
+        self.label_timeout.setObjectName("label_timeout")
+        self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_timeout)
         self.label_end_y_2 = QtWidgets.QLabel(self.centralwidget)
         self.label_end_y_2.setGeometry(QtCore.QRect(30, 640, 661, 24))
         self.label_end_y_2.setObjectName("label_end_y_2")
@@ -144,6 +149,7 @@ class Main_UI(QMainWindow):
         self.label_end_x.setText(_translate("MainWindow", "end x"))
         self.label_end_y.setText(_translate("MainWindow", "end y"))
         self.pushButton_set_start_and_end_point.setText(_translate("MainWindow", "set"))
+        self.label_timeout.setText(_translate("MainWindow", "timeout"))
         self.label_end_y_2.setText(_translate("MainWindow", "------------------------------------------------------------------------------> x"))
         self.label.setText(_translate("MainWindow", "y ^ | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |"))
 
@@ -177,6 +183,7 @@ class Main_UI(QMainWindow):
         self.lineEdit_start_y.setText("0")
         self.lineEdit_end_x.setText("0")
         self.lineEdit_end_y.setText("0")
+        self.lineEdit_timeout.setText("60")
 
     def order_clicked(self,index):
         self.clicked_order_index = index.row()
@@ -276,14 +283,18 @@ class Main_UI(QMainWindow):
         start_y = self.lineEdit_start_y.text()
         end_x = self.lineEdit_end_x.text()
         end_y = self.lineEdit_end_y.text()
-        reg="(\d+)"
+        timeout = self.lineEdit_timeout.text()
 
-        if not re.fullmatch(reg,start_x) or not re.fullmatch(reg,start_y) or not re.fullmatch(reg,end_x) or not re.fullmatch(reg,end_y):
+        reg="(\d+)"
+        float_reg="\d+(\.\d+)?"
+
+        if not re.fullmatch(reg,start_x) or not re.fullmatch(reg,start_y) or not re.fullmatch(reg,end_x) or not re.fullmatch(reg,end_y) or not re.fullmatch(float_reg,timeout):
             QMessageBox.information(self, "Error", "Wrong input format, numbers only!", QMessageBox.Yes, QMessageBox.Yes)
             return
         try:
             self.warehouse.start_point=(int(start_x),int(start_y))
             self.warehouse.end_point=(int(end_x),int(end_y))
+            self.warehouse.timeout=float(timeout)
             logger.info("setting start point to ({}, {})".format(start_x,start_y))
             logger.info("setting end point to ({}, {})".format(end_x,end_y))
         except Exception() as e:

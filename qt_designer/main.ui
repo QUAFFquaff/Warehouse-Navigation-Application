@@ -177,8 +177,8 @@
      <rect>
       <x>720</x>
       <y>80</y>
-      <width>158</width>
-      <height>154</height>
+      <width>151</width>
+      <height>201</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout_2">
@@ -223,9 +223,22 @@
       <widget class="QLineEdit" name="lineEdit_end_y"/>
      </item>
      <item row="4" column="1">
+      <widget class="QLineEdit" name="lineEdit_timeout"/>
+     </item>
+     <item row="5" column="1">
       <widget class="QPushButton" name="pushButton_set_start_and_end_point">
        <property name="text">
         <string>set</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_timeout">
+       <property name="text">
+        <string>timeout</string>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
        </property>
       </widget>
      </item>

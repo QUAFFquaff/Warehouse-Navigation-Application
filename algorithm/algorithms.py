@@ -173,7 +173,7 @@ def draw_warehouse_html(products, file_name):
             "id": node[0],
             'is_fixed': True,
             "name": "("+str(node[1])+','+str(node[2]),
-            "symbolSize": 10,
+            "symbolSize": 15,
             "itemStyle": {"normal": {"color": 'grey'}},
             "categories": 0,
             "symbol": "square"
