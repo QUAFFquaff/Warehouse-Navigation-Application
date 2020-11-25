@@ -142,6 +142,7 @@ class WareHouse:
 
         pro_list = [[p.get_id(),p.x,p.y] for p in self.products]
         draw_warehouse(pro_list,"data/path/warehouse.png")
+        draw_warehouse_html(pro_list,"data/path/warehouse.html")
 
     def get_string_list_orders(self):
         orders=[]

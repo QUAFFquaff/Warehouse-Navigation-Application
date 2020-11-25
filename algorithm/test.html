@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Awesome-pyecharts</title>
+            <script type="text/javascript" src="https://assets.pyecharts.org/assets/echarts.min.js"></script>
+
+</head>
+<body>
+    <div id="5c19ef6876dd4f0aa6dfa7f87817bb99" class="chart-container" style="width:1600px; height:800px;"></div>
+    <script>
+        var chart_5c19ef6876dd4f0aa6dfa7f87817bb99 = echarts.init(
+            document.getElementById('5c19ef6876dd4f0aa6dfa7f87817bb99'), 'white', {renderer: 'canvas'});
+        var option_5c19ef6876dd4f0aa6dfa7f87817bb99 = {
+    "animation": true,
+    "animationThreshold": 2000,
+    "animationDuration": 1000,
+    "animationEasing": "cubicOut",
+    "animationDelay": 0,
+    "animationDurationUpdate": 300,
+    "animationEasingUpdate": "cubicOut",
+    "animationDelayUpdate": 0,
+    "color": [
+        "#c23531",
+        "#2f4554",
+        "#61a0a8",
+        "#d48265",
+        "#749f83",
+        "#ca8622",
+        "#bda29a",
+        "#6e7074",
+        "#546570",
+        "#c4ccd3",
+        "#f05b72",
+        "#ef5b9c",
+        "#f47920",
+        "#905a3d",
+        "#fab27b",
+        "#2a5caa",
+        "#444693",
+        "#726930",
+        "#b2d235",
+        "#6d8346",
+        "#ac6767",
+        "#1d953f",
+        "#6950a1",
+        "#918597"
+    ],
+    "series": [
+        {
+            "type": "graph",
+            "layout": "none",
+            "symbolSize": 10,
+            "circular": {
+                "rotateLabel": false
+            },
+            "force": {
+                "repulsion": 50,
+                "edgeLength": 50,
+                "gravity": 0.2
+            },
+            "label": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "lineStyle": {
+                "show": true,
+                "width": 0.9,
+                "opacity": 0.9,
+                "curveness": 0,
+                "type": "solid",
+                "color": "source"
+            },
+            "roam": true,
+            "draggable": false,
+            "focusNodeAdjacency": true,
+            "data": [
+                {
+                    "x": 2,
+                    "y": 3,
+                    "id": 1,
+                    "name": 1,
+                    "symbolSize": 10,
+                    "itemStyle": {
+                        "normal": {
+                            "color": "grey"
+                        }
+                    },
+                    "categories": "products1"
+                },
+                {
+                    "x": 12,
+                    "y": 23,
+                    "id": 2,
+                    "name": 2,
+                    "symbolSize": 10,
+                    "itemStyle": {
+                        "normal": {
+                            "color": "grey"
+                        }
+                    },
+                    "categories": "products1"
+                },
+                {
+                    "x": 42,
+                    "y": 24,
+                    "id": 4,
+                    "name": 4,
+                    "symbolSize": 10,
+                    "itemStyle": {
+                        "normal": {
+                            "color": "grey"
+                        }
+                    },
+                    "categories": "products1"
+                }
+            ],
+            "categories": [
+                {
+                    "name": "products"
+                },
+                {
+                    "name": "products1"
+                }
+            ],
+            "edgeLabel": {
+                "show": false,
+                "position": "top",
+                "margin": 8
+            },
+            "edgeSymbol": [
+                null,
+                null
+            ],
+            "edgeSymbolSize": 10,
+            "links": []
+        }
+    ],
+    "legend": [
+        {
+            "data": [
+                "products",
+                "products1"
+            ],
+            "selected": {
+                "products": true,
+                "products1": true
+            },
+            "show": true,
+            "left": "2%",
+            "top": "20%",
+            "orient": "vertical",
+            "padding": 5,
+            "itemGap": 10,
+            "itemWidth": 25,
+            "itemHeight": 14
+        }
+    ],
+    "tooltip": {
+        "show": true,
+        "trigger": "item",
+        "triggerOn": "mousemove|click",
+        "axisPointer": {
+            "type": "line"
+        },
+        "showContent": true,
+        "alwaysShowContent": false,
+        "showDelay": 0,
+        "hideDelay": 100,
+        "textStyle": {
+            "fontSize": 14
+        },
+        "borderWidth": 0,
+        "padding": 5
+    },
+    "title": [
+        {
+            "text": "Warehouse products distribution",
+            "padding": 5,
+            "itemGap": 10
+        }
+    ]
+};
+        chart_5c19ef6876dd4f0aa6dfa7f87817bb99.setOption(option_5c19ef6876dd4f0aa6dfa7f87817bb99);
+    </script>
+</body>
+</html>

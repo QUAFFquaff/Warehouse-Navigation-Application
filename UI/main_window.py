@@ -190,7 +190,7 @@ class Main_UI(QMainWindow):
 
         logger.info('loading file location: {}'.format(filename))
         self.warehouse.load_data(str(filename))
-        path = os.path.join(os.getcwd(),"data","path","file_name.html").replace("\\","/")
+        path = os.path.join(os.getcwd(),"data","path","warehouse.html").replace("\\","/")
         print(path)
         # self.label_graph.load(QUrl("D:/program/python/Warehouse-Navigation-Application/data/path/file_name.html"))
         self.label_graph.load(QUrl("file:///{}".format(path)))
