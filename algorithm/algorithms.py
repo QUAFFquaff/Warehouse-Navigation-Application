@@ -252,7 +252,7 @@ def draw_dots_html(shelf_list,p_nodes, file_name):
 
 
 def draw_path_html(shelf_list,p_nodes,path, file_name):
-    logger.info("start drawing products html graph")
+    logger.info("start drawing path html graph")
     nodes = []
     for ind, node in enumerate(shelf_list):
         nodes.append({
@@ -281,40 +281,24 @@ def draw_path_html(shelf_list,p_nodes,path, file_name):
         })
     logger.info("finish products")
 
-    for node in path:
+    for ind,node in enumerate(path):
         nodes.append({
-            "x": node[1],
-            "y": node[2],
-            "id": node[0],
+            "x": node[0],
+            "y": node[1],
+            "id": 'p'+str(ind),
             'is_fixed': True,
-            "name": str(node[0]),
-            "symbolSize": 14,
-            "itemStyle": {"normal": {"color": 'blue'}},
-            "categories": 1,
-            "symbol": "square"
+            "name": '',
+            "symbolSize": 1,
+            "itemStyle": {"normal": {"color": 'red'}},
+            "categories": 2,
+            "symbol": "circle"
         })
     edges = []
-    # for node in path:
-    #     nodes.append({
-    #         "x": pos[node][0],
-    #         "y": pos[node][1],
-    #         "id": node,
-    #         "name": name[node] + name_to_cn.get(name[node], ""),
-    #         "symbolSize": size[node],
-    #         "itemStyle": {"normal": {"color": colors[node]}},
-    #         "categories": "a"
-    #     })
-    #     nodes_id.append(node)
-    #
-    # for edge in G.edges():
-    #     if colors[edge[0]] in ['orange', 'blue']:
-    #         edges.append({"source": nodes_id.index(edge[0]),
-    #                       "target": nodes_id.index(edge[1])
-    #                       })
-    #     else:
-    #         edges.append({"source": nodes_id.index(edge[1]),
-    #                       "target": nodes_id.index(edge[0])
-    #                       })
+
+    for i in range(len(path)-1):
+        edges.append({"source": 'p'+str(i),
+                      "target": 'p'+str(i+1)
+                      })
     #
     # links = [opts.GraphLink(source=nodes_id.index(e[0]), target=nodes_id.index(e[1])) for e in G.edges()]
     (
@@ -324,6 +308,7 @@ def draw_path_html(shelf_list,p_nodes,path, file_name):
             nodes=nodes,
             links=edges,
             layout="none",
+            categories=[{"name":'shelf',"color":'grey'},{"name":'products',"color":'blue'},{"name":'path',"color":'red'}],
             #         is_roam=True,
             is_focusnode=True,
             label_opts=opts.LabelOpts(is_show=False),

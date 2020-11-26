@@ -19,4 +19,5 @@ def show_me_the_path(result, path_list, plist, maze):
         smtplogger.info('next episode')
     smtplogger.info("path_dot{}".format(path_dot))
     smtplogger.info('total dis {}'.format(len(path_dot)-len(plist)-1))
+
     return path_dot

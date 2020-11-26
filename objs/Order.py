@@ -1,6 +1,7 @@
 
 import math
 import random
+import utils.LoggerFactory as LF
 def random_int_list(start, stop, length):
     start, stop = (int(start), int(stop)) if start <= stop else (int(stop), int(start))
     length = int(abs(length)) if length else 0
@@ -9,6 +10,7 @@ def random_int_list(start, stop, length):
         random_list.append(random.randint(start, stop))
     return random_list
 
+logger=LF.get_logger(__name__)
 class Order:
     def __init__(self,start_time = None,products = [],product_list = None ):
         self.products = []
@@ -28,6 +30,8 @@ class Order:
         return inds
 
     def add_products(self,list,all_products):
+
+        logger.info("adding products into order  {}".format(list))
         inds = list
         print(inds)
         self.products = [all_products[id-1] for id in inds]
