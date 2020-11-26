@@ -165,6 +165,13 @@ In this case, you can click the user symbol on the top left corner of the interf
  
 Figure 9 Personal setting
  
+Scenario 4: Set start & end point & timeout for algorithm
+
+In this case, uset can type in the start point and end point for the algorithm and the timeout(second) so the algorithm can set up the path for the user to follow. After setting is done then click the button to set the values.
+
+![](start_end_timeout.png)
+Figure 10 Set start & end point & timeout for algorithm
+
 ## 2.2 Advanced Features
  
 The system has the following features:
@@ -181,14 +188,7 @@ The system has the following features:
  
 ## 3.1 Main data types and structures
  
- 
- 
-Scenario 4: Set start & end point & timeout for algorithm
 
-In this case, uset can type in the start point and end point for the algorithm and the timeout(second) so the algorithm can set up the path for the user to follow. After setting is done then click the button to set the values.
-
-![](start_end_timeout.png)
-Figure 10 Set start & end point & timeout for algorithm
  
 ![](9.png)
 Figure 11 Class structure
