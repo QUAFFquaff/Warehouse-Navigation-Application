@@ -80,20 +80,31 @@ class WareHouse:
     def load_orders(self,filename):
 
         orders = self.dhandler.load_orders(filename)
+
         for o in orders:
-            self.orders.append(o)
+            logger.info("loading orders  {}".format(o))
+            p_list = list(map(int, o))
+            inds = [self.id_to_ind_dict[i] for i in p_list]
+            order = Order.Order(time.time())
+            order.add_products(inds, self.products)
+            self.order_listtest.append(inds)
+            self.products_index_of_one_order_in_data.append(inds)
+            self.orders.append(order)
         logger.info("loading orders from {}".format(filename))
 
     def generate_path(self,order,index):
         '''
-
         :param order:
         :param index: index of the order in all orders
         :return:
         '''
 
-        #TEST ONLY
-        #start_time = time.time()
+        #################
+        ### TEST ONLY ###
+        #################
+        start_time = time.time()
+
+
 
         products_index_of_one_order_in_data = self.products_index_of_one_order_in_data[index]
         logger.info("products_index_of_one_order_in_data: {}".format(products_index_of_one_order_in_data))
@@ -129,7 +140,8 @@ class WareHouse:
             #route = direction(self.data, self.start_point, self.end_point, m)
             route1 = []
             path_copy = m['path'].copy()
-            for i, p in enumerate(show_me_the_path(m['path'], path_list, products_index_of_one_order_in_data, maze1)):
+            path_dot, out = show_me_the_path(m['path'], path_list, products_index_of_one_order_in_data, maze1)
+            for i, p in enumerate(out):
                 if i == 0:
                     part_res = (self.start_point,int(self.data[path_copy[1]-1][0]))
                     print(part_res)
@@ -141,8 +153,11 @@ class WareHouse:
 
                 #route1.append("({},{})".format(p[0],p[1]))
             #print(route1)
-            # FOR TEST ONLY
-            """
+
+            #################
+            ### TEST ONLY ###
+            #################
+            '''
             end_time = time.time()
             path_result_id = []
             for i, step in enumerate(m['path']):
@@ -152,14 +167,14 @@ class WareHouse:
                     pass
             print("Order[{}] total running time {}s result path is{}".format(order.to_string(),end_time-start_time,path_result_id))
 
-            """
-
-
-            ############################
+            '''
+            #############
             self.logger.info("brute force result(path): {}".format(m["path"]))
-            # self.logger.info("draw png graph")
-            # self.logger.info("pro_list: {}".format(pro_list))
+            self.logger.info("pro_list: {}".format(pro_list))
             # draw_png_graph(pro_list, m['path'])
+            file_name = 'data/path/path.html'
+            draw_path_html(self.shelf_list,pro_list,path_dot,file_name)
+
             self.logger.info("finish generating path")
             return route1
         if self.rules == Rule.Greedy_nn:
@@ -169,9 +184,13 @@ class WareHouse:
             targettest = len(self.data)+1
 
             res = greedy_nn(d, sourcetest, targettest, products_index_of_one_order_in_data)
+
+
             route1 = []
             path_copy = res['path'].copy()
-            for i, p in enumerate(show_me_the_path(res['path'], path_list, products_index_of_one_order_in_data, maze1)):
+            path_dot, out = show_me_the_path(res['path'], path_list, products_index_of_one_order_in_data, maze1)
+
+            for i, p in enumerate(out):
                 if i == 0:
                     part_res = (self.start_point,int(self.data[path_copy[1]-1][0]))
                     print(part_res)
@@ -181,7 +200,25 @@ class WareHouse:
                     part_res = (int(self.data[path_copy[i]-1][0]),int(self.data[path_copy[i+1]-1][0]))
                 route1.append((part_res,p))
 
+            file_name = 'data/path/path.html'
+            draw_path_html(self.shelf_list, pro_list, path_dot, file_name)
+
                 #route1.append("({},{})".format(p[0],p[1]))
+
+            #################
+            ### TEST ONLY ###
+            #################
+
+            end_time = time.time()
+            path_result_id = []
+            for i, step in enumerate(res['path']):
+                if i != 0 and i != len(res['path'])-1:
+                    path_result_id.append(int(self.data[step][0]))
+                else:
+                    pass
+            print("Order[{}]\n total CPU running time {} s\n result path is{}\n".format(order.to_string(),end_time-start_time,path_result_id))
+
+
             return route1
 
         self.logger.info("finish generating path")
