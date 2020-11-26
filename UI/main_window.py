@@ -200,8 +200,9 @@ class Main_UI(QMainWindow):
         logger.info('loading file location: {}'.format(filename))
         try:
             self.warehouse.load_data(str(filename))
-        except Exception() as e:
-            QMessageBox.information(self, "error", "exception", QMessageBox.Yes, QMessageBox.Yes)
+        except Exception as e:
+            logger.error("catch exception: {}".format(e))
+            QMessageBox.information(self, "exception", "exception", QMessageBox.Yes, QMessageBox.Yes)
             return
         path = os.path.join(os.getcwd(),"data","path","warehouse.html").replace("\\","/")
         # self.label_graph.load(QUrl("D:/program/python/Warehouse-Navigation-Application/data/path/file_name.html"))
@@ -228,7 +229,8 @@ class Main_UI(QMainWindow):
             self.warehouse.load_orders(str(filename))
             self.orders=self.warehouse.get_string_list_orders()
             self.orders_model.setStringList(self.orders)
-        except Exception() as e:
+        except Exception as e:
+            logger.error("catch exception: {}".format(e))
             QMessageBox.information(self, "error", "exception", QMessageBox.Yes, QMessageBox.Yes)
             return
         QMessageBox.information(self, "Info", "success", QMessageBox.Yes, QMessageBox.Yes)
@@ -248,7 +250,8 @@ class Main_UI(QMainWindow):
                 return
             try:
                 self.warehouse.add_order(3,products_id.split(","))
-            except:
+            except Exception as e:
+                logger.error("catch exception: {}".format(e))
                 QMessageBox.information(self, "Error", "exception", QMessageBox.Yes, QMessageBox.Yes)
                 return
         products = self.warehouse.orders[-1].products
@@ -300,7 +303,7 @@ class Main_UI(QMainWindow):
 
             path = os.path.join(os.getcwd(), "data", "path", "path.html").replace("\\", "/")
             self.label_graph.load(QUrl("file:///{}".format(path)))
-            QMessageBox.information(self, "Info", " ".join(route), QMessageBox.Yes, QMessageBox.Yes)
+            QMessageBox.information(self, "Info", " -> ".join(route), QMessageBox.Yes, QMessageBox.Yes)
 
     def set_start_and_end_point(self):
         start_x = self.lineEdit_start_x.text()
@@ -321,8 +324,9 @@ class Main_UI(QMainWindow):
             self.warehouse.timeout=float(timeout)
             logger.info("setting start point to ({}, {})".format(start_x,start_y))
             logger.info("setting end point to ({}, {})".format(end_x,end_y))
-        except Exception() as e:
-            QMessageBox.information(self, "Exception", e, QMessageBox.Yes, QMessageBox.Yes)
+        except Exception as e:
+            logger.error("catch exception: {}".format(e))
+            QMessageBox.information(self, "Exception", "exception", QMessageBox.Yes, QMessageBox.Yes)
             return
         QMessageBox.information(self, "Info", "success", QMessageBox.Yes, QMessageBox.Yes)
 
