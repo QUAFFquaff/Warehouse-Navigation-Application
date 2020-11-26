@@ -158,9 +158,9 @@ class WareHouse:
             ###############
             # #############
             self.logger.info("brute force result(path): {}".format(m["path"]))
-            self.logger.info("draw png graph")
+            # self.logger.info("draw png graph")
             self.logger.info("pro_list: {}".format(pro_list))
-            draw_png_graph(pro_list, m['path'])
+            # draw_png_graph(pro_list, m['path'])
             file_name = 'data/path/path.html'
             draw_path_html(self.shelf_list,pro_list,route1,file_name)
             self.logger.info("finish generating path")
@@ -174,6 +174,8 @@ class WareHouse:
             end_point = (0, 0)
 
             res = greedy_nn(d, sourcetest, targettest, products_index_of_one_order_in_data)
+            file_name = 'data/path/path.html'
+            draw_path_html(self.shelf_list,pro_list,res,file_name)
             print('res',res)
         self.logger.info("finish generating path")
 
