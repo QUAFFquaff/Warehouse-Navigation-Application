@@ -170,7 +170,7 @@ def draw_warehouse_html(shelf_list, file_name):
             "name": "("+str(node[0])+','+str(node[1])+')',
             "symbolSize": 14,
             "itemStyle": {"normal": {"color": 'grey'}},
-            "categories": 0,
+            "category": 0,
             "symbol": "square"
         })
 
@@ -209,7 +209,7 @@ def draw_dots_html(shelf_list,p_nodes, file_name):
             "name": "("+str(node[0])+','+str(node[1])+')',
             "symbolSize": 14,
             "itemStyle": {"normal": {"color": 'grey'}},
-            "categories": 0,
+            "category": 0,
             "symbol": "square"
         })
     logger.info("finish shelf")
@@ -223,7 +223,7 @@ def draw_dots_html(shelf_list,p_nodes, file_name):
             "name": str(node[0]),
             "symbolSize": 14,
             "itemStyle": {"normal": {"color": 'blue'}},
-            "categories": 1,
+            "category": 1,
             "symbol": "square"
         })
     logger.info("finish products")
@@ -263,7 +263,7 @@ def draw_path_html(shelf_list,p_nodes,path, file_name):
             "name": "(" + str(node[0]) + ',' + str(node[1]) + ')',
             "symbolSize": 14,
             "itemStyle": {"normal": {"color": 'grey'}},
-            "categories": 0,
+            "category": 0,
             "symbol": "square"
         })
     logger.info("finish shelf")
@@ -276,7 +276,7 @@ def draw_path_html(shelf_list,p_nodes,path, file_name):
             "name": str(node[0]),
             "symbolSize": 14,
             "itemStyle": {"normal": {"color": 'blue'}},
-            "categories": 1,
+            "category": 1,
             "symbol": "square"
         })
     logger.info("finish products")
@@ -288,17 +288,17 @@ def draw_path_html(shelf_list,p_nodes,path, file_name):
             "id": 'p'+str(ind),
             'is_fixed': True,
             "name": '',
-            "symbolSize": 1,
+            "symbolSize": 5,
             "itemStyle": {"normal": {"color": 'red'}},
-            "categories": 2,
+            "category": 2,
             "symbol": "circle"
         })
     edges = []
 
-    for i in range(len(path)-1):
-        edges.append({"source": 'p'+str(i),
-                      "target": 'p'+str(i+1)
-                      })
+    # for i in range(len(path)-1):
+    #     edges.append({"source": 'p'+str(i),
+    #                   "target": 'p'+str(i+1)
+    #                   })
     #
     # links = [opts.GraphLink(source=nodes_id.index(e[0]), target=nodes_id.index(e[1])) for e in G.edges()]
     (
