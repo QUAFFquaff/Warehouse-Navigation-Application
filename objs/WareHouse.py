@@ -1,4 +1,4 @@
-import sys
+import os
 import objs.DataHandler as DataHandler
 import objs.Products as Products
 import objs.Order as Order
@@ -15,7 +15,7 @@ from algorithm.GreedyNN import *
 
 from objs.DataHandler import *
 
-Rule = Enum('Rule', ('Brute_force', 'Dijkstra'))
+Rule = Enum('Rule', ('Brute_force', 'Greedy_nn'))
 import utils.LoggerFactory as LF
 from multiprocessing import Process, Manager
 
@@ -118,11 +118,9 @@ class WareHouse:
             self.logger.info("using brute force")
             temp = [i + 1 for i in range(len(pro_list))]
 
-            ##################
             sourcetest = 0
-            targettest = 25526
-            start_point = (0,0)
-            end_point = (0,0)
+            targettest = len(self.data)+1
+            #print("data ",targettest)
             manager = Manager()
             m = manager.dict()
             p1 = Process(target=brute_force, args=(m, d, sourcetest, targettest, products_index_of_one_order_in_data),
@@ -133,14 +131,23 @@ class WareHouse:
             logger.info("m['path']: {}".format(m['path']))
 
             #### maze !!!
-            route1 = show_me_the_path(m['path'], path_list, products_index_of_one_order_in_data,maze1)
+            #route1 = show_me_the_path(m['path'], path_list, products_index_of_one_order_in_data,maze1)
 
-            ###############################
-            ###     TO DO:              ###
-            ###  CHANGE ROUTE TO ROUTE1 ###
-            ###                         ###
-            ###############################
-            route = direction(self.data, start_point, end_point, m)
+            #route = direction(self.data, self.start_point, self.end_point, m)
+            route1 = []
+            path_copy = m['path'].copy()
+            for i, p in enumerate(show_me_the_path(m['path'], path_list, products_index_of_one_order_in_data, maze1)):
+                if i == 0:
+                    part_res = (self.start_point,int(self.data[path_copy[1]-1][0]))
+                    print(part_res)
+                elif i == len(path_copy)-2:
+                    part_res = (int(self.data[path_copy[i]-1][0]),self.end_point)
+                else:
+                    part_res = (int(self.data[path_copy[i]-1][0]),int(self.data[path_copy[i+1]-1][0]))
+                route1.append("({}, {})".format(part_res,p))
+
+                #route1.append("({},{})".format(p[0],p[1]))
+            #print(route1)
             # FOR TEST ONLY
             """
             end_time = time.time()
@@ -158,23 +165,37 @@ class WareHouse:
             ###############
             # #############
             self.logger.info("brute force result(path): {}".format(m["path"]))
-            self.logger.info("draw png graph")
+
             self.logger.info("pro_list: {}".format(pro_list))
-            draw_png_graph(pro_list, m['path'])
+            # draw_png_graph(pro_list, m['path'])
             file_name = 'data/path/path.html'
             draw_path_html(self.shelf_list,pro_list,route1,file_name)
+
             self.logger.info("finish generating path")
-            return route
+            return route1
         if self.rules == Rule.Greedy_nn:
             self.logger.info("using greedy nn")
 
             sourcetest = 0
-            targettest = 25526
-            start_point = (0, 0)
-            end_point = (0, 0)
+            targettest = len(self.data)+1
 
             res = greedy_nn(d, sourcetest, targettest, products_index_of_one_order_in_data)
-            print('res',res)
+
+            route1 = []
+            path_copy = res['path'].copy()
+            for i, p in enumerate(show_me_the_path(res['path'], path_list, products_index_of_one_order_in_data, maze1)):
+                if i == 0:
+                    part_res = (self.start_point,int(self.data[path_copy[1]-1][0]))
+                    print(part_res)
+                elif i == len(path_copy)-2:
+                    part_res = (int(self.data[path_copy[i]-1][0]),self.end_point)
+                else:
+                    part_res = (int(self.data[path_copy[i]-1][0]),int(self.data[path_copy[i+1]-1][0]))
+                route1.append("({}, {})".format(part_res,p))
+
+                #route1.append("({},{})".format(p[0],p[1]))
+            return route1
+
         self.logger.info("finish generating path")
 
     def load_data(self, path):
@@ -193,6 +214,8 @@ class WareHouse:
             if temp not in dot_list:
                 dot_list.append(temp)
         self.shelf_list = dot_list
+        if not os.path.exists("data/path"):
+            os.makedirs("data/path")
         draw_warehouse_html(self.shelf_list,"data/path/warehouse.html")
 
     def get_string_list_orders(self):

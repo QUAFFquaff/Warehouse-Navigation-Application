@@ -39,7 +39,7 @@ def return_path(current_node):
     while current is not None:
         path.append(current.position)
         current = current.parent
-    aslogger.info("partial path is {}".format(path[::-1]))
+    #aslogger.info("partial path is {}".format(path[::-1]))
     #return len(path)
     return path[::-1]  # Return reversed path
 
@@ -69,7 +69,7 @@ def astar(maze, start, end, allow_diagonal_movement=False):
 
     # Adding a stop condition
     outer_iterations = 0
-    max_iterations = (len(maze[0]) * len(maze))   #  // 2
+    max_iterations = (len(maze[0]) * len(maze) * len(maze))   #  // 2
 
     # what squares do we search
     adjacent_squares = ((0, -1), (0, 1), (-1, 0), (1, 0),)
@@ -84,6 +84,7 @@ def astar(maze, start, end, allow_diagonal_movement=False):
             # if we hit this point return the path such as it is
             # it will not contain the destination
             warn("giving up on pathfinding too many iterations")
+            #print("giving up on pathfinding too many iterations",outer_iterations)
             return return_path(current_node)
 
             # Get the current node
@@ -93,7 +94,8 @@ def astar(maze, start, end, allow_diagonal_movement=False):
         # Found the goal
         if current_node == end_node:
             aslogger.info('successful')
-            print_map(return_path(current_node),maze)
+            #print_map(return_path(current_node),maze)
+            #print("!!!",outer_iterations)
             return return_path(current_node)
 
         # Generate children
@@ -180,6 +182,7 @@ def print_map(path,maze):
     #print('1',maze)
     maze_temp = maze.copy()
     for step in path:
+        #print('step',step)
         maze_temp[step[0]][step[1]] = 2
     #print('2',maze)
     for row in maze_temp:
