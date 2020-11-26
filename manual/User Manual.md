@@ -8,6 +8,7 @@
 
 | **No.** | **Date** | **Version** | **Modified By** | **Modification** |
 | --- | --- | --- | --- | --- |
+| 4 | 2020/11/25 | V4.0 | All team member | UI update (timeout, start and end point), load orders form file  |
 | 3 | 2020/11/06 | V3.0 | All team member | Update the graph and UI, added new function for user. |
 | 2 | 2020/10/30 | V2.0 | All team member | Update the graph images and description, changed the system requirement. |
 | 1 | 2020/10/13 | V1.0 | All team member | Generate All the New Doc.
@@ -88,10 +89,12 @@ The system has the following features:
 1. User Login/Logout
 2. Load Products/Generate Paths
 3. Personal Settings (passwords, rules…)
+4. Set start and end point & timeout for algorithm
+5. Load orders from file
 
 ### 2.1.1 Usage instructions/scenarios
 
-1. Scenario 1:
+Scenario 1:
 
 ![](2.png)
 
@@ -105,43 +108,51 @@ Figure 3 Failed login
 
 Wrong Username/password, user need re-enter the correct username/password.
 
-1. Scenario 2: Loading Graphs based on our txt file.
+Scenario 2: Loading Graphs based on our txt file.
 
 In this interface, a map with several products will be displayed. You can click buttons to load products, generate shortest paths by different rules/algorithms and create orders by clicking the &#39;Add Order&#39; button. Each time we add some products per order.
 
-![](4.png)
+![](main_window.png)
 
 Figure 4 main window
 
-If you have finished the orders, you can click on the line named &#39;a\&gt;-b\&gt;-c&#39; and click finish button to finish the order, and it will be removed from that list.
+If you have finished the orders, you can click on the line named &#39;a\&gt;-b\&gt;-c&#39; and click the finish button to finish the order, and it will be removed from that list.
 
-![](5.png)
+![](main_window.png)
 
 Figure 5 Add an Order to the list
 
-![](6.png)
+![](add_order.png)
 
 Figure 6 Finish one Order in the list
 
 When you click the generate button without selecting an order, it will show you a message which you need to select an order first!
 
-![](7.png)
+![](error_select.png)
 Figure 7 Generate path without selecting orders
 
 After you select one order, when you click the &#39;Generate Path&#39; button, the graph below will show us a specific path from the starting point to the return area, a label will also shown under the graph which tells the user the meaning of this graph.
 
-![](7.png)
+![](generate_path.png)
 
 Figure 8 Generate path 
  
 
-1. Scenario 3: Personal Settings.
+Scenario 3: Personal Settings.
 
 In this case, you can click the user symbol on the top left corner of the interface. The worker can enter their personal settings to change passwords, set different rulers for the Paths and maximum products to deliver.
 
 ![](8.png)
 
 Figure 9 Personal setting
+
+Scenario 4: Set start & end point & timeout for algorithm
+
+In this case, uset can type in the start point and end point for the algorithm and the timeout(second) so the algorithm can set up the path for the user to follow. After setting is done then click the button to set the values.
+
+![](start_end_timeout.png)
+
+Figure 10 Set start & end point & timeout for algorithm
 
 ## 2.2 Advanced Features
 
@@ -163,7 +174,7 @@ Platform: Microsoft Windows 10 or Linux-based OS (e.g. Ubuntu)
 
 CPU: Intel i5-4430 or AMD FX-6300
 
-Memory: 4GB RAM
+Memory: 1GB RAM
 
 Storage: 1GB available space, graph data might be huge
 
@@ -175,11 +186,13 @@ anaconda3
 
 Python 3.8
 
+64-Bit Graphical Installer (466 MB)
+
 PyQt5
 
 PyQt5-tools
 
-networkx
+PyQtWebEngine 5.15 
 
 numpy
 
@@ -188,8 +201,6 @@ matplotlib
 Make sure you have installed python 3 and PyQt5 with version 5.15.0 (or above).
 
 Run the python file, then you are good to go.
-
-o.
 
 ## 3.3 Uninstallation
 
@@ -216,3 +227,5 @@ Format for the graph data:
 | 1 | 2 | 0 |
 
 Where ProductID is used to identify each item and X, Y are the coordinates for that product.
+
+
