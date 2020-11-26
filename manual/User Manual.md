@@ -142,7 +142,7 @@ Scenario 3: Personal Settings.
 
 In this case, you can click the user symbol on the top left corner of the interface. The worker can enter their personal settings to change passwords, set different rulers for the Paths and maximum products to deliver.
 
-![](9.png)
+![](8.png)
 
 Figure 9 Personal setting
 
