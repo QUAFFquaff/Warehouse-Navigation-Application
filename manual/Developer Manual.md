@@ -7,7 +7,7 @@
 # Version Modification Record
 | **No.** | **Date** | **Version** | **Modified By** | **Modification** |
 | --- | --- | --- | --- | --- |
-| 5 | 2020/11/25 | V5.0 | All team member | to be added. |
+| 5 | 2020/11/25 | V5.0 | All team member | UI update (timeout, start and end point), load orders form file, reconstructed base algorithms since definition of question changed, add greedy |
 | 4 | 2020/11/06 | V4.0 | All team member | Update the document, add QMessage for mainwindow(generate path), enhance our map(location and path), add brute_force algorithm, update MakeMatrix.py, add Timeout, add test cases. |
 | 3 | 2020/10/30 | V3.0 | All team member | Change some function#39;s description | 
 | 2 | 2020/10/20 | V2.0 | All team member | Update the document,finish the development manual, add data structure and function. |
@@ -335,6 +335,21 @@ def GeneratePath() -\&gt; list
  
 In this function, a path showed as a list is generated according to the products list.
  
+def make_astar_matrix() -\&gt; np.array
+ 
+This function returns the distance matrix which is calculated by Astar algorithm.
+ 
+def atar()
+ 
+This function returns the shortest path between two locations.
+ 
+def brute_force()
+ 
+This function returns the result by using brute force algorithm.
+def greedy_nn()
+ 
+This function returns the result by using greedy nearest neighbor algorithm.
+ 
 def SetRules() -\&gt; void
  
 This function helps to set the rules.
@@ -351,15 +366,6 @@ def SetPassword -\&gt; void
  
 This function is used to set a password.
  
-(
- 
-Under discussion
- 
-?## def GetMaxProducts() -\&gt; string
- 
-?## def SetMaxProducts(psd: string) -\&gt;void
- 
-)
  
 ## 5.3 Detailed description of input and output formats
  
