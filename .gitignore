@@ -10,3 +10,7 @@ objs/__pycache__/*
 */*.spec
 data/path/*
 test.html
+__pycache__/
+
+data/path/dot.html
+data/path/path.html
