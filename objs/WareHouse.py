@@ -140,7 +140,8 @@ class WareHouse:
             #route = direction(self.data, self.start_point, self.end_point, m)
             route1 = []
             path_copy = m['path'].copy()
-            for i, p in enumerate(show_me_the_path(m['path'], path_list, products_index_of_one_order_in_data, maze1)):
+            path_dot, out = show_me_the_path(m['path'], path_list, products_index_of_one_order_in_data, maze1)
+            for i, p in enumerate(out):
                 if i == 0:
                     part_res = (self.start_point,int(self.data[path_copy[1]-1][0]))
                     print(part_res)
