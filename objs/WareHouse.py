@@ -105,7 +105,7 @@ class WareHouse:
         #################
         start_time = time.time()
         # print("index: ",index)
-        products_index_of_one_order_in_data =[i for i in  self.products_index_of_one_order_in_data[index]]
+        products_index_of_one_order_in_data =[i+1 for i in  self.products_index_of_one_order_in_data[index]]
         print("products_index_of_one_order_in_data: ",products_index_of_one_order_in_data)
         logger.info("products_index_of_one_order_in_data: {}".format(products_index_of_one_order_in_data))
 
