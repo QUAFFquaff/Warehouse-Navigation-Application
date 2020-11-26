@@ -36,7 +36,7 @@ class Main_UI(QMainWindow):
         self.label_username.setGeometry(QtCore.QRect(90, 40, 151, 21))
         self.label_username.setObjectName("label_username")
         self.label_graph = QtWebEngineWidgets.QWebEngineView(self.centralwidget)
-        self.label_graph.setGeometry(QtCore.QRect(30, 210, 641, 441))
+        self.label_graph.setGeometry(QtCore.QRect(10, 180, 691, 491))
         self.label_graph.setObjectName("label_graph")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(880, 80, 391, 631))
@@ -75,7 +75,7 @@ class Main_UI(QMainWindow):
         self.pushButton_profile.setGeometry(QtCore.QRect(0, 90, 81, 41))
         self.pushButton_profile.setObjectName("pushButton_profile")
         self.formLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
-        self.formLayoutWidget_2.setGeometry(QtCore.QRect(720, 80, 151, 201))
+        self.formLayoutWidget_2.setGeometry(QtCore.QRect(720, 80, 158, 201))
         self.formLayoutWidget_2.setObjectName("formLayoutWidget_2")
         self.formLayout_2 = QtWidgets.QFormLayout(self.formLayoutWidget_2)
         self.formLayout_2.setContentsMargins(0, 0, 0, 0)
@@ -114,14 +114,6 @@ class Main_UI(QMainWindow):
         self.label_timeout.setWordWrap(True)
         self.label_timeout.setObjectName("label_timeout")
         self.formLayout_2.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_timeout)
-        self.label_end_y_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_end_y_2.setGeometry(QtCore.QRect(30, 640, 661, 24))
-        self.label_end_y_2.setObjectName("label_end_y_2")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(20, 160, 21, 491))
-        self.label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
-        self.label.setWordWrap(True)
-        self.label.setObjectName("label")
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -150,8 +142,6 @@ class Main_UI(QMainWindow):
         self.label_end_y.setText(_translate("MainWindow", "end y"))
         self.pushButton_set_start_and_end_point.setText(_translate("MainWindow", "set"))
         self.label_timeout.setText(_translate("MainWindow", "timeout"))
-        self.label_end_y_2.setText(_translate("MainWindow", "------------------------------------------------------------------------------> x"))
-        self.label.setText(_translate("MainWindow", "y ^ | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | | |"))
 
     # auto-generated code above
     # -------------------------------------------------
@@ -303,7 +293,18 @@ class Main_UI(QMainWindow):
 
             path = os.path.join(os.getcwd(), "data", "path", "path.html").replace("\\", "/")
             self.label_graph.load(QUrl("file:///{}".format(path)))
-            QMessageBox.information(self, "Info", " -> ".join(route), QMessageBox.Yes, QMessageBox.Yes)
+            msg=[]
+            for i in range(len(route)):
+                if i==0:
+                    msg.append("From start point {}".format(self.warehouse.start_point))
+                else:
+                    msg.append("from product {}".format(route[i][0][0]))
+                if i==len(route)-1:
+                    msg.append("to end point {}".format(self.warehouse.end_point))
+                else:
+                    msg.append("to product {}".format(route[i][0][1]))
+                msg.append("path:{}".format("->".join(map(lambda x: str(x), route[i][1]))))
+            QMessageBox.information(self, "Info", ", ".join(msg), QMessageBox.Yes, QMessageBox.Yes)
 
     def set_start_and_end_point(self):
         start_x = self.lineEdit_start_x.text()

@@ -137,7 +137,7 @@ class WareHouse:
                     part_res = (int(self.data[path_copy[i]-1][0]),self.end_point)
                 else:
                     part_res = (int(self.data[path_copy[i]-1][0]),int(self.data[path_copy[i+1]-1][0]))
-                route1.append("({}, {})".format(part_res,p))
+                route1.append((part_res,p))
 
                 #route1.append("({},{})".format(p[0],p[1]))
             #print(route1)
@@ -179,7 +179,7 @@ class WareHouse:
                     part_res = (int(self.data[path_copy[i]-1][0]),self.end_point)
                 else:
                     part_res = (int(self.data[path_copy[i]-1][0]),int(self.data[path_copy[i+1]-1][0]))
-                route1.append("({}, {})".format(part_res,p))
+                route1.append((part_res,p))
 
                 #route1.append("({},{})".format(p[0],p[1]))
             return route1
