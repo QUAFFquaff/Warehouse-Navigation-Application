@@ -4,6 +4,8 @@ data/path/*.png
 data/path/*.html
 qt_designer/*.py
 */__pycache__/*
+algorithm/__pycache__/*
+objs/__pycache__/*
 *.spec
 */*.spec
 data/path/*
