@@ -267,39 +267,51 @@ def draw_path_html(shelf_list,p_nodes,path, file_name):
             "symbol": "square"
         })
     logger.info("finish shelf")
-    for node in p_nodes:
+    dot_list = []
+    products_list = {}
+    for p in p_nodes:
+        temp = [int(p[1]), int(p[2])]
+        if temp not in dot_list:
+            dot_list.append(temp)
+            products_list[str(temp[0])+','+str(temp[1])] = p[0]
+        else:
+            ind = dot_list
+    print(products_list)
+    for key,val in products_list.items():
+        temp = key.split(',')
         nodes.append({
-            "x": node[1],
-            "y": node[2],
-            "id": node[0],
+            "x": temp[0],
+            "y": temp[1],
+            "id": str(val),
             'is_fixed': True,
-            "name": str(node[0]),
+            "name": str(val),
             "symbolSize": 14,
             "itemStyle": {"normal": {"color": 'blue'}},
             "category": 1,
             "symbol": "square"
         })
     logger.info("finish products")
-
+    path = list(set(path))
+    print(path)
     for ind,node in enumerate(path):
         nodes.append({
             "x": node[1]-1,
             "y": node[0]-1,
-            "id": 'p'+str(ind),
+            "id": 'path'+str(ind),
             'is_fixed': True,
-            "name": '',
             "symbolSize": 5,
             "itemStyle": {"normal": {"color": 'red'}},
             "category": 2,
             "symbol": "circle"
         })
+    print('finish add path node')
     edges = []
 
     # for i in range(len(path)-1):
-    #     edges.append({"source": 'p'+str(i),
-    #                   "target": 'p'+str(i+1)
+    #     edges.append({"source": 'path'+str(i),
+    #                   "target": 'path'+str(i+1)
     #                   })
-    #
+
     # links = [opts.GraphLink(source=nodes_id.index(e[0]), target=nodes_id.index(e[1])) for e in G.edges()]
     (
         Graph(init_opts=opts.InitOpts(width="641px", height="441px"))
@@ -309,11 +321,11 @@ def draw_path_html(shelf_list,p_nodes,path, file_name):
             links=edges,
             layout="none",
             categories=[{"name":'shelf',"color":'grey'},{"name":'products',"color":'blue'},{"name":'path',"color":'red'}],
-            #         is_roam=True,
+
             is_focusnode=True,
             label_opts=opts.LabelOpts(is_show=False),
             linestyle_opts=opts.LineStyleOpts(width=0.9, opacity=0.9, color="source"),
-            #             linestyle_opts=opts.LineStyleOpts(width=0.5, curve=0.3, opacity=0.7),
+
         )
             .set_global_opts(
             legend_opts=opts.LegendOpts(orient="vertical", pos_left="2%", pos_top="20%"),
@@ -322,57 +334,3 @@ def draw_path_html(shelf_list,p_nodes,path, file_name):
             .render(file_name)
     )
     print("done")
-
-# def draw_html(G, file_name):
-#     pos = nx.get_node_attributes(G, 'pos')
-#     colors = nx.get_node_attributes(G, 'color')
-#     size = nx.get_node_attributes(G, 'size')
-#     name = nx.get_node_attributes(G, 'desc')
-#     nodes = []
-#     nodes_id = []
-#     for node in G.nodes():
-#         nodes.append({
-#             "x": pos[node][0],
-#             "y": pos[node][1],
-#             "id": node,
-#             "name": name[node] + name_to_cn.get(name[node], ""),
-#             "symbolSize": size[node],
-#             "itemStyle": {"normal": {"color": colors[node]}},
-#             "categories": "a"
-#         })
-#         nodes_id.append(node)
-#
-#     edges = []
-#     for edge in G.edges():
-#         if colors[edge[0]] in ['orange', 'blue']:
-#             edges.append({"source": nodes_id.index(edge[0]),
-#                           "target": nodes_id.index(edge[1])
-#                           })
-#         else:
-#             edges.append({"source": nodes_id.index(edge[1]),
-#                           "target": nodes_id.index(edge[0])
-#                           })
-#
-#     links = [opts.GraphLink(source=nodes_id.index(e[0]), target=nodes_id.index(e[1])) for e in G.edges()]
-#     (
-#         Graph(init_opts=opts.InitOpts(width="1600px", height="800px"))
-#             .add(
-#             series_name="",
-#             nodes=nodes,
-#             links=edges,
-#             layout="none",
-#             #         is_roam=True,
-#             is_focusnode=True,
-#             label_opts=opts.LabelOpts(is_show=False),
-#             linestyle_opts=opts.LineStyleOpts(width=0.9, opacity=0.9, color="source"),
-#             #             linestyle_opts=opts.LineStyleOpts(width=0.5, curve=0.3, opacity=0.7),
-#         )
-#             .set_global_opts(
-#             legend_opts=opts.LegendOpts(orient="vertical", pos_left="2%", pos_top="20%"),
-#             title_opts=opts.TitleOpts(title="数据提取关系图"),
-#         )
-#             .render(file_name)
-#     )
-#     print("done")
-# nodes = [[1,2,3],[2,12,23],[4,42,24]]
-# draw_warehouse_html(nodes,'test.html')

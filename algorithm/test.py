@@ -4,6 +4,5 @@
 # @Author  : Haoyu Lyu
 # @File    : test.py
 # @Software: PyCharm
-path = [[1,2],[2,3]]
-for ind, node in enumerate(path):
-    print(ind)
+temp_d = {'a':1}
+print(temp_d.items())
