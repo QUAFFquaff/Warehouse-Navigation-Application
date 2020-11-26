@@ -283,8 +283,8 @@ def draw_path_html(shelf_list,p_nodes,path, file_name):
 
     for ind,node in enumerate(path):
         nodes.append({
-            "x": node[0],
-            "y": node[1],
+            "x": node[1],
+            "y": node[0],
             "id": 'p'+str(ind),
             'is_fixed': True,
             "name": '',

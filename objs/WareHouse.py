@@ -98,21 +98,18 @@ class WareHouse:
         :param index: index of the order in all orders
         :return:
         '''
-
         #################
         ### TEST ONLY ###
         #################
         start_time = time.time()
-
-
-
-        products_index_of_one_order_in_data = self.products_index_of_one_order_in_data[index]
+        print("index: ",index)
+        products_index_of_one_order_in_data =[i+1 for i in  self.products_index_of_one_order_in_data[index]]
+        print("products_index_of_one_order_in_data: ",products_index_of_one_order_in_data)
         logger.info("products_index_of_one_order_in_data: {}".format(products_index_of_one_order_in_data))
 
         pro_list = [[p.get_id(), p.x, p.y] for p in order.products]
      #############
         #ret = make_matrix(self.data, self.start_point, self.end_point, products_index_of_one_order_in_data)
-
         #d = ret['xmatrix'] + ret['ymatrix']
      #############
         maze1 = make_maze(self.data)
