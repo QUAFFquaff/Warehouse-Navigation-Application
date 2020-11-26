@@ -182,6 +182,7 @@ def print_map(path,maze):
     #print('1',maze)
     maze_temp = maze.copy()
     for step in path:
+        #print('step',step)
         maze_temp[step[0]][step[1]] = 2
     #print('2',maze)
     for row in maze_temp:

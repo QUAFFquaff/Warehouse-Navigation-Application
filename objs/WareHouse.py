@@ -111,10 +111,9 @@ class WareHouse:
             self.logger.info("using brute force")
             temp = [i + 1 for i in range(len(pro_list))]
 
-            ##################
-            ### to do: target len
             sourcetest = 0
-            targettest = 25526
+            targettest = len(self.data)+1
+            #print("data ",targettest)
             manager = Manager()
             m = manager.dict()
             p1 = Process(target=brute_force, args=(m, d, sourcetest, targettest, products_index_of_one_order_in_data),
@@ -125,14 +124,12 @@ class WareHouse:
             logger.info("m['path']: {}".format(m['path']))
 
             #### maze !!!
-            route1 = show_me_the_path(m['path'], path_list, products_index_of_one_order_in_data,maze1)
+            #route1 = show_me_the_path(m['path'], path_list, products_index_of_one_order_in_data,maze1)
 
-            ###############################
-            ###     TO DO:              ###
-            ###  CHANGE ROUTE TO ROUTE1 ###
-            ###                         ###
-            ###############################
-            route = direction(self.data, self.start_point, self.end_point, m)
+            #route = direction(self.data, self.start_point, self.end_point, m)
+            route1 = []
+            for p in show_me_the_path(m['path'], path_list, products_index_of_one_order_in_data, maze1):
+                route1.append("({},{})".format(p[0],p[1]))
             # FOR TEST ONLY
             """
             end_time = time.time()
@@ -153,12 +150,12 @@ class WareHouse:
             self.logger.info("pro_list: {}".format(pro_list))
             draw_png_graph(pro_list, m['path'])
             self.logger.info("finish generating path")
-            return route
+            return route1
         if self.rules == Rule.Greedy_nn:
             self.logger.info("using greedy nn")
 
             sourcetest = 0
-            targettest = 25526
+            targettest = len(self.data)+1
 
             res = greedy_nn(d, sourcetest, targettest, products_index_of_one_order_in_data)
             route1 = []

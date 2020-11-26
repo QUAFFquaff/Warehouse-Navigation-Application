@@ -83,7 +83,7 @@ def make_astar_matrix(data, maze, start_point, end_point, order_list) -> dict:
             #y[i][j] = abs(position_dictionary[val_j][1] - position_dictionary[val_i][1])
 
     distance_matrix = distance_matrix + distance_matrix.T
-    #print(path_list)
+    print(path_list)
     #print(len(path_list))
     #for i in range(len(path_list)):
         #print(path_list[i])

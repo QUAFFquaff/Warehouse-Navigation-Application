@@ -13,10 +13,13 @@ def show_me_the_path(result, path_list, plist, maze):
     # smtplogger.info('order {}'.format(order))
     path_dot = []
     for j in range(len(plist_temp)-1):
+        smtplogger.info('new episode')
         for k in path_list[(order[j]*len(plist_temp)) + (order[j+1])]:
             path_dot.append(k)
         print_map(path_dot, maze)
-        smtplogger.info('next episode')
+        smtplogger.info("from {} to {}".format(result[j],result[j+1]))
+        smtplogger.info(path_list[(order[j]*len(plist_temp)) + (order[j+1])])
+
     smtplogger.info("path_dot{}".format(path_dot))
     smtplogger.info('total dis {}'.format(len(path_dot)-len(plist)-1))
     return path_dot
