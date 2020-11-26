@@ -30,7 +30,6 @@ class WareHouse:
         self.products = []
         self.rules = Rule.Brute_force
         self.data = None
-        self.order_listtest = []
         self.start_point = (0.0, 0.0)
         self.end_point = (0.0, 0.0)
         self.products_index_of_one_order_in_data = []
@@ -57,13 +56,17 @@ class WareHouse:
         else:
             order = Order.Order(time.time())
             p_list = list(map(int,p_list))
+
+            print('p_list',p_list)
+            p_list_ind = []
             for i in range(len(p_list)):
                 if self.id_to_ind_dict.get(p_list[i]) is None:
                     logger.error("Product id {} not found!".format(p_list[i]))
                     raise Exception("Product id not found!")
-                p_list[i]=self.id_to_ind_dict[p_list[i]]
-            inds = order.add_products(p_list,self.products)
-        self.order_listtest.append(inds)
+                p_list_ind.append(self.id_to_ind_dict[p_list[i]])
+            inds = order.add_products(p_list_ind,self.products)
+            print('inds',inds)
+            print('p_list_ind',p_list_ind)
         self.products_index_of_one_order_in_data.append(inds)
         self.orders.append(order)
 
@@ -87,7 +90,6 @@ class WareHouse:
             inds = [self.id_to_ind_dict[i] for i in p_list]
             order = Order.Order(time.time())
             order.add_products(inds, self.products)
-            self.order_listtest.append(inds)
             self.products_index_of_one_order_in_data.append(inds)
             self.orders.append(order)
         logger.info("loading orders from {}".format(filename))
@@ -102,8 +104,8 @@ class WareHouse:
         ### TEST ONLY ###
         #################
         start_time = time.time()
-        print("index: ",index)
-        products_index_of_one_order_in_data =[i+1 for i in  self.products_index_of_one_order_in_data[index]]
+        # print("index: ",index)
+        products_index_of_one_order_in_data =[i for i in  self.products_index_of_one_order_in_data[index]]
         print("products_index_of_one_order_in_data: ",products_index_of_one_order_in_data)
         logger.info("products_index_of_one_order_in_data: {}".format(products_index_of_one_order_in_data))
 
@@ -117,7 +119,6 @@ class WareHouse:
         print(d)
         if self.rules == Rule.Brute_force:
             self.logger.info("using brute force")
-            temp = [i + 1 for i in range(len(pro_list))]
 
             sourcetest = 0
             targettest = len(self.data)+1
@@ -225,7 +226,7 @@ class WareHouse:
         for ind,d in enumerate(self.data):
             product = Products.Product(int(d[0]), d[1], d[2])
             self.products.append(product)
-            self.id_to_ind_dict[d[0]] = ind+1
+            self.id_to_ind_dict[d[0]] = ind
 
         pro_list = [[p.get_id(),p.x,p.y] for p in self.products]
         # draw_warehouse(pro_list,"data/path/warehouse.png")

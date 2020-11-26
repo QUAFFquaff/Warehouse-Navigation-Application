@@ -25,7 +25,7 @@ class Order:
         randomlist = random.sample(list, num)
 
         inds = randomlist
-        self.products = [all_products[id] for id in inds]
+        self.products = [all_products[ind] for ind in inds]
         print(inds)
         return inds
 
@@ -34,7 +34,7 @@ class Order:
         logger.info("adding products into order  {}".format(list))
         inds = list
         print(inds)
-        self.products = [all_products[id-1] for id in inds]
+        self.products = [all_products[id] for id in inds]
         return inds
 
 
