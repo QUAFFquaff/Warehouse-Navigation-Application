@@ -1,4 +1,4 @@
-import sys
+import os
 import objs.DataHandler as DataHandler
 import objs.Products as Products
 import objs.Order as Order
@@ -157,9 +157,9 @@ class WareHouse:
 
             ############################
             self.logger.info("brute force result(path): {}".format(m["path"]))
-            self.logger.info("draw png graph")
-            self.logger.info("pro_list: {}".format(pro_list))
-            draw_png_graph(pro_list, m['path'])
+            # self.logger.info("draw png graph")
+            # self.logger.info("pro_list: {}".format(pro_list))
+            # draw_png_graph(pro_list, m['path'])
             self.logger.info("finish generating path")
             return route1
         if self.rules == Rule.Greedy_nn:
@@ -202,6 +202,8 @@ class WareHouse:
             if temp not in dot_list:
                 dot_list.append(temp)
         self.shelf_list = dot_list
+        if not os.path.exists("data/path"):
+            os.makedirs("data/path")
         draw_warehouse_html(self.shelf_list,"data/path/warehouse.html")
 
     def get_string_list_orders(self):
