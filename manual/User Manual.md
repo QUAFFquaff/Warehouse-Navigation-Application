@@ -174,7 +174,7 @@ Platform: Microsoft Windows 10 or Linux-based OS (e.g. Ubuntu)
 
 CPU: Intel i5-4430 or AMD FX-6300
 
-Memory: 4GB RAM
+Memory: 1GB RAM
 
 Storage: 1GB available space, graph data might be huge
 
@@ -201,8 +201,6 @@ matplotlib
 Make sure you have installed python 3 and PyQt5 with version 5.15.0 (or above).
 
 Run the python file, then you are good to go.
-
-o.
 
 ## 3.3 Uninstallation
 
