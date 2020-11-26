@@ -128,8 +128,19 @@ class WareHouse:
 
             #route = direction(self.data, self.start_point, self.end_point, m)
             route1 = []
-            for p in show_me_the_path(m['path'], path_list, products_index_of_one_order_in_data, maze1):
-                route1.append("({},{})".format(p[0],p[1]))
+            path_copy = m['path'].copy()
+            for i, p in enumerate(show_me_the_path(m['path'], path_list, products_index_of_one_order_in_data, maze1)):
+                if i == 0:
+                    part_res = (self.start_point,int(self.data[path_copy[1]-1][0]))
+                    print(part_res)
+                elif i == len(path_copy)-2:
+                    part_res = (int(self.data[path_copy[i]-1][0]),self.end_point)
+                else:
+                    part_res = (int(self.data[path_copy[i]-1][0]),int(self.data[path_copy[i+1]-1][0]))
+                route1.append("({}, {})".format(part_res,p))
+
+                #route1.append("({},{})".format(p[0],p[1]))
+            #print(route1)
             # FOR TEST ONLY
             """
             end_time = time.time()
@@ -159,8 +170,18 @@ class WareHouse:
 
             res = greedy_nn(d, sourcetest, targettest, products_index_of_one_order_in_data)
             route1 = []
-            for p in show_me_the_path(res['path'], path_list, products_index_of_one_order_in_data, maze1):
-                route1.append("({},{})".format(p[0],p[1]))
+            path_copy = res['path'].copy()
+            for i, p in enumerate(show_me_the_path(res['path'], path_list, products_index_of_one_order_in_data, maze1)):
+                if i == 0:
+                    part_res = (self.start_point,int(self.data[path_copy[1]-1][0]))
+                    print(part_res)
+                elif i == len(path_copy)-2:
+                    part_res = (int(self.data[path_copy[i]-1][0]),self.end_point)
+                else:
+                    part_res = (int(self.data[path_copy[i]-1][0]),int(self.data[path_copy[i+1]-1][0]))
+                route1.append("({}, {})".format(part_res,p))
+
+                #route1.append("({},{})".format(p[0],p[1]))
             return route1
 
         self.logger.info("finish generating path")
