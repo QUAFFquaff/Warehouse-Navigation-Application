@@ -39,7 +39,7 @@ def return_path(current_node):
     while current is not None:
         path.append(current.position)
         current = current.parent
-    aslogger.info("partial path is {}".format(path[::-1]))
+    #aslogger.info("partial path is {}".format(path[::-1]))
     #return len(path)
     return path[::-1]  # Return reversed path
 
@@ -94,7 +94,7 @@ def astar(maze, start, end, allow_diagonal_movement=False):
         # Found the goal
         if current_node == end_node:
             aslogger.info('successful')
-            print_map(return_path(current_node),maze)
+            #print_map(return_path(current_node),maze)
             #print("!!!",outer_iterations)
             return return_path(current_node)
 
