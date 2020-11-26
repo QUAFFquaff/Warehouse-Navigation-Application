@@ -4,6 +4,7 @@ from UI.profile import Profile_UI
 import utils.LoggerFactory as LF
 from PyQt5.QtWidgets import *
 from objs.WareHouse import *
+import sys
 
 def abort(*args):
     for window in args:
