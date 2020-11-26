@@ -92,8 +92,12 @@ class WareHouse:
         :return:
         '''
 
-        #TEST ONLY
-        #start_time = time.time()
+        #################
+        ### TEST ONLY ###
+        #################
+        start_time = time.time()
+
+
 
         products_index_of_one_order_in_data = self.products_index_of_one_order_in_data[index]
         logger.info("products_index_of_one_order_in_data: {}".format(products_index_of_one_order_in_data))
@@ -141,8 +145,11 @@ class WareHouse:
 
                 #route1.append("({},{})".format(p[0],p[1]))
             #print(route1)
-            # FOR TEST ONLY
-            """
+
+            #################
+            ### TEST ONLY ###
+            #################
+            '''
             end_time = time.time()
             path_result_id = []
             for i, step in enumerate(m['path']):
@@ -152,7 +159,9 @@ class WareHouse:
                     pass
             print("Order[{}] total running time {}s result path is{}".format(order.to_string(),end_time-start_time,path_result_id))
 
-            """
+            '''
+
+
 
 
             ############################
@@ -182,6 +191,21 @@ class WareHouse:
                 route1.append("({}, {})".format(part_res,p))
 
                 #route1.append("({},{})".format(p[0],p[1]))
+
+            #################
+            ### TEST ONLY ###
+            #################
+
+            end_time = time.time()
+            path_result_id = []
+            for i, step in enumerate(res['path']):
+                if i != 0 and i != len(res['path'])-1:
+                    path_result_id.append(int(self.data[step][0]))
+                else:
+                    pass
+            print("Order[{}]\n total CPU running time {} s\n result path is{}\n".format(order.to_string(),end_time-start_time,path_result_id))
+
+
             return route1
 
         self.logger.info("finish generating path")
