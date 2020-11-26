@@ -80,13 +80,20 @@ class WareHouse:
     def load_orders(self,filename):
 
         orders = self.dhandler.load_orders(filename)
+
         for o in orders:
-            self.orders.append(o)
+            logger.info("loading orders  {}".format(o))
+            p_list = list(map(int, o))
+            inds = [self.id_to_ind_dict[i] for i in p_list]
+            order = Order.Order(time.time())
+            order.add_products(inds, self.products)
+            self.order_listtest.append(inds)
+            self.products_index_of_one_order_in_data.append(inds)
+            self.orders.append(order)
         logger.info("loading orders from {}".format(filename))
 
     def generate_path(self,order,index):
         '''
-
         :param order:
         :param index: index of the order in all orders
         :return:
@@ -164,11 +171,15 @@ class WareHouse:
 
 
 
-            ############################
+            ###############
+            # #############
             self.logger.info("brute force result(path): {}".format(m["path"]))
-            # self.logger.info("draw png graph")
-            # self.logger.info("pro_list: {}".format(pro_list))
+
+            self.logger.info("pro_list: {}".format(pro_list))
             # draw_png_graph(pro_list, m['path'])
+            file_name = 'data/path/path.html'
+            draw_path_html(self.shelf_list,pro_list,route1,file_name)
+
             self.logger.info("finish generating path")
             return route1
         if self.rules == Rule.Greedy_nn:
@@ -178,6 +189,7 @@ class WareHouse:
             targettest = len(self.data)+1
 
             res = greedy_nn(d, sourcetest, targettest, products_index_of_one_order_in_data)
+
             route1 = []
             path_copy = res['path'].copy()
             for i, p in enumerate(show_me_the_path(res['path'], path_list, products_index_of_one_order_in_data, maze1)):
