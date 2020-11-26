@@ -103,7 +103,8 @@ class WareHouse:
         #################
         ### TEST ONLY ###
         #################
-        start_time = time.time()
+        #start_time = time.time()
+
         # print("index: ",index)
         products_index_of_one_order_in_data =[i+1 for i in  self.products_index_of_one_order_in_data[index]]
         print("products_index_of_one_order_in_data: ",products_index_of_one_order_in_data)
@@ -206,7 +207,7 @@ class WareHouse:
             #################
             ### TEST ONLY ###
             #################
-
+            '''
             end_time = time.time()
             path_result_id = []
             for i, step in enumerate(res['path']):
@@ -215,6 +216,8 @@ class WareHouse:
                 else:
                     pass
             print("Order[{}]\n total CPU running time {} s\n result path is{}\n".format(order.to_string(),end_time-start_time,path_result_id))
+
+            '''
 
 
             return route1
