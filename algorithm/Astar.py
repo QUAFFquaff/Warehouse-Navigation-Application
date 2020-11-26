@@ -2,8 +2,8 @@ from warnings import warn
 import heapq
 import utils.LoggerFactory as LF
 
-
 aslogger = LF.get_logger(__name__)
+
 
 class Node:
     """
@@ -39,14 +39,14 @@ def return_path(current_node):
     while current is not None:
         path.append(current.position)
         current = current.parent
-    #aslogger.info("partial path is {}".format(path[::-1]))
-    #return len(path)
+    # aslogger.info("partial path is {}".format(path[::-1]))
     return path[::-1]  # Return reversed path
 
 
 def astar(maze, start, end, allow_diagonal_movement=False):
     """
     Returns a list of tuples as a path from the given start to the given end in the given maze
+    :param allow_diagonal_movement:
     :param maze:
     :param start:
     :param end:
@@ -69,7 +69,7 @@ def astar(maze, start, end, allow_diagonal_movement=False):
 
     # Adding a stop condition
     outer_iterations = 0
-    max_iterations = (len(maze[0]) * len(maze) * len(maze))   #  // 2
+    max_iterations = (len(maze[0]) * len(maze) * len(maze))  # // 2
 
     # what squares do we search
     adjacent_squares = ((0, -1), (0, 1), (-1, 0), (1, 0),)
@@ -84,7 +84,7 @@ def astar(maze, start, end, allow_diagonal_movement=False):
             # if we hit this point return the path such as it is
             # it will not contain the destination
             warn("giving up on pathfinding too many iterations")
-            #print("giving up on pathfinding too many iterations",outer_iterations)
+            # print("giving up on pathfinding too many iterations",outer_iterations)
             return return_path(current_node)
 
             # Get the current node
@@ -94,8 +94,8 @@ def astar(maze, start, end, allow_diagonal_movement=False):
         # Found the goal
         if current_node == end_node:
             aslogger.info('successful')
-            #print_map(return_path(current_node),maze)
-            #print("!!!",outer_iterations)
+            # print_map(return_path(current_node),maze)
+            # print("!!!",outer_iterations)
             return return_path(current_node)
 
         # Generate children
@@ -130,7 +130,8 @@ def astar(maze, start, end, allow_diagonal_movement=False):
             # Create the f, g, and h values
 
             child.g = current_node.g + 1
-            child.h = 0.1*(((child.position[0] - end_node.position[0]) ** 2) + ((child.position[1] - end_node.position[1]) ** 2))
+            child.h = 0.1 * (((child.position[0] - end_node.position[0]) ** 2) + (
+                    (child.position[1] - end_node.position[1]) ** 2))
             # 300 * ((child.position[0] - end_node.position[0]) + (child.position[1] - end_node.position[1]))
             # (((child.position[0] - end_node.position[0]) ** 2) + ((child.position[1] - end_node.position[1]) ** 2))
             child.f = child.g + child.h
@@ -147,44 +148,13 @@ def astar(maze, start, end, allow_diagonal_movement=False):
     return None
 
 
-def example(maze, start, end, print_maze=True):
-
-    #start = (7,25)
-    #end = (8, 15)
-    #start = (0, 0)
-    #end = (len(maze) - 1, len(maze[0]) - 1)
-
-    path = astar(maze, start, end)
-"""
-    if print_maze:
-        #print('1',maze)
-        maze_temp = maze[:]
-        for step in path:
-            maze_temp[step[0]][step[1]] = 2
-        #print('2',maze)
-        for row in maze_temp:
-            line = []
-            for col in row:
-                if col == 1:
-                    line.append("\u2588")
-                elif col == 0:
-                    line.append("_")
-                elif col == 2:
-                    line.append(".")
-            print("".join(line))
-
-    print(path)
-    return len(path)
-"""
-
-
-def print_map(path,maze):
-    #print('1',maze)
+def print_map(path, maze):
+    # print('1',maze)
     maze_temp = maze.copy()
     for step in path:
-        #print('step',step)
+        # print('step',step)
         maze_temp[step[0]][step[1]] = 2
-    #print('2',maze)
+    # print('2',maze)
     for row in maze_temp:
         line = []
         for col in row:
@@ -196,6 +166,3 @@ def print_map(path,maze):
                 line.append(".")
         aslogger.info("".join(line))
 
-
-    #print(path)
-    #return path
