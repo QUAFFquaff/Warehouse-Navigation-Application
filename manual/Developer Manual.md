@@ -112,6 +112,8 @@ The system has the following features:
 1. User Login/Logout
 2. Load Products/Generate Paths
 3. Personal Settings (passwords, rules...)
+4. Set start and end point & timeout for algorithm
+5. Load orders from file
  
 ### 2.1.1 Usage instructions/scenarios
  
@@ -193,6 +195,7 @@ The system has the following features:
 ### 2.2.1 Usage instructions/scenarios
  
 Scenario 1: Generating a Path for a specific number of products to the return area.
+
 Scenario 2: Workers have a limitation of products each time. From the figure 9, you can see that in the personal setting, the worker can set the maximum number of products to deliver.
  
 ## 3 Software Architecture Overview
