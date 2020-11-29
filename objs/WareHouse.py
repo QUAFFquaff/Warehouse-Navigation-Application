@@ -37,6 +37,7 @@ class WareHouse:
         self.id_to_ind_dict = {}
         self.timeout = 60
         self.shelf_list = []
+        self.f = open('data/unfinished_orders.txt', 'a')
 
     def set_rules(self, num):
         if num == 0:
@@ -242,6 +243,10 @@ class WareHouse:
     def __del__(self):
         unfinished_orders = []
         for order in self.orders:
-            unfinished_orders.append(order.products)
+            order_list = []
+            for p in order.products:
+                order_list.append(p.get_id())
+            unfinished_orders.append(order_list)
         path = '../data/unfinished_orders.txt'
-        self.dhandler.save_orders(unfinished_orders,path)
+        self.dhandler.save_orders(unfinished_orders,path,self.f)
+        self.f.close()
