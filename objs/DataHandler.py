@@ -21,7 +21,6 @@ class DataHandler:
         data = []
         logger.info('open file')
         with open(path, 'r') as f:
-            f.readline()
             for line in f.readlines():
                 temp = line.split()
                 temp = [t[:-1] if t[-1] == ',' else t for t in temp ]
