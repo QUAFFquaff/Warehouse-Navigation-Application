@@ -18,8 +18,10 @@ To run the program, use
 ```bash
 python main.py 
 ```
+to excute it. 
 
-to excute it.
+Unfinished orders will be stored in data/unfinished_orders.txt 
+and it will be loaded into the system once the graph is loaded.
 
 -------------------
 **Packages**: 
