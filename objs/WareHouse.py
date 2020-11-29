@@ -244,4 +244,5 @@ class WareHouse:
         for order in self.orders:
             unfinished_orders.append(order.products)
         path = '../data/unfinished_orders.txt'
-        self.dhandler.save_orders(unfinished_orders,path)
+        if len(unfinished_orders)!=0:
+            self.dhandler.save_orders(unfinished_orders,path)
