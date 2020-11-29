@@ -99,7 +99,7 @@ Fields should be an area or a point, it is the target position of all the produc
  
 ## 2 Overview of System
  
-Our program is a python-based system. This system consists of an application for our shopping carts gatherers at our \&lt; **WoBoAI** \&gt; store. The system allows our workers to login/change passwords and provides directions/instructions for the worker to pick up products that need to be returned to the &#39;Shopping Products Return Area&#39;. We will set some rules to generate our path, a specific number of products may have different paths to the Return area,etc.
+Our program is a python-based system. This system consists of an application for our shopping carts gatherers at our **WoBoAI** store. The system allows our workers to login/change passwords and provides directions/instructions for the worker to pick up products that need to be returned to the &#39;Shopping Products Return Area. We will set some rules to generate our path, a specific number of products may have different paths to the Return area,etc.
  
 ![](1.png)
  
@@ -136,8 +136,8 @@ In this interface, a map with several products will be displayed. You can click 
 ![](main_window.png)
  
 Figure 4 main window
- 
-If you have finished the orders, you can click on the line named &#39;a\&gt;-b\&gt;-c&#39; and click finish button to finish the order, and it will be removed from that list.
+
+If you have finished the orders, you can click on the line name with three IDs; Then you can click the finish button to finish the order, and it will be removed from that list.
  
 ![](main_window.png)
  
@@ -172,6 +172,15 @@ In this case, uset can type in the start point and end point for the algorithm a
 ![](start_end_timeout.png)
 Figure 10 Set start & end point & timeout for algorithm
 
+
+Scenario 5: Load orders from a single txt file
+
+In this case, users can load many orders (product ID) from a local file. So the UI will show all future orders. 
+
+![](load_orders.png)
+
+Figure 11 Load orders from a file
+
 ## 2.2 Advanced Features
  
 The system has the following features:
@@ -191,7 +200,7 @@ The system has the following features:
 
  
 ![](9.png)
-Figure 11 Class structure
+Figure 12 Class structure
  
 The Warehouse System is the main part of the application. Its function will be called by the UI controller which is responsible for UI event listening. The warehouse system has at least one user which is also a Worker, who will move the products. Also it will have several orders which the Worker will deliver. For each order, it will have at least one Product to be collected by the Worker.
  
@@ -199,7 +208,7 @@ The Warehouse System is the main part of the application. Its function will be c
  
 ![](10.png)
  
-Figure 11 Interfaces
+Figure 13 Interfaces
  
 The system has three different components, one is UI controller, it controls GUI and communicates with the user or system. One is DataHandler, it controls the input and output of the system. The other one is System, it contains some structures to save information of worker products and orders, and it can also generate path etc.
  
@@ -207,21 +216,21 @@ The system has three different components, one is UI controller, it controls GUI
  
 ![](11.png)
  
-Figure 12 Module connections
+Figure 14 Module connections
  
 The UI Controller Module will add event listeners to the UI component, which will trigger backend functions to display the result. Backend will only load the data when the user asks for it and will not write back anything to it.
  
 ## 3.4 Module interfaces
  
-Worker: get\_password()-\&gt;str, set\_password(new\_password)-\&gt;None
+Worker: get\_password() - str, set\_password(new\_password) - None
  
-DataHandler: load\_txt(filename)-\&gt;None
+DataHandler: load\_txt(filename) - None
  
-WareHouse System: create\_order(int)-\&gt;None, set\_rules(str)-\&gt;None, generate\_path(str)-\&gt;None,
+WareHouse System: create\_order(int) - None, set\_rules(str) - None, generate\_path(str) - None,
  
-UI Controller: draw\_path()-\&gt;None
+UI Controller: draw\_path() - None
  
-Order: init()-\&gt;None
+Order: init() - None
  
 ## 3.5 API of major module functions
  
@@ -229,7 +238,7 @@ Order: init()-\&gt;None
  
 ![](12.png)
  
-Figure 13 Sequence diagram for main functions
+Figure 15 Sequence diagram for main functions
  
 ## 4 Installation
  
@@ -253,17 +262,15 @@ anaconda3
  
 Python 3.8
  
-64-Bit Graphical Installer (466 MB)
+PyQt5 5.15.1
  
-PyQt5
+PyQt5-tools 
  
-PyQt5-tools
- 
-PyQtWebEngine 5.15
+PyQtWebEngine 5.15.1
  
 numpy
  
-matplotlib
+Matplotlib 3.3.2
  
 Make sure you have installed python 3 and PyQt5 with version 5.15.0 (or above).
  
@@ -279,7 +286,7 @@ If you don&#39;t want to use this application any more, simply delete its source
  
 ![](13.png)
  
-Figure 14 Class diagram of the system
+Figure 16 Class diagram of the system
  
 Product:
  
@@ -315,27 +322,27 @@ This class used to control GUI and communicate with system/users.
  
 ![](14.png)
  
-Figure 15 Source code snippets
+Figure 17 Source code snippets
  
 ## 5.2 Detailed description of functions and parameters
  
-def LoadTxt(dir : str) -\&gt; array
+def LoadTxt(dir : str) - array
  
 This function helps add all products to the database from a .txt file. Dir is the direction of a .txt file. A 2D array with all products information is generated after this.
  
-def CreatOrders(num: int, product: list) -\&gt; void
+def CreatOrders(num: int, product: list) -  void
  
 This function creates a list of orders which a worker needs to execute. products is the list generated by InitialProductList(). num is the number of products in this order. This function can call other functions like InitialProductList(), GeneratePath(), DrawPath() and SetRules().
  
-def InitialProductList(num: int, product: list) -\&gt; list
+def InitialProductList(num: int, product: list)  -  list
  
 This function generates a list of products which need to be picked in a specific order.
  
-def GeneratePath() -\&gt; list
+def GeneratePath()  -  list
  
 In this function, a path showed as a list is generated according to the products list.
  
-def make_astar_matrix() -\&gt; np.array
+def make_astar_matrix()  -  np.array
  
 This function returns the distance matrix which is calculated by Astar algorithm.
  
@@ -350,19 +357,19 @@ def greedy_nn()
  
 This function returns the result by using greedy nearest neighbor algorithm.
  
-def SetRules() -\&gt; void
+def SetRules()  -  void
  
 This function helps to set the rules.
  
-def DrawPath() -\&gt; void
+def DrawPath()  -  void
  
 This function helps draw the pickup path.
  
-def GetPassword() -\&gt; string
+def GetPassword()  - string
  
 This function is used to get a password.
  
-def SetPassword -\&gt; void
+def SetPassword -  void
  
 This function is used to set a password.
  
@@ -377,7 +384,7 @@ The output will be a PNG or HTML which shows our user the shortest path from the
  
 ![](15.png)
  
-Figure 15 Graph data structure
+Figure 18 Graph data structure
  
 - Syntax/format of a move recorded in the log file
  
