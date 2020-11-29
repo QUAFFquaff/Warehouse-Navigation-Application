@@ -164,6 +164,7 @@ In this case, you can click the user symbol on the top left corner of the interf
  
  
 ![](8.png)
+ 
 Figure 9 Personal setting
  
 Scenario 4: Set start & end point & timeout for algorithm
