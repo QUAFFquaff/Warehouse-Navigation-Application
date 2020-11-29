@@ -22,7 +22,8 @@ to excute it.
 
 Unfinished orders will be stored in data/unfinished_orders.txt 
 and it will be loaded into the system once the graph is loaded.
-
+If you don't want load previous orders just clear the content in
+that file.
 -------------------
 **Packages**: 
  
