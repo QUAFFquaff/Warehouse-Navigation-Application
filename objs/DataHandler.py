@@ -29,7 +29,15 @@ class DataHandler:
         logger.info('read file complete')
         return data
 
+    def save_orders(self,data,path):
+        logger=LF.get_logger(__name__)
+        logger.info('open file')
+        with open(path, 'w') as f:
+            for order in data:
+                f.write(str(order).replace('[','').replace(']','\n'))
+        logger.info('write file complete')
+
     
-# filename = '../data/qvBox-warehouse-orders-list-part01.txt'
-# orders = DataHandler.load_orders(DataHandler,filename)
-# print(orders)
+# filename = '../data/unfinished_orders.txt'
+# data = [[1,2],[3,4]]
+# DataHandler.save_orders(DataHandler,data,filename)

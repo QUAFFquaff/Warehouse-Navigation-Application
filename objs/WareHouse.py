@@ -250,3 +250,9 @@ class WareHouse:
             orders.append(order.to_string())
         return orders
 
+    def quit(self):
+        unfinished_orders = []
+        for order in self.orders:
+            unfinished_orders.append(order.products)
+        path = '../data/unfinished_orders.txt'
+        self.dhandler.save_orders(unfinished_orders,path)
