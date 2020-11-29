@@ -12,13 +12,15 @@ pyqt:
 
 anaconda3  
 Python 3.8  
-64-Bit Graphical Installer (466 MB)  
-PyQt5  
+PyQt5 5.15.1
+
 PyQt5-tools  
-PyQtWebEngine 5.15
-networkx  
-matplotlib  
-numpy  
+PyQtWebEngine 5.15.1 
+
+matplotlib 3.3.2
+
+numpy
+
 ---------------------
 
 
