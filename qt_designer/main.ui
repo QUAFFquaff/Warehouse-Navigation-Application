@@ -114,6 +114,13 @@
       </layout>
      </item>
      <item>
+      <widget class="QPushButton" name="pushButton_previous_orders">
+       <property name="text">
+        <string>Add previous unfinished orders</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
         <widget class="QPushButton" name="pushButton_add_order">

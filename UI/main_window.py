@@ -56,6 +56,9 @@ class Main_UI(QMainWindow):
         self.lineEdit_products_id.setObjectName("lineEdit_products_id")
         self.horizontalLayout_4.addWidget(self.lineEdit_products_id)
         self.verticalLayout.addLayout(self.horizontalLayout_4)
+        self.pushButton_previous_orders = QtWidgets.QPushButton(self.verticalLayoutWidget)
+        self.pushButton_previous_orders.setObjectName("pushButton_previous_orders")
+        self.verticalLayout.addWidget(self.pushButton_previous_orders)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
         self.pushButton_add_order = QtWidgets.QPushButton(self.verticalLayoutWidget)
@@ -131,6 +134,7 @@ class Main_UI(QMainWindow):
         self.pushButton_finish_order.setText(_translate("MainWindow", "Finish Order"))
         self.label_username.setText(_translate("MainWindow", "alicebob"))
         self.label_products_id.setText(_translate("MainWindow", "Product(s) ID:"))
+        self.pushButton_previous_orders.setText(_translate("MainWindow", "Add previous unfinished orders"))
         self.pushButton_add_order.setText(_translate("MainWindow", "Add an order"))
         self.pushButton_add_orders_from_file.setText(_translate("MainWindow", "Add orders from file"))
         self.pushButton_logout.setText(_translate("MainWindow", "Logout"))
@@ -159,6 +163,7 @@ class Main_UI(QMainWindow):
         self.pushButton_generate_path.clicked.connect(self.generate_path)
         self.pushButton_add_orders_from_file.clicked.connect(self.add_orders_from_file)
         self.pushButton_set_start_and_end_point.clicked.connect(self.set_start_and_end_point)
+        self.pushButton_previous_orders.clicked.connect(self.load_previous_orders)
 
     def init(self):
         self.clicked_order_index = None
@@ -201,6 +206,14 @@ class Main_UI(QMainWindow):
         # img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
         # self.label_graph.setPixmap(img)
 
+
+    def load_previous_orders(self):
+        try:
+            self.warehouse.load_orders("../data/unfinished_orders.txt")
+            self.orders = self.warehouse.get_string_list_orders()
+            self.orders_model.setStringList(self.orders)
+        except:
+            QMessageBox.information(self, "error", "failed", QMessageBox.Yes, QMessageBox.Yes)
 
     def add_orders_from_file(self):
         if self.warehouse.data is None:
