@@ -239,7 +239,7 @@ class WareHouse:
             orders.append(order.to_string())
         return orders
 
-    def quit(self):
+    def __del__(self):
         unfinished_orders = []
         for order in self.orders:
             unfinished_orders.append(order.products)
