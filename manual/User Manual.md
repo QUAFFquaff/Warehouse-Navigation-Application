@@ -8,7 +8,7 @@
 
 | **No.** | **Date** | **Version** | **Modified By** | **Modification** |
 | --- | --- | --- | --- | --- |
-| 4 | 2020/11/28 | V4.0 | All team member | UI update (timeout, start and end point), load orders form file, timeout |
+| 4 | 2020/11/28 | V4.0 | All team member | UI update (timeout, start and end point), load orders form file, timeout  |
 | 3 | 2020/11/06 | V3.0 | All team member | Update the graph and UI, added new function for user. |
 | 2 | 2020/10/30 | V2.0 | All team member | Update the graph images and description, changed the system requirement. |
 | 1 | 2020/10/13 | V1.0 | All team member | Generate All the New Doc.
@@ -172,6 +172,7 @@ The system has the following features:
 ### 2.2.1 Usage instructions/scenarios
 
 Scenario 1: Generating a Path for a specific number of products to the return area.
+
 Scenario 2: Workers have a limitation of products each time. From figure 8, you can see that in the personal setting, the worker can set the maximum number of products to deliver.
 
 ## 3 Installation
