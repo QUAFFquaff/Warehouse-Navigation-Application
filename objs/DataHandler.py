@@ -29,12 +29,12 @@ class DataHandler:
         logger.info('read file complete')
         return data
 
-    def save_orders(self,data,path):
+    def save_orders(self,data,path,f):
         logger=LF.get_logger(__name__)
         logger.info('open file')
-        with open(path, 'w') as f:
-            for order in data:
-                f.write(str(order).replace('[','').replace(']','\n'))
+        for order in data:
+            # logger.info('write order: ',order)
+            f.write(str(order).replace('[','').replace(']','\n'))
         logger.info('write file complete')
 
     
