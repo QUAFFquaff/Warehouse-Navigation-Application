@@ -149,20 +149,21 @@ Figure 6 Finish one Order in the list
  
 When you click the generate button without selecting an order, it will show you a message which you need to select an order first!
  
+![](error_select.png)
 Figure 7 Generate path without selecting orders
  
-After you select one order, when you click the &#39;Generate Path&#39; button, the graph below will show us a specific path from the starting point to the return area, a label will also shown under the graph which tells the user the meaning of this graph.
+After you select one order, when you click the &#39;Generate Path&#39; button, the graph below will show us a specific path from the starting point to the return area, a dialog will also shown under the graph which tells the user the meaning of this graph.
  
-![](error_select.png)
  
+![](generate_path.png)
 Figure 8 Generate path 
  
 Scenario 3: Personal Settings.
  
 In this case, you can click the user symbol on the top left corner of the interface. The worker can enter their personal settings to change passwords, set different rulers for the Paths and maximum products to deliver.
  
-![](generate_path.png)
  
+![](8.png)
 Figure 9 Personal setting
  
 Scenario 4: Set start & end point & timeout for algorithm
