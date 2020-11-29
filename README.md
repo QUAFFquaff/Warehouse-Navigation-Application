@@ -6,17 +6,18 @@ version:
 python: 3.6 +  
 run the following commands to install the packages:
 ```bash
-pip install PyQt5==5.15.1
-pip install PyQt5-tools 
-pip install numpy
-pip install PyQtWebEngine==5.15.1 
-pip install matplotlib==3.3.2
+$ pip install PyQt5==5.15.1
+$ pip install PyQt5-tools 
+$ pip install numpy
+$ pip install PyQtWebEngine==5.15.1 
+$ pip install matplotlib==3.3.2
+$ pip install pyecharts==1.9.0
 ```
 
 
 To run the program, use 
 ```bash
-python main.py 
+$ python main.py 
 ```
 to excute it. 
 
@@ -32,6 +33,8 @@ PyQt5 5.15.1
 
 PyQt5-tools  
 PyQtWebEngine 5.15.1 
+
+pyecharts 1.9.0
 
 matplotlib 3.3.2
 
@@ -55,7 +58,7 @@ main.py is the file should run
 ------------------------------------  
 10/29  
 load_data function in main_window:  
-if the path is None , system will crash. 
+if the path is None, system will crash. 
 
 10/30  
 the font size in the picture is not clear.
