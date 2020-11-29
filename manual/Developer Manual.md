@@ -7,7 +7,7 @@
 # Version Modification Record
 | **No.** | **Date** | **Version** | **Modified By** | **Modification** |
 | --- | --- | --- | --- | --- |
-| 5 | 2020/11/25 | V5.0 | All team member | UI update (timeout, start and end point), load orders form file, reconstructed base algorithms since definition of question changed, add greedy |
+| 5 | 2020/11/28 | V5.0 | All team member | UI update (timeout, start and end point), load orders form file, reconstructed base algorithms since definition of question changed, add greedy |
 | 4 | 2020/11/06 | V4.0 | All team member | Update the document, add QMessage for mainwindow(generate path), enhance our map(location and path), add brute_force algorithm, update MakeMatrix.py, add Timeout, add test cases. |
 | 3 | 2020/10/30 | V3.0 | All team member | Change some function#39;s description | 
 | 2 | 2020/10/20 | V2.0 | All team member | Update the document,finish the development manual, add data structure and function. |
@@ -192,8 +192,8 @@ The system has the following features:
  
 ### 2.2.1 Usage instructions/scenarios
  
-1. Scenario 1: Generating a Path for a specific number of products to the return area.
-2. Scenario 2: Workers have a limitation of products each time. From the figure 9, you can see that in the personal setting, the worker can set the maximum number of products to deliver.
+Scenario 1: Generating a Path for a specific number of products to the return area.
+Scenario 2: Workers have a limitation of products each time. From the figure 9, you can see that in the personal setting, the worker can set the maximum number of products to deliver.
  
 ## 3 Software Architecture Overview
  
