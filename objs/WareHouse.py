@@ -240,12 +240,13 @@ class WareHouse:
         return orders
 
     def __del__(self):
-        unfinished_orders = []
-        for order in self.orders:
-            order_list = []
-            for p in order.products:
-                order_list.append(p.get_id())
-            unfinished_orders.append(order_list)
-        path = 'data/unfinished_orders.txt'
-        self.dhandler.save_orders(unfinished_orders,path,self.f)
-        self.f.close()
+        if self.f is not None:
+            unfinished_orders = []
+            for order in self.orders:
+                order_list = []
+                for p in order.products:
+                    order_list.append(p.get_id())
+                unfinished_orders.append(order_list)
+            path = 'data/unfinished_orders.txt'
+            self.dhandler.save_orders(unfinished_orders,path,self.f)
+            self.f.close()
