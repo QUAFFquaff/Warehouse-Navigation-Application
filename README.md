@@ -18,6 +18,7 @@ PyQt5-tools
 PyQtWebEngine 5.15.1 
 
 matplotlib 3.3.2
+
 numpy  
 ---------------------
 
