@@ -8,7 +8,7 @@
 
 | **No.** | **Date** | **Version** | **Modified By** | **Modification** |
 | --- | --- | --- | --- | --- |
-| 4 | 2020/11/25 | V4.0 | All team member | UI update (timeout, start and end point), load orders form file  |
+| 4 | 2020/11/28 | V4.0 | All team member | UI update (timeout, start and end point), load orders form file. |
 | 3 | 2020/11/06 | V3.0 | All team member | Update the graph and UI, added new function for user. |
 | 2 | 2020/10/30 | V2.0 | All team member | Update the graph images and description, changed the system requirement. |
 | 1 | 2020/10/13 | V1.0 | All team member | Generate All the New Doc.
@@ -76,7 +76,7 @@ Fields should be an area or a point, it is the target position of all the produc
 
 ## 2 Overview of System
 
-Our program is a python-based system. This system consists of an application for our shopping carts gatherers at our \&lt; **WoBoAI** \&gt; store. The system allows our workers to login/change passwords and provides directions/instructions for the worker to pick up products that need to be returned to the &#39;Shopping Products Return Area&#39;. We will set some rules to generate our path, a specific number of products may have different paths to the Return area,etc.
+Our program is a python-based system. This system consists of an application for our shopping carts gatherers at our **WoBoAI** store. The system allows our workers to login/change passwords and provides directions/instructions for the worker to pick up products that need to be returned to the &#39;Shopping Products Return Area;. We will set some rules to generate our path, a specific number of products may have different paths to the Return area,etc.
 
 ![](1.png)
 
@@ -116,7 +116,7 @@ In this interface, a map with several products will be displayed. You can click 
 
 Figure 4 main window
 
-If you have finished the orders, you can click on the line named &#39;a\&gt;-b\&gt;-c&#39; and click the finish button to finish the order, and it will be removed from that list.
+If you have finished the orders, you can click on the line name with three IDs; Then you can click the finish button to finish the order, and it will be removed from that list.
 
 ![](main_window.png)
 
@@ -131,7 +131,7 @@ When you click the generate button without selecting an order, it will show you 
 ![](error_select.png)
 Figure 7 Generate path without selecting orders
 
-After you select one order, when you click the &#39;Generate Path&#39; button, the graph below will show us a specific path from the starting point to the return area, a label will also shown under the graph which tells the user the meaning of this graph.
+After you select one order, when you click the &#39;Generate Path&#39; button, the graph below will show us a specific path from the starting point to the return area, a dialog will also shown under the graph which tells the user the meaning of this graph.
 
 ![](generate_path.png)
 
@@ -148,11 +148,19 @@ Figure 9 Personal setting
 
 Scenario 4: Set start & end point & timeout for algorithm
 
-In this case, uset can type in the start point and end point for the algorithm and the timeout(second) so the algorithm can set up the path for the user to follow. After setting is done then click the button to set the values.
+In this case, users can type in the start point and end point for the algorithm and the timeout(second) so the algorithm can set up the path for the user to follow. After setting is done then click the button to set the values.
 
 ![](start_end_timeout.png)
 
 Figure 10 Set start & end point & timeout for algorithm
+
+Scenario 5: Load orders from a single txt file
+
+In this case, users can load many orders (product ID) from a local file. So the UI will show all future orders. 
+
+![](load_orders.png)
+
+Figure 11 Load orders from a file
 
 ## 2.2 Advanced Features
 
@@ -163,8 +171,9 @@ The system has the following features:
 
 ### 2.2.1 Usage instructions/scenarios
 
-1. Scenario 1: Generating a Path for a specific number of products to the return area.
-2. Scenario 2: Workers have a limitation of products each time. From figure 8, you can see that in the personal setting, the worker can set the maximum number of products to deliver.
+Scenario 1: Generating a Path for a specific number of products to the return area.
+
+Scenario 2: Workers have a limitation of products each time. From figure 8, you can see that in the personal setting, the worker can set the maximum number of products to deliver.
 
 ## 3 Installation
 
@@ -186,17 +195,15 @@ anaconda3
 
 Python 3.8
 
-64-Bit Graphical Installer (466 MB)
-
-PyQt5
+PyQt5 5.15.1
 
 PyQt5-tools
 
-PyQtWebEngine 5.15 
+PyQtWebEngine 5.15.1
 
 numpy
 
-matplotlib
+Matplotlib 3.3.2
 
 Make sure you have installed python 3 and PyQt5 with version 5.15.0 (or above).
 
