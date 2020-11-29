@@ -157,7 +157,6 @@ class Main_UI(QMainWindow):
         self.pushButton_add_order.clicked.connect(self.add_order)
         self.pushButton_profile.clicked.connect(self.profile.exec_)
         self.pushButton_generate_path.clicked.connect(self.generate_path)
-        self.pushButton_add_orders_from_file.clicked.connect(self.add_orders_from_file)
         self.pushButton_set_start_and_end_point.clicked.connect(self.set_start_and_end_point)
         self.pushButton_previous_orders.clicked.connect(self.load_previous_orders)
 
