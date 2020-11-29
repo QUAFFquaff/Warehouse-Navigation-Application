@@ -1,16 +1,29 @@
 Here is the code for our Warehouse system.
 
-version: alpha
-
 ### set up  
 Based on python and pyqt.  
 version:  
 python: 3.6 +  
-pyqt:
+run the following commands to install the packages:
+```bash
+pip install PyQt5==5.15.1
+pip install PyQt5-tools 
+pip install numpy
+pip install PyQtWebEngine==5.15.1 
+pip install matplotlib==3.3.2
+```
+
+
+To run the program, use 
+```bash
+python main.py 
+```
+
+to excute it.
+
 -------------------
 **Packages**: 
-
-anaconda3  
+ 
 Python 3.8  
 PyQt5 5.15.1
 
