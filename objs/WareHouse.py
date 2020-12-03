@@ -37,6 +37,7 @@ class WareHouse:
         self.id_to_ind_dict = {}
         self.timeout = 60
         self.shelf_list = []
+        self.allow_diagonal_movement = False
 
     def set_rules(self, num):
         if num == 0:
@@ -104,7 +105,7 @@ class WareHouse:
         #################
         ### TEST ONLY ###
         #################
-        # start_time = time.time()
+        start_time = time.time()
 
         # print("index: ",index)
         products_index_of_one_order_in_data = [i + 1 for i in self.products_index_of_one_order_in_data[index]]
@@ -115,7 +116,7 @@ class WareHouse:
 
         maze1 = make_maze(self.data)
         d, path_list = make_astar_matrix(self.data, maze1, self.start_point, self.end_point,
-                                         products_index_of_one_order_in_data)
+                                         products_index_of_one_order_in_data, self.allow_diagonal_movement)
         print(d)
         if self.rules == Rule.Brute_force:
             self.logger.info("using brute force")
@@ -153,12 +154,14 @@ class WareHouse:
             end_time = time.time()
             path_result_id = []
             for i, step in enumerate(m['path']):
-                if i != 0 and i != len(m['path'])-1:
+                if i != 0 and i != len(m['path']) - 1:
                     path_result_id.append(int(self.data[step][0]))
                 else:
                     pass
-            print("Order[{}] total running time {}s result path is{}".format(order.to_string(),end_time-start_time,path_result_id))
-
+            print("Order[{}]\ntotal running time {} s\nresult path is{}\ntotal distance: {}".format(order.to_string(),
+                                                                                                    end_time - start_time,
+                                                                                                    path_result_id,
+                                                                                                    m['distance']))
             '''
 
             self.logger.info("brute force result(path): {}".format(m["path"]))
@@ -201,13 +204,23 @@ class WareHouse:
             end_time = time.time()
             path_result_id = []
             for i, step in enumerate(res['path']):
-                if i != 0 and i != len(res['path'])-1:
+                if i != 0 and i != len(res['path']) - 1:
                     path_result_id.append(int(self.data[step][0]))
                 else:
                     pass
-            print("Order[{}]\n total CPU running time {} s\n result path is{}\n".format(order.to_string(),end_time-start_time,path_result_id))
+            print("REPORT\nOrder[{}]\ntotal CPU running time {} s\nresult path is{}\ntotal distance: {}\n".format(
+                order.to_string(), end_time - start_time, path_result_id, res['distance']))
 
             '''
+            end_time = time.time()
+            path_result_id = []
+            for i, step in enumerate(res['path']):
+                if i != 0 and i != len(res['path']) - 1:
+                    path_result_id.append(int(self.data[step][0]))
+                else:
+                    pass
+            print("REPORT\nOrder[{}]\ntotal CPU running time {} s\nresult path is{}\ntotal distance: {}\n".format(
+                order.to_string(), end_time - start_time, path_result_id, res['distance']))
 
             return route1
 

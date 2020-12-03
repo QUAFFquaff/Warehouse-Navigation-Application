@@ -6,8 +6,9 @@ import utils.LoggerFactory as LF
 mamlogger = LF.get_logger(__name__)
 
 
-def make_astar_matrix(data, maze, start_point, end_point, order_list) -> dict:
+def make_astar_matrix(data, maze, start_point, end_point, order_list, allow_diagonal_movement) -> dict:
     """
+    :param allow_diagonal_movement:
     :param maze:
     :param end_point:
     :param start_point:start_point = (x,y)
@@ -64,7 +65,7 @@ def make_astar_matrix(data, maze, start_point, end_point, order_list) -> dict:
         path_list.append([-1])
         for j, val_j in enumerate(order_list_temp[i + 1:], i + 1):
             mamlogger.info("from {} to {}".format(position_dictionary[val_i], position_dictionary[val_j]))
-            partial_path = astar(maze, position_dictionary[val_i], position_dictionary[val_j])
+            partial_path = astar(maze, position_dictionary[val_i], position_dictionary[val_j], allow_diagonal_movement)
             distance_matrix[i][j] = len(partial_path) - 1
             path_list.append(partial_path)
 
