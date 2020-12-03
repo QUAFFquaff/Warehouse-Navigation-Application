@@ -35,6 +35,9 @@ def brute_force(m, d_matrix, source, target, plist):
 
         for j in range(len(temp) - 1):
             d = d + d_matrix[temp1.index(temp[j])][temp1.index(temp[j + 1])]
+            if d > min_dist:
+                # print('break!!!',d, min_dist,item)
+                break
 
         if d < min_dist:
             min_dist = d
