@@ -57,8 +57,8 @@
     <rect>
      <x>200</x>
      <y>100</y>
-     <width>431</width>
-     <height>141</height>
+     <width>516</width>
+     <height>143</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
@@ -109,13 +109,6 @@
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="label_maximum_products">
-      <property name="text">
-       <string>Maximum Products</string>
-      </property>
-     </widget>
-    </item>
     <item row="2" column="1">
      <widget class="QComboBox" name="comboBox_set_rules">
       <item>
@@ -128,6 +121,13 @@
         <string>Greedy_nn</string>
        </property>
       </item>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="label_maximum_products">
+      <property name="text">
+       <string>Maximum Products</string>
+      </property>
      </widget>
     </item>
     <item row="3" column="1">
@@ -172,6 +172,19 @@
    </property>
    <property name="text">
     <string>Image</string>
+   </property>
+  </widget>
+  <widget class="QRadioButton" name="radioButton_diagonal">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>250</y>
+     <width>379</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>allow_diagonal_movement (only for greedy_nn)</string>
    </property>
   </widget>
  </widget>
