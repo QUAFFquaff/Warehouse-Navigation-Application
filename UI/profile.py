@@ -100,7 +100,7 @@ class Profile_UI(QDialog):
         self.pushButton_confirm.setText(_translate("Profile", "Confirm"))
         self.pushButton_exit.setText(_translate("Profile", "Exit"))
         self.label_image.setText(_translate("Profile", "Image"))
-        self.radioButton_diagonal.setText(_translate("Profile", "allow_diagonal_movement (only for greedy_nn)"))
+        self.radioButton_diagonal.setText(_translate("Profile", "allow_diagonal_movement"))
 
     # auto-generated code above
     # -------------------------------------------------

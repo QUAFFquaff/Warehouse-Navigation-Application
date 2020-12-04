@@ -184,7 +184,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>allow_diagonal_movement (only for greedy_nn)</string>
+    <string>allow_diagonal_movement</string>
    </property>
   </widget>
  </widget>
