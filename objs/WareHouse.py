@@ -155,7 +155,7 @@ class WareHouse:
             path_result_id = []
             for i, step in enumerate(m['path']):
                 if i != 0 and i != len(m['path']) - 1:
-                    path_result_id.append(int(self.data[step][0]))
+                    path_result_id.append(int(self.data[step-1][0]))
                 else:
                     pass
             print("REPORT BF\nOrder[{}]\ntotal running time {} s\nresult path is{}\ntotal distance: {}".format(order.to_string(),
@@ -168,7 +168,7 @@ class WareHouse:
             path_result_id = []
             for i, step in enumerate(m['path']):
                 if i != 0 and i != len(m['path']) - 1:
-                    path_result_id.append(int(self.data[step][0]))
+                    path_result_id.append(int(self.data[step-1][0]))
                 else:
                     pass
             print("REPORT BF\nOrder[{}]\ntotal running time {} s\nresult path is{}\ntotal distance: {}".format(order.to_string(),
@@ -217,7 +217,7 @@ class WareHouse:
             path_result_id = []
             for i, step in enumerate(res['path']):
                 if i != 0 and i != len(res['path']) - 1:
-                    path_result_id.append(int(self.data[step][0]))
+                    path_result_id.append(int(self.data[step-1][0]))
                 else:
                     pass
             print("REPORT NN\nOrder[{}]\ntotal CPU running time {} s\nresult path is{}\ntotal distance: {}\n".format(
@@ -228,7 +228,7 @@ class WareHouse:
             path_result_id = []
             for i, step in enumerate(res['path']):
                 if i != 0 and i != len(res['path']) - 1:
-                    path_result_id.append(int(self.data[step][0]))
+                    path_result_id.append(int(self.data[step-1][0]))
                 else:
                     pass
             print("REPORT NN\nOrder[{}]\ntotal CPU running time {} s\nresult path is{}\ntotal distance: {}\n".format(
