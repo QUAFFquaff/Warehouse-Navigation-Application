@@ -158,11 +158,23 @@ class WareHouse:
                     path_result_id.append(int(self.data[step][0]))
                 else:
                     pass
-            print("Order[{}]\ntotal running time {} s\nresult path is{}\ntotal distance: {}".format(order.to_string(),
+            print("REPORT BF\nOrder[{}]\ntotal running time {} s\nresult path is{}\ntotal distance: {}".format(order.to_string(),
                                                                                                     end_time - start_time,
                                                                                                     path_result_id,
                                                                                                     m['distance']))
             '''
+
+            end_time = time.time()
+            path_result_id = []
+            for i, step in enumerate(m['path']):
+                if i != 0 and i != len(m['path']) - 1:
+                    path_result_id.append(int(self.data[step][0]))
+                else:
+                    pass
+            print("REPORT BF\nOrder[{}]\ntotal running time {} s\nresult path is{}\ntotal distance: {}".format(order.to_string(),
+                                                                                                    end_time - start_time,
+                                                                                                    path_result_id,
+                                                                                                    m['distance']))
 
             self.logger.info("brute force result(path): {}".format(m["path"]))
             self.logger.info("pro_list: {}".format(pro_list))
@@ -208,7 +220,7 @@ class WareHouse:
                     path_result_id.append(int(self.data[step][0]))
                 else:
                     pass
-            print("REPORT\nOrder[{}]\ntotal CPU running time {} s\nresult path is{}\ntotal distance: {}\n".format(
+            print("REPORT NN\nOrder[{}]\ntotal CPU running time {} s\nresult path is{}\ntotal distance: {}\n".format(
                 order.to_string(), end_time - start_time, path_result_id, res['distance']))
 
             '''
@@ -219,7 +231,7 @@ class WareHouse:
                     path_result_id.append(int(self.data[step][0]))
                 else:
                     pass
-            print("REPORT\nOrder[{}]\ntotal CPU running time {} s\nresult path is{}\ntotal distance: {}\n".format(
+            print("REPORT NN\nOrder[{}]\ntotal CPU running time {} s\nresult path is{}\ntotal distance: {}\n".format(
                 order.to_string(), end_time - start_time, path_result_id, res['distance']))
 
             return route1
