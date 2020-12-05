@@ -14,5 +14,6 @@ __pycache__/
 
 data/path/dot.html
 data/path/path.html
+data/unfinished_orders.txt
 algorithm/__pycache__/
 algorithm/__pycache__

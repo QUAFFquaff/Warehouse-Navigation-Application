@@ -197,10 +197,18 @@ class Main_UI(QMainWindow):
         path = os.path.join(os.getcwd(),"data","path","warehouse.html").replace("\\","/")
         # self.label_graph.load(QUrl("D:/program/python/Warehouse-Navigation-Application/data/path/file_name.html"))
         self.label_graph.load(QUrl("file:///{}".format(path)))
-        # img_name = "data/path/warehouse.png"
-        # img = QPixmap(img_name).scaled(self.label_graph.width(), self.label_graph.height())
-        # self.label_graph.setPixmap(img)
+        self.load_previous_orders()
 
+
+    def load_previous_orders(self):
+        try:
+            self.warehouse.load_orders("data/unfinished_orders.txt")
+            self.orders = self.warehouse.get_string_list_orders()
+            self.orders_model.setStringList(self.orders)
+        except:
+            logger.error("load previous orders failed")
+            # QMessageBox.information(self, "error", "load previous orders failed", QMessageBox.Yes, QMessageBox.Yes)
+        self.warehouse.f = open('data/unfinished_orders.txt', 'w')
 
     def add_orders_from_file(self):
         if self.warehouse.data is None:

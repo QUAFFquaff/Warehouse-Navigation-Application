@@ -26,7 +26,7 @@ class Profile_UI(QDialog):
         self.label_title.setGeometry(QtCore.QRect(260, 30, 311, 41))
         self.label_title.setObjectName("label_title")
         self.formLayoutWidget = QtWidgets.QWidget(Profile)
-        self.formLayoutWidget.setGeometry(QtCore.QRect(200, 100, 431, 141))
+        self.formLayoutWidget.setGeometry(QtCore.QRect(200, 100, 516, 143))
         self.formLayoutWidget.setObjectName("formLayoutWidget")
         self.formLayout = QtWidgets.QFormLayout(self.formLayoutWidget)
         self.formLayout.setContentsMargins(0, 0, 0, 0)
@@ -52,14 +52,14 @@ class Profile_UI(QDialog):
         self.label_set_rules = QtWidgets.QLabel(self.formLayoutWidget)
         self.label_set_rules.setObjectName("label_set_rules")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_set_rules)
-        self.label_maximum_products = QtWidgets.QLabel(self.formLayoutWidget)
-        self.label_maximum_products.setObjectName("label_maximum_products")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_maximum_products)
         self.comboBox_set_rules = QtWidgets.QComboBox(self.formLayoutWidget)
         self.comboBox_set_rules.setObjectName("comboBox_set_rules")
         self.comboBox_set_rules.addItem("")
         self.comboBox_set_rules.addItem("")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.comboBox_set_rules)
+        self.label_maximum_products = QtWidgets.QLabel(self.formLayoutWidget)
+        self.label_maximum_products.setObjectName("label_maximum_products")
+        self.formLayout.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_maximum_products)
         self.lineEdit_maximum_products = QtWidgets.QLineEdit(self.formLayoutWidget)
         self.lineEdit_maximum_products.setObjectName("lineEdit_maximum_products")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.lineEdit_maximum_products)
@@ -78,6 +78,9 @@ class Profile_UI(QDialog):
         self.label_image = QtWidgets.QLabel(Profile)
         self.label_image.setGeometry(QtCore.QRect(40, 30, 51, 41))
         self.label_image.setObjectName("label_image")
+        self.radioButton_diagonal = QtWidgets.QRadioButton(Profile)
+        self.radioButton_diagonal.setGeometry(QtCore.QRect(200, 250, 379, 20))
+        self.radioButton_diagonal.setObjectName("radioButton_diagonal")
 
         self.retranslateUi(Profile)
         QtCore.QMetaObject.connectSlotsByName(Profile)
@@ -91,12 +94,14 @@ class Profile_UI(QDialog):
         self.label_change_password.setText(_translate("Profile", "Change Password"))
         self.label_confirm_password.setText(_translate("Profile", "Comfirm Password"))
         self.label_set_rules.setText(_translate("Profile", "Set Rules"))
-        self.label_maximum_products.setText(_translate("Profile", "Maximum Products"))
         self.comboBox_set_rules.setItemText(0, _translate("Profile", "Brute_force"))
         self.comboBox_set_rules.setItemText(1, _translate("Profile", "Greedy_nn"))
+        self.label_maximum_products.setText(_translate("Profile", "Maximum Products"))
         self.pushButton_confirm.setText(_translate("Profile", "Confirm"))
         self.pushButton_exit.setText(_translate("Profile", "Exit"))
         self.label_image.setText(_translate("Profile", "Image"))
+        self.radioButton_diagonal.setText(_translate("Profile", "allow_diagonal_movement"))
+
     # auto-generated code above
     # -------------------------------------------------
 
@@ -105,7 +110,7 @@ class Profile_UI(QDialog):
         self.username=self.label_username.text()
         self.lineEdit_maximum_products.setText("1")
         self.add_event_listener()
-        img_name = "UI/images/head_img.png"
+        img_name = "data/images/head_img.png"
         img = QPixmap(img_name).scaled(self.label_image.width(), self.label_image.height())
         self.label_image.setPixmap(img)
 
@@ -117,6 +122,7 @@ class Profile_UI(QDialog):
     def confirm(self):
         params=self.get_params()
         self.warehouse.set_rules(params["rule"])
+        self.warehouse.allow_diagonal_movement = self.radioButton_diagonal.isChecked()
         self.accept()
 
     # return a dict about the parameters in profile
