@@ -1,5 +1,8 @@
 Here is the code for our Warehouse system.
 
+**If you have the virtual environment [venv](./venv) under this folder and using
+windows, use [run.bat](./run.bat) to excute the program.**
+
 ### set up  
 Based on python and pyqt.  
 version:  
