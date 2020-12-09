@@ -8,7 +8,8 @@
 
 | **No.** | **Date** | **Version** | **Modified By** | **Modification** |
 | --- | --- | --- | --- | --- |
-| 4 | 2020/11/28 | V4.0 | All team member | UI update (timeout, start and end point), load orders form file. |
+| 5 | 2020/12/08 | V5.0 | All team member | UI update, removed embedded axis |
+| 4 | 2020/11/25 | V4.0 | All team member | UI update (timeout, start and end point), load orders form file  |
 | 3 | 2020/11/06 | V3.0 | All team member | Update the graph and UI, added new function for user. |
 | 2 | 2020/10/30 | V2.0 | All team member | Update the graph images and description, changed the system requirement. |
 | 1 | 2020/10/13 | V1.0 | All team member | Generate All the New Doc.
