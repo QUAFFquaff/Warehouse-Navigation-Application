@@ -328,11 +328,11 @@ class Main_UI(QMainWindow):
             QMessageBox.information(self, "Error", "Wrong input format, numbers only!", QMessageBox.Yes, QMessageBox.Yes)
             return
         try:
-            self.warehouse.start_point=(int(start_x),int(start_y))
-            self.warehouse.end_point=(int(end_x),int(end_y))
+            self.warehouse.start_point=(int(start_y),int(start_x))
+            self.warehouse.end_point=(int(end_y),int(end_x))
             self.warehouse.timeout=float(timeout)
-            logger.info("setting start point to ({}, {})".format(start_x,start_y))
-            logger.info("setting end point to ({}, {})".format(end_x,end_y))
+            logger.info("setting start point to ({}, {})".format(start_y,start_x))
+            logger.info("setting end point to ({}, {})".format(end_y,end_x))
         except Exception as e:
             logger.error("catch exception: {}".format(e))
             QMessageBox.information(self, "Exception", "exception", QMessageBox.Yes, QMessageBox.Yes)
