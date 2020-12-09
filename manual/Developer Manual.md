@@ -7,7 +7,8 @@
 # Version Modification Record
 | **No.** | **Date** | **Version** | **Modified By** | **Modification** |
 | --- | --- | --- | --- | --- |
-| 5 | 2020/11/28 | V5.0 | All team member | UI update (timeout, start and end point), load orders form file, reconstructed base algorithms since definition of question changed, add greedy |
+| 6 | 2020/12/08 | V6.0 | All team member | UI update, x and y axis bug fix, add allow diagonal movement option |
+| 5 | 2020/11/25 | V5.0 | All team member | UI update (timeout, start and end point), load orders form file, reconstructed base algorithms since definition of question changed, add greedy |
 | 4 | 2020/11/06 | V4.0 | All team member | Update the document, add QMessage for mainwindow(generate path), enhance our map(location and path), add brute_force algorithm, update MakeMatrix.py, add Timeout, add test cases. |
 | 3 | 2020/10/30 | V3.0 | All team member | Change some function#39;s description | 
 | 2 | 2020/10/20 | V2.0 | All team member | Update the document,finish the development manual, add data structure and function. |
@@ -112,8 +113,6 @@ The system has the following features:
 1. User Login/Logout
 2. Load Products/Generate Paths
 3. Personal Settings (passwords, rules...)
-4. Set start and end point & timeout for algorithm
-5. Load orders from file
  
 ### 2.1.1 Usage instructions/scenarios
  
@@ -195,7 +194,6 @@ The system has the following features:
 ### 2.2.1 Usage instructions/scenarios
  
 Scenario 1: Generating a Path for a specific number of products to the return area.
-
 Scenario 2: Workers have a limitation of products each time. From the figure 9, you can see that in the personal setting, the worker can set the maximum number of products to deliver.
  
 ## 3 Software Architecture Overview
@@ -355,12 +353,16 @@ def atar()
  
 This function returns the shortest path between two locations.
  
+def allow_diagonal_movement()
+ 
+This function provide the option to allow diagonal movement.
+ 
 def brute_force()
  
-This function returns the result by using brute force algorithm.
+This function returns the result by using the brute force algorithm.
 def greedy_nn()
  
-This function returns the result by using greedy nearest neighbor algorithm.
+This function returns the result by using the greedy nearest neighbor algorithm.
  
 def SetRules()  -  void
  
@@ -403,8 +405,8 @@ PNG, HTML with a path and a description of a line of sentence.
 | 2 | Requirement analysis | Done
 | 3 | Development manual | In progress | Overall program control flow | Function prototypes | Class Design | I/O Formats |
 | 4,5 | UI design/class implementation | Done | UI design | Class implementation | Class implementation | UI design |
-| 6,7 | Event listener development/Algorithm design | TBD | Event listener development | Generate png/html path | Generate png/html path | Event listener development |
-| 8,9 | Testing | TBD | UI test | System test | System test | UI test |
+| 6,7 | Event listener development/Algorithm design | Done | Event listener development | Generate png/html path | Generate png/html path | Event listener development |
+| 8,9 | Testing | Done | UI test | System test | System test | UI test |
 | 10 | Report | TBD |
  
 ## 7 Back Matter
