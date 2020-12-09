@@ -19,9 +19,6 @@ class Profile_UI(QDialog):
         self.label_username = QtWidgets.QLabel(Profile)
         self.label_username.setGeometry(QtCore.QRect(120, 40, 101, 21))
         self.label_username.setObjectName("label_username")
-        self.pushButton_logout = QtWidgets.QPushButton(Profile)
-        self.pushButton_logout.setGeometry(QtCore.QRect(530, 40, 108, 28))
-        self.pushButton_logout.setObjectName("pushButton_logout")
         self.label_title = QtWidgets.QLabel(Profile)
         self.label_title.setGeometry(QtCore.QRect(260, 30, 311, 41))
         self.label_title.setObjectName("label_title")
@@ -89,7 +86,6 @@ class Profile_UI(QDialog):
         _translate = QtCore.QCoreApplication.translate
         Profile.setWindowTitle(_translate("Profile", "Dialog"))
         self.label_username.setText(_translate("Profile", "alicebob"))
-        self.pushButton_logout.setText(_translate("Profile", "Logout"))
         self.label_title.setText(_translate("Profile", "Warehouse System Application"))
         self.label_change_password.setText(_translate("Profile", "Change Password"))
         self.label_confirm_password.setText(_translate("Profile", "Comfirm Password"))
@@ -115,7 +111,6 @@ class Profile_UI(QDialog):
         self.label_image.setPixmap(img)
 
     def add_event_listener(self):
-        self.pushButton_logout.clicked.connect(self.reject)
         self.pushButton_exit.clicked.connect(self.reject)
         self.pushButton_confirm.clicked.connect(self.confirm)
 

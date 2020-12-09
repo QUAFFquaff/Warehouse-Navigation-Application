@@ -26,19 +26,6 @@
     <string>alicebob</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_logout">
-   <property name="geometry">
-    <rect>
-     <x>530</x>
-     <y>40</y>
-     <width>108</width>
-     <height>28</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Logout</string>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_title">
    <property name="geometry">
     <rect>

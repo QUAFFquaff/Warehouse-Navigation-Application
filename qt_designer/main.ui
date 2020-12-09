@@ -133,19 +133,6 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton_logout">
-    <property name="geometry">
-     <rect>
-      <x>1070</x>
-      <y>40</y>
-      <width>191</width>
-      <height>28</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Logout</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_title">
     <property name="geometry">
      <rect>

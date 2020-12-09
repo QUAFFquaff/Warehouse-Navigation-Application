@@ -38,6 +38,7 @@ class WareHouse:
         self.timeout = 60
         self.shelf_list = []
         self.allow_diagonal_movement = False
+        self.f = None
 
     def set_rules(self, num):
         if num == 0:
