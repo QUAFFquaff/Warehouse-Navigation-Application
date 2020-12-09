@@ -113,7 +113,7 @@
      <widget class="QComboBox" name="comboBox_set_rules">
       <item>
        <property name="text">
-        <string>Brute_force</string>
+        <string>Branch_and_bound</string>
        </property>
       </item>
       <item>

@@ -15,7 +15,7 @@ from algorithm.GreedyNN import *
 
 from objs.DataHandler import *
 
-Rule = Enum('Rule', ('Brute_force', 'Greedy_nn'))
+Rule = Enum('Rule', ('Branch_and_bound', 'Greedy_nn'))
 import utils.LoggerFactory as LF
 from multiprocessing import Process, Manager
 
@@ -29,7 +29,7 @@ class WareHouse:
         self.orders = orders
         self.dhandler = dhandler
         self.products = []
-        self.rules = Rule.Brute_force
+        self.rules = Rule.Branch_and_bound
         self.data = None
         self.start_point = (0.0, 0.0)
         self.end_point = (0.0, 0.0)
@@ -41,7 +41,7 @@ class WareHouse:
 
     def set_rules(self, num):
         if num == 0:
-            self.rules = Rule.Brute_force
+            self.rules = Rule.Branch_and_bound
         elif num == 1:
             self.rules = Rule.Greedy_nn
 
@@ -118,8 +118,8 @@ class WareHouse:
         d, path_list = make_astar_matrix(self.data, maze1, self.start_point, self.end_point,
                                          products_index_of_one_order_in_data, self.allow_diagonal_movement)
         print(d)
-        if self.rules == Rule.Brute_force:
-            self.logger.info("using brute force")
+        if self.rules == Rule.Branch_and_bound:
+            self.logger.info("using branch and bound")
 
             sourcetest = 0
             targettest = len(self.data) + 1

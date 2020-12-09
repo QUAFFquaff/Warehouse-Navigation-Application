@@ -94,7 +94,7 @@ class Profile_UI(QDialog):
         self.label_change_password.setText(_translate("Profile", "Change Password"))
         self.label_confirm_password.setText(_translate("Profile", "Comfirm Password"))
         self.label_set_rules.setText(_translate("Profile", "Set Rules"))
-        self.comboBox_set_rules.setItemText(0, _translate("Profile", "Brute_force"))
+        self.comboBox_set_rules.setItemText(0, _translate("Profile", "Branch_and_bound"))
         self.comboBox_set_rules.setItemText(1, _translate("Profile", "Greedy_nn"))
         self.label_maximum_products.setText(_translate("Profile", "Maximum Products"))
         self.pushButton_confirm.setText(_translate("Profile", "Confirm"))
@@ -133,7 +133,7 @@ class Profile_UI(QDialog):
         params["new_password"] = self.lineEdit_password_input2.text()
         params["maximum_products"]=self.lineEdit_maximum_products.text()
         rule = self.comboBox_set_rules.currentText()
-        if rule == "Brute_force":
+        if rule == "Branch_and_bound":
             params["rule"] = 0
         elif rule == "Greedy_nn":
             params["rule"] = 1
