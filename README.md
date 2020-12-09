@@ -1,20 +1,12 @@
 Here is the code for our Warehouse system.
 
-**If you have the virtual environment [venv](./venv) under this folder and using
-windows, use [run.bat](./run.bat) to excute the program.**
-
 ### set up  
 Based on python and pyqt.  
 version:  
 python: 3.6 +  
 run the following commands to install the packages:
 ```bash
-$ pip install PyQt5==5.15.1
-$ pip install PyQt5-tools 
-$ pip install numpy
-$ pip install PyQtWebEngine==5.15.1 
-$ pip install matplotlib==3.3.2
-$ pip install pyecharts==1.9.0
+$ pip install -r requirements.txt
 ```
 
 
